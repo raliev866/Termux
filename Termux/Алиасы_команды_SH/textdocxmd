@@ -1,0 +1,149 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+# ==============================================
+# textdocxmd - Извлечение Markdown из DOCX
+# Версия: 1.0
+# ==============================================
+# Создаёт .md файлы из .docx, если в них есть Markdown-разметка
+# Рабочая папка: Documents/04_Текст_Markdown_из_docx_в_md_textdocxmd/
+# ==============================================
+
+# Цвета для вывода
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+RED='\033[0;31m'
+NC='\033[0m'
+
+# ===== КОНФИГУРАЦИЯ =====
+WORK_DIR="/storage/emulated/0/Documents/04_Текст_Markdown_из_docx_в_md_textdocxmd"
+INPUT_EXT="docx"
+OUTPUT_EXT="md"
+FOLDER_SUFFIX=" - md"
+
+# Markdown-символы для проверки
+MD_PATTERNS=(
+    '^#{1,6}\s+'           # Заголовки
+    '^\*\s+'                # Маркированные списки
+    '^-\s+'                 # Маркированные списки
+    '^\d+\.\s+'             # Нумерованные списки
+    '\[.*\]\(.*\)'          # Ссылки
+    '!\[.*\]\(.*\)'         # Изображения
+    '`[^`]+`'               # Инлайн-код
+    '```'                    # Блоки кода
+    '^\>\s+'                 # Цитаты
+    '^\|.*\|.*\|'            # Таблицы
+    '\*\*.*\*\*'             # Жирный текст
+    '__.*__'                 # Жирный текст
+    '\*.*\*'                 # Курсив
+    '_.*_'                   # Курсив
+    '~~.*~~'                 # Зачеркнутый
+)
+
+echo -e "${BLUE}══════════════════════════════════════════════${NC}"
+echo -e "${GREEN}   textdocxmd - Извлечение Markdown из DOCX${NC}"
+echo -e "${BLUE}══════════════════════════════════════════════${NC}\n"
+
+# Проверка pandoc
+if ! command -v pandoc &> /dev/null; then
+    echo -e "${YELLOW}📦 Устанавливаю pandoc...${NC}"
+    pkg install -y pandoc
+fi
+
+# Создаём рабочую папку
+mkdir -p "$WORK_DIR"
+echo -e "${GREEN}✅ Рабочая папка:${NC} $WORK_DIR\n"
+
+# Функция проверки наличия Markdown-символов
+contains_markdown() {
+    local text="$1"
+    for pattern in "${MD_PATTERNS[@]}"; do
+        if echo "$text" | grep -q -E "$pattern"; then
+            return 0  # Нашли Markdown
+        fi
+    done
+    return 1  # Markdown не найден
+}
+
+# Счётчики
+TOTAL_FILES=0
+MD_FILES=0
+CONVERTED_FILES=0
+SKIPPED_FILES=0
+
+echo -e "${YELLOW}🔍 Поиск файлов .$INPUT_EXT...${NC}\n"
+
+# Поиск всех docx файлов
+find "$WORK_DIR" -type f -name "*.$INPUT_EXT" 2>/dev/null | while read -r docx_file; do
+    
+    # Пропускаем файлы из папок с нашим суффиксом
+    if [[ "$docx_file" == *"$FOLDER_SUFFIX/"* ]]; then
+        continue
+    fi
+    
+    TOTAL_FILES=$((TOTAL_FILES + 1))
+    
+    # Получаем информацию о файле
+    file_dir=$(dirname "$docx_file")
+    filename=$(basename "$docx_file" ".$INPUT_EXT")
+    
+    echo -e "${BLUE}[$TOTAL_FILES]${NC} Найден: $filename.docx"
+    
+    # Извлекаем текст из docx
+    TEXT=$(pandoc "$docx_file" -t plain 2>/dev/null)
+    
+    if [ -z "$TEXT" ]; then
+        echo -e "   ${YELLOW}⚠️  Не удалось прочитать файл${NC}"
+        SKIPPED_FILES=$((SKIPPED_FILES + 1))
+        echo ""
+        continue
+    fi
+    
+    # Проверяем, есть ли Markdown-символы
+    if contains_markdown "$TEXT"; then
+        echo -e "   ${GREEN}✅ Найдена Markdown-разметка${NC}"
+        MD_FILES=$((MD_FILES + 1))
+        
+        # ===== ЗЕРКАЛЬНАЯ ЛОГИКА =====
+        if [ "$file_dir" = "$WORK_DIR" ]; then
+            # Файл в корне
+            output_dir="$file_dir"
+            echo "   └─ 📍 Корневой файл"
+        else
+            # Файл в подпапке
+            rel_path="${file_dir#$WORK_DIR/}"
+            top_folder="${rel_path%%/*}"
+            sub_path="${rel_path#$top_folder}"
+            target_folder="$WORK_DIR/${top_folder}${FOLDER_SUFFIX}${sub_path}"
+            mkdir -p "$target_folder"
+            output_dir="$target_folder"
+            echo "   └─ 🔄 Зеркальная папка: ${top_folder}${FOLDER_SUFFIX}${sub_path}/"
+        fi
+        
+        output_file="$output_dir/$filename.$OUTPUT_EXT"
+        
+        # Конвертируем docx в md (с сохранением структуры)
+        pandoc "$docx_file" -o "$output_file" --wrap=preserve 2>/dev/null
+        
+        if [ $? -eq 0 ]; then
+            echo -e "      ${GREEN}✅ Создан: $filename.md${NC}"
+            CONVERTED_FILES=$((CONVERTED_FILES + 1))
+        else
+            echo -e "      ${RED}❌ Ошибка создания .md${NC}"
+        fi
+    else
+        echo -e "   ${YELLOW}⏭️  Нет Markdown-разметки (пропущен)${NC}"
+        SKIPPED_FILES=$((SKIPPED_FILES + 1))
+    fi
+    echo ""
+done
+
+# Итоги
+echo -e "${BLUE}══════════════════════════════════════════════${NC}"
+echo -e "${GREEN}📊 СТАТИСТИКА${NC}"
+echo -e "${BLUE}══════════════════════════════════════════════${NC}"
+echo -e "📁 Всего найдено .docx файлов: ${YELLOW}$TOTAL_FILES${NC}"
+echo -e "📊 Обнаружено Markdown: ${GREEN}$MD_FILES${NC}"
+echo -e "✅ Создано .md файлов: ${GREEN}$CONVERTED_FILES${NC}"
+echo -e "⏭️  Пропущено (нет Markdown): ${YELLOW}$SKIPPED_FILES${NC}"
+echo -e "${BLUE}══════════════════════════════════════════════${NC}"

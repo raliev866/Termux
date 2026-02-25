@@ -1,0 +1,162 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+# ==============================================
+# mdhtml - Конвертер md → html
+# ЗЕРКАЛЬНАЯ ЛОГИКА + КРАСИВЫЕ СТИЛИ
+# ==============================================
+
+WORK_DIR="__WORKDIR__"
+INPUT_EXT="__INPUT__"
+OUTPUT_EXT="__OUTPUT__"
+FOLDER_SUFFIX=" - __OUTPUT__"
+
+# Красивые CSS-стили прямо в скрипте
+CSS_STYLES='
+<style>
+    body {
+        font-family: "Charter", "PT Serif", Georgia, serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        font-size: 18px;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-family: "Montserrat", "Arial", sans-serif;
+        color: #2c3e50;
+        margin-top: 1.5em;
+        margin-bottom: 0.5em;
+    }
+    h1 { font-size: 2.2em; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+    h2 { font-size: 1.8em; border-bottom: 1px solid #eee; padding-bottom: 8px; }
+    h3 { font-size: 1.5em; }
+    p { margin: 1em 0; }
+    code {
+        font-family: "JetBrains Mono", "Fira Code", monospace;
+        background: #f4f4f4;
+        padding: 2px 5px;
+        border-radius: 3px;
+        font-size: 0.9em;
+    }
+    pre {
+        background: #f4f4f4;
+        padding: 15px;
+        border-radius: 5px;
+        overflow-x: auto;
+    }
+    pre code {
+        background: none;
+        padding: 0;
+    }
+    blockquote {
+        border-left: 4px solid #2c3e50;
+        margin: 1em 0;
+        padding: 10px 20px;
+        background: #f9f9f9;
+        font-style: italic;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 1em 0;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px 12px;
+        text-align: left;
+    }
+    th {
+        background: #2c3e50;
+        color: white;
+    }
+    tr:nth-child(even) {
+        background: #f9f9f9;
+    }
+    a {
+        color: #3498db;
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+'
+
+echo "=============================================="
+echo "     mdhtml - Конвертер md → html"
+echo "=============================================="
+echo "📁 Рабочая папка: $WORK_DIR"
+echo ""
+
+if ! command -v pandoc &> /dev/null; then
+    echo "📦 Устанавливаю pandoc..."
+    pkg install -y pandoc
+fi
+
+mkdir -p "$WORK_DIR"
+
+TOTAL_FILES=0
+CONVERTED_FILES=0
+
+echo "🔍 Поиск файлов .$INPUT_EXT..."
+echo ""
+
+find "$WORK_DIR" -type f -name "*.$INPUT_EXT" 2>/dev/null | while read -r file; do
+    
+    if [[ "$file" == *"$FOLDER_SUFFIX/"* ]]; then
+        continue
+    fi
+    
+    TOTAL_FILES=$((TOTAL_FILES + 1))
+    
+    file_dir=$(dirname "$file")
+    filename=$(basename "$file" ".$INPUT_EXT")
+    
+    echo "📄 [$TOTAL_FILES] $filename.$INPUT_EXT"
+    
+    # ========== ЗЕРКАЛЬНАЯ ЛОГИКА ==========
+    if [ "$file_dir" = "$WORK_DIR" ]; then
+        output_dir="$file_dir"
+        echo "   └─ 📍 Корневой файл"
+    else
+        rel_path="${file_dir#$WORK_DIR/}"
+        top_folder="${rel_path%%/*}"
+        sub_path="${rel_path#$top_folder}"
+        target_folder="$WORK_DIR/${top_folder}${FOLDER_SUFFIX}${sub_path}"
+        mkdir -p "$target_folder"
+        output_dir="$target_folder"
+        echo "   └─ 🔄 Зеркальная папка: ${top_folder}${FOLDER_SUFFIX}${sub_path}/"
+    fi
+    
+    output_file="$output_dir/$filename.$OUTPUT_EXT"
+    
+    # КОНВЕРТАЦИЯ С КРАСИВЫМИ СТИЛЯМИ
+    echo "      ⚙️ Конвертирую с CSS..."
+    
+    # Создаём временный файл с CSS
+    echo "$file" "$output_file" | pandoc \
+        --standalone \
+        --toc \
+        --metadata title="$filename" \
+        --metadata lang="ru" \
+        -H /dev/stdin <<< "$CSS_STYLES" \
+        -o "$output_file"
+    
+    if [ $? -eq 0 ]; then
+        echo "      ✅ Готово: $filename.$OUTPUT_EXT"
+        CONVERTED_FILES=$((CONVERTED_FILES + 1))
+    else
+        echo "      ❌ Ошибка"
+    fi
+done
+
+echo ""
+echo "=============================================="
+echo "✅ КОНВЕРТАЦИЯ ЗАВЕРШЕНА"
+echo "📊 Найдено: $TOTAL_FILES, Сконвертировано: $CONVERTED_FILES"
+echo "=============================================="

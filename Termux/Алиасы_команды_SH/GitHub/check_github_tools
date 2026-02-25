@@ -1,0 +1,87 @@
+cat > ~/check_github_tools.sh << 'EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+
+echo "=========================================="
+echo "🔍 ПРОВЕРКА УСТАНОВКИ ИНСТРУМЕНТОВ ДЛЯ GITHUB"
+echo "=========================================="
+
+# Функция проверки
+check_tool() {
+    if command -v $1 &> /dev/null; then
+        echo "✅ $1 установлен"
+        return 0
+    else
+        echo "❌ $1 НЕ установлен"
+        return 1
+    fi
+}
+
+# Основные инструменты
+echo -e "\n📌 ОСНОВНЫЕ ИНСТРУМЕНТЫ:"
+check_tool git
+check_tool ssh
+check_tool curl
+check_tool wget
+
+# Python и pip
+echo -e "\n📌 PYTHON ИНСТРУМЕНТЫ:"
+if command -v python3 &> /dev/null; then
+    echo "✅ python3 установлен"
+else
+    echo "❌ python3 НЕ установлен"
+fi
+
+if command -v pip &> /dev/null; then
+    echo "✅ pip установлен"
+else
+    echo "❌ pip НЕ установлен"
+fi
+
+# GitHub CLI
+echo -e "\n📌 GITHUB CLI:"
+if command -v gh &> /dev/null; then
+    echo "✅ GitHub CLI (gh) установлен"
+    gh --version | head -1
+else
+    echo "❌ GitHub CLI (gh) НЕ установлен"
+fi
+
+# SSH ключи
+echo -e "\n📌 SSH КЛЮЧИ:"
+if [ -f ~/.ssh/id_rsa ]; then
+    echo "✅ Приватный SSH ключ найден: ~/.ssh/id_rsa"
+    echo "✅ Публичный SSH ключ:"
+    cat ~/.ssh/id_rsa.pub 2>/dev/null | head -1
+else
+    echo "❌ SSH ключи не найдены"
+fi
+
+# Git конфигурация
+echo -e "\n📌 GIT КОНФИГУРАЦИЯ:"
+git config --global user.name && echo "✅ Git user.name настроен" || echo "❌ Git user.name не настроен"
+git config --global user.email && echo "✅ Git user.email настроен" || echo "❌ Git user.email не настроен"
+
+# Проверка подключения к GitHub
+echo -e "\n📌 ПОДКЛЮЧЕНИЕ К GITHUB:"
+if ssh -T git@github.com 2>&1 | grep -q "successfully authenticated"; then
+    echo "✅ SSH подключение к GitHub работает"
+else
+    echo "❌ SSH подключение к GitHub не работает"
+fi
+
+# Итог
+echo -e "\n=========================================="
+echo "🏁 ПРОВЕРКА ЗАВЕРШЕНА"
+echo "=========================================="
+
+# Рекомендации по установке
+echo -e "\n📋 ЕСЛИ ЧТО-ТО ОТСУТСТВУЕТ, УСТАНОВИ:"
+echo "  pkg install git openssh curl wget python python-pip"
+echo "  # Для GitHub CLI:"
+echo "  curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg"
+echo "  chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg"
+echo "  echo 'deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main' | tee /etc/apt/sources.list.d/github-cli.list > /dev/null"
+echo "  pkg update && pkg install gh"
+EOF
+
+chmod +x ~/check_github_tools.sh

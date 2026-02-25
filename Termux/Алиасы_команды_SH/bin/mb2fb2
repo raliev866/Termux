@@ -1,0 +1,77 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+# ==============================================
+# mb2fb2 - Конвертер md → fb2
+# ==============================================
+
+WORK_DIR="/storage/emulated/0/Documents/05_Элект_книги/02_md_fb2_мдфб2"
+INPUT_EXT="md"
+OUTPUT_EXT="fb2"
+FOLDER_SUFFIX="fb2"
+
+echo "=============================================="
+echo "     mb2fb2 - Конвертер md → fb2"
+echo "=============================================="
+echo "📁 Рабочая папка: $WORK_DIR"
+echo ""
+
+if ! command -v pandoc &> /dev/null; then
+    echo "📦 Устанавливаю pandoc..."
+    pkg install -y pandoc
+fi
+
+mkdir -p "$WORK_DIR"
+
+FILES_FOUND=0
+FILES_CONVERTED=0
+
+echo "🔍 Поиск файлов .$INPUT_EXT..."
+echo ""
+
+find "$WORK_DIR" -type f -name "*.$INPUT_EXT" 2>/dev/null | while read full_path; do
+    
+    FILES_FOUND=$((FILES_FOUND + 1))
+    filename=$(basename "$full_path" ".$INPUT_EXT")
+    filedir=$(dirname "$full_path")
+    
+    echo "📄 [$FILES_FOUND] $filename.$INPUT_EXT"
+    
+    # Получаем путь относительно рабочей папки
+    rel_path="${filedir#$WORK_DIR/}"
+    
+    if [ "$filedir" = "$WORK_DIR" ]; then
+        # Файл прямо в рабочей папке
+        output_dir="${WORK_DIR} - ${FOLDER_SUFFIX}"
+        mkdir -p "$output_dir"
+        echo "   └─ Папка: $(basename "$output_dir")"
+    else
+        # Файл во вложенной папке
+        first_folder="${rel_path%%/*}"
+        rest_path="${rel_path#$first_folder}"
+        
+        # ПЕРЕИМЕНОВЫВАЕМ ТОЛЬКО ПЕРВУЮ ПАПКУ
+        new_first_folder="${first_folder} - ${FOLDER_SUFFIX}"
+        
+        # ВСЕ вложенные папки остаются с original именами
+        output_dir="${WORK_DIR}/${new_first_folder}${rest_path}"
+        mkdir -p "$output_dir"
+        echo "   └─ Папка: ${new_first_folder}${rest_path}"
+    fi
+    
+    output_file="$output_dir/$filename.$OUTPUT_EXT"
+    
+    pandoc "$full_path" -o "$output_file"
+    
+    if [ $? -eq 0 ]; then
+        echo "      ✅ Готово: $filename.$OUTPUT_EXT"
+        FILES_CONVERTED=$((FILES_CONVERTED + 1))
+    else
+        echo "      ❌ Ошибка"
+    fi
+done
+
+echo ""
+echo "=============================================="
+echo "✅ КОНВЕРТАЦИЯ ЗАВЕРШЕНА"
+echo "📊 Найдено: $FILES_FOUND, Сконвертировано: $FILES_CONVERTED"
+echo "=============================================="
