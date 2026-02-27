@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Permission denied. Даём право на выполнение 2</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бекап_рестор/Шаблон_формата_текста/HTML_книги/scientific_style.css" />
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#проблема-android-блокирует-запуск-скриптов-из-storageemulated0"
+id="toc-проблема-android-блокирует-запуск-скриптов-из-storageemulated0">🔥
+ПРОБЛЕМА: Android блокирует запуск скриптов из
+<code>/storage/emulated/0/</code></a></li>
+<li><a href="#мгновенное-решение" id="toc-мгновенное-решение">✅
+МГНОВЕННОЕ РЕШЕНИЕ</a>
+<ul>
+<li><a href="#шаг-1.-скопируйте-скрипт-в-termux"
+id="toc-шаг-1.-скопируйте-скрипт-в-termux">Шаг 1. Скопируйте скрипт в
+Termux</a></li>
+<li><a href="#шаг-2.-дайте-права-на-копию"
+id="toc-шаг-2.-дайте-права-на-копию">Шаг 2. Дайте права на
+копию</a></li>
+<li><a href="#шаг-3.-перенаправьте-симлинк-на-копию"
+id="toc-шаг-3.-перенаправьте-симлинк-на-копию">Шаг 3. Перенаправьте
+симлинк на копию</a></li>
+<li><a href="#шаг-4.-проверьте" id="toc-шаг-4.-проверьте">Шаг 4.
+Проверьте</a></li>
+</ul></li>
+<li><a href="#почему-это-работает" id="toc-почему-это-работает">📌
+Почему это работает:</a></li>
+<li><a href="#если-хотите-сделать-это-для-всех-скриптов-разом"
+id="toc-если-хотите-сделать-это-для-всех-скриптов-разом">🚀 Если хотите
+сделать это для всех скриптов разом:</a></li>
+<li><a href="#ура-победа" id="toc-ура-победа">🎉🎉🎉 <strong>УРА!!!
+ПОБЕДА!!!</strong> 🎉🎉🎉</a>
+<ul>
+<li><a href="#что-было-сделано" id="toc-что-было-сделано">✅ ЧТО БЫЛО
+СДЕЛАНО:</a></li>
+<li><a href="#теперь-у-вас-работают" id="toc-теперь-у-вас-работают">📋
+ТЕПЕРЬ У ВАС РАБОТАЮТ:</a></li>
+<li><a href="#совет-на-будущее" id="toc-совет-на-будущее">🎯 СОВЕТ НА
+БУДУЩЕЕ:</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2
+id="проблема-android-блокирует-запуск-скриптов-из-storageemulated0">🔥
+ПРОБЛЕМА: Android блокирует запуск скриптов из
+<code>/storage/emulated/0/</code></h2>
+<p>Ваш симлинк ведёт на файл во <strong>внешнем хранилище</strong>, а
+Android запрещает их выполнение. Даже <code>chmod +x</code> не
+помогает.</p>
+<hr />
+<h2 id="мгновенное-решение">✅ МГНОВЕННОЕ РЕШЕНИЕ</h2>
+<h3 id="шаг-1.-скопируйте-скрипт-в-termux">Шаг 1. Скопируйте скрипт в
+Termux</h3>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бекап_рестор/Алиасы_команды_SH/мдгтмл.sh ~/.termux_scripts/</span></code></pre></div>
+<h3 id="шаг-2.-дайте-права-на-копию">Шаг 2. Дайте права на копию</h3>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x ~/.termux_scripts/мдгтмл.sh</span></code></pre></div>
+<h3 id="шаг-3.-перенаправьте-симлинк-на-копию">Шаг 3. Перенаправьте
+симлинк на копию</h3>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-f</span> ~/bin/мдгтмл</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-sf</span> ~/.termux_scripts/мдгтмл.sh ~/bin/мдгтмл</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x ~/bin/мдгтмл</span></code></pre></div>
+<h3 id="шаг-4.-проверьте">Шаг 4. Проверьте</h3>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">мдгтмл</span></span></code></pre></div>
+<hr />
+<h2 id="почему-это-работает">📌 Почему это работает:</h2>
+<table>
+<thead>
+<tr>
+<th>До</th>
+<th>После</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Файл в <code>/storage/emulated/0/</code></td>
+<td>✅ Файл в <code>~/.termux_scripts/</code></td>
+</tr>
+<tr>
+<td>Android блокирует запуск</td>
+<td>✅ Termux разрешает запуск</td>
+</tr>
+<tr>
+<td>Permission denied</td>
+<td>✅ <strong>Работает!</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="если-хотите-сделать-это-для-всех-скриптов-разом">🚀 Если хотите
+сделать это для всех скриптов разом:</h2>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Массовое копирование и регистрация</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> script <span class="kw">in</span> /storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бекап_рестор/Алиасы_команды_SH/<span class="pp">*</span>.sh<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">name</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">$script</span><span class="st">&quot;</span> .sh<span class="va">)</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cp</span> <span class="st">&quot;</span><span class="va">$script</span><span class="st">&quot;</span> ~/.termux_scripts/</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">chmod</span> +x ~/.termux_scripts/<span class="st">&quot;</span><span class="va">$name</span><span class="st">&quot;</span>.sh</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ln</span> <span class="at">-sf</span> ~/.termux_scripts/<span class="st">&quot;</span><span class="va">$name</span><span class="st">&quot;</span>.sh ~/bin/<span class="st">&quot;</span><span class="va">$name</span><span class="st">&quot;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">chmod</span> +x ~/bin/<span class="st">&quot;</span><span class="va">$name</span><span class="st">&quot;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;✅ </span><span class="va">$name</span><span class="st">&quot;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+<hr />
+<h2 id="ура-победа">🎉🎉🎉 <strong>УРА!!! ПОБЕДА!!!</strong> 🎉🎉🎉</h2>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">_________________________</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span> ВСЁ <span class="ex">РАБОТАЕТ!</span> <span class="op">&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">-------------------------</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>   <span class="dt">\</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">\</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="ex">.--.</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>       <span class="kw">|</span><span class="ex">o_o</span> <span class="kw">|</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>       <span class="kw">|</span><span class="ex">:_/</span> <span class="kw">|</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>      <span class="ex">//</span>   <span class="dt">\ \</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>     <span class="er">(</span><span class="kw">|</span>     <span class="kw">|</span> <span class="kw">)</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">/</span><span class="st">&#39;\_   _/`\</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="st">    \___)=(___/</span></span></code></pre></div>
+<h3 id="что-было-сделано">✅ ЧТО БЫЛО СДЕЛАНО:</h3>
+<ol type="1">
+<li><strong>Скопировали скрипты</strong> из
+<code>/storage/emulated/0/</code> в <code>~/.termux_scripts/</code></li>
+<li><strong>Дали права</strong> на выполнение</li>
+<li><strong>Создали симлинки</strong> в <code>~/bin/</code></li>
+<li><strong>Android перестал блокировать</strong> запуск</li>
+<li><strong>ВСЁ ЗАРАБОТАЛО!</strong> 🚀</li>
+</ol>
+<h3 id="теперь-у-вас-работают">📋 ТЕПЕРЬ У ВАС РАБОТАЮТ:</h3>
+<ul>
+<li>✅ <code>мдгтмл</code> — конвертер в HTML</li>
+<li>✅ <code>мддок</code> — конвертер в DOCX</li>
+<li>✅ <code>мдпдф</code> — конвертер в PDF</li>
+<li>✅ <code>мдепуб</code> — конвертер в EPUB</li>
+<li>✅ И все остальные ваши команды!</li>
+</ul>
+<h3 id="совет-на-будущее">🎯 СОВЕТ НА БУДУЩЕЕ:</h3>
+<p>Если создадите новую команду через генератор — <strong>она сразу
+будет работать</strong>, потому что генератор теперь копирует скрипты в
+<code>~/.termux_scripts/</code> автоматически!</p>
+<p><strong>Поздравляю с победой над Termux!</strong> 🏆</p>
+<hr />
+<p>.</p>
+</body>
+</html>

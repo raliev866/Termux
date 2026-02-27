@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>DeepSeek 2</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бекап_рестор/Шаблон_формата_текста/HTML_книги/scientific_style.css" />
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#полная-архитектура-экосистемы-deepseek-android"
+id="toc-полная-архитектура-экосистемы-deepseek-android">🏗️
+<strong>Полная архитектура экосистемы DeepSeek
+(Android)</strong></a></li>
+<li><a href="#уровень-1-базовые-компоненты-фундамент"
+id="toc-уровень-1-базовые-компоненты-фундамент">📦 <strong>УРОВЕНЬ 1:
+Базовые компоненты (фундамент)</strong></a>
+<ul>
+<li><a href="#что-это-и-зачем" id="toc-что-это-и-зачем"><strong>Что это
+и зачем:</strong></a></li>
+<li><a href="#команда-для-установки"
+id="toc-команда-для-установки"><strong>Команда для
+установки:</strong></a></li>
+</ul></li>
+<li><a href="#уровень-2-клиенты-deepseek-для-termux"
+id="toc-уровень-2-клиенты-deepseek-для-termux">🤖 <strong>УРОВЕНЬ 2:
+Клиенты DeepSeek для Termux</strong></a>
+<ul>
+<li><a href="#где-взять-api-ключ"
+id="toc-где-взять-api-ключ"><strong>Где взять
+API-ключ:</strong></a></li>
+<li><a href="#вариант-а-termux-deepseek-красивый-вывод"
+id="toc-вариант-а-termux-deepseek-красивый-вывод"><strong>Вариант А:
+termux-deepseek (красивый вывод)</strong></a></li>
+<li><a
+href="#вариант-б-deepseek-termux-командный-ai-с-доступом-к-файлам"
+id="toc-вариант-б-deepseek-termux-командный-ai-с-доступом-к-файлам"><strong>Вариант
+Б: deepseek-termux (командный AI с доступом к файлам)</strong></a></li>
+<li><a href="#универсальный-python-скрипт-для-быстрого-старта"
+id="toc-универсальный-python-скрипт-для-быстрого-старта"><strong>Универсальный
+Python-скрипт для быстрого старта</strong></a></li>
+</ul></li>
+<li><a href="#уровень-3-интеграция-с-системой-заметок-obsidian"
+id="toc-уровень-3-интеграция-с-системой-заметок-obsidian">📝
+<strong>УРОВЕНЬ 3: Интеграция с системой заметок (Obsidian)</strong></a>
+<ul>
+<li><a href="#obsidian-deepseek-plugin"
+id="toc-obsidian-deepseek-plugin"><strong>Obsidian + DeepSeek
+Plugin</strong></a></li>
+</ul></li>
+<li><a href="#уровень-4-локальный-режим-без-интернета"
+id="toc-уровень-4-локальный-режим-без-интернета">🚀 <strong>УРОВЕНЬ 4:
+Локальный режим (без интернета)</strong></a>
+<ul>
+<li><a href="#вариант-а-через-ollama-проще"
+id="toc-вариант-а-через-ollama-проще"><strong>Вариант А: Через Ollama
+(проще) </strong></a></li>
+<li><a href="#вариант-б-через-llama.cpp-для-энтузиастов"
+id="toc-вариант-б-через-llama.cpp-для-энтузиастов"><strong>Вариант Б:
+Через llama.cpp (для энтузиастов) </strong></a></li>
+</ul></li>
+<li><a href="#уровень-5-неубиваемость-твои-скрипты"
+id="toc-уровень-5-неубиваемость-твои-скрипты">🛡️ <strong>УРОВЕНЬ 5:
+Неубиваемость (твои скрипты)</strong></a></li>
+<li><a href="#финальный-план-действий"
+id="toc-финальный-план-действий">🏁 <strong>ФИНАЛЬНЫЙ ПЛАН
+ДЕЙСТВИЙ</strong></a></li>
+</ul>
+</nav>
+<p>Привет! Отлично, что возвращаемся к этой теме. Раз уж возникли
+ошибки, давай не просто восстановим утерянное, а построим
+<strong>действительно надежную и полную экосистему</strong> под твои
+задачи.</p>
+<p>Я проанализировал твои прошлые запросы и нашел все необходимые
+компоненты, чтобы работа с DeepSeek была максимально удобной, красивой и
+главное — “неубиваемой”. Вот твой подробный гайд.</p>
+<h2 id="полная-архитектура-экосистемы-deepseek-android">🏗️
+<strong>Полная архитектура экосистемы DeepSeek (Android)</strong></h2>
+<p>Твоя будущая система будет состоять из пяти логических уровней,
+каждый из которых отвечает за свою задачу.</p>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│              ТВОЯ ИДЕАЛЬНАЯ ЭКОСИСТЕМА DEEPSEEK              │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  📱 УРОВЕНЬ 1: БАЗОВЫЙ ТЕРМИНАЛ (Termux)                    │
+│  ├── Ядро системы: pkg update &amp;&amp; pkg upgrade                │
+│  ├── Утилиты: python, git, wget, curl, vim, nano, tree      │
+│  └── Конвертеры: ffmpeg, imagemagick (опционально)          │
+│                                                             │
+│  🤖 УРОВЕНЬ 2: КЛИЕНТЫ DEEPSEEK                              │
+│  ├── Терминальный AI (расширенный): deepseek-termux         │
+│  └── Терминальный AI (с подсветкой): termux-deepseek        │
+│                                                             │
+│  📝 УРОВЕНЬ 3: ИНТЕГРАЦИЯ С ЗАМЕТКАМИ                        │
+│  └── Obsidian + Obsidian DeepSeek Plugin                    │
+│                                                             │
+│  🚀 УРОВЕНЬ 4: ЛОКАЛЬНЫЙ РЕЖИМ (БЕЗ ИНТЕРНЕТА)               │
+│  ├── Вариант А: llama.cpp (GGUF модели)         │
+│  └── Вариант Б: Ollama (проще)     │
+│                                                             │
+│  🛡️ УРОВЕНЬ 5: НЕУБИВАЕМОСТЬ (УЖЕ ЕСТЬ!)                    │
+│  ├── Команда `бекап` (твой скрипт)                          │
+│  ├── Команда `рестор` (твой скрипт)                         │
+│  └── Termux:Boot (автозапуск)                               │
+└─────────────────────────────────────────────────────────────┘</code></pre>
+<h2 id="уровень-1-базовые-компоненты-фундамент">📦 <strong>УРОВЕНЬ 1:
+Базовые компоненты (фундамент)</strong></h2>
+<p>Это основа, на которой будет держаться всё остальное. Эти команды
+нужно выполнить в первую очередь.</p>
+<h3 id="что-это-и-зачем"><strong>Что это и зачем:</strong></h3>
+<ul>
+<li><strong>Языки:</strong> <code>python</code> нужен для работы
+большинства клиентов AI, <code>nodejs</code> — для сборки плагинов
+.</li>
+<li><strong>Утилиты:</strong> <code>git</code> для клонирования
+репозиториев, <code>wget</code>/<code>curl</code> для скачивания,
+<code>vim</code>/<code>nano</code> для редактирования файлов,
+<code>tree</code> для просмотра структуры папок.</li>
+<li><strong>Конвертеры:</strong> <code>ffmpeg</code> и
+<code>imagemagick</code> могут пригодиться, если ты захочешь, чтобы AI
+анализировал изображения или видео (в будущем).</li>
+</ul>
+<h3 id="команда-для-установки"><strong>Команда для
+установки:</strong></h3>
+<p>Открой Termux и выполни:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Обновление репозиториев (делай это регулярно)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> update <span class="kw">&amp;&amp;</span> <span class="ex">pkg</span> upgrade <span class="at">-y</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Установка базового набора</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install <span class="at">-y</span> python nodejs git wget curl vim nano tree zip unzip</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Установка конвертеров (пока не критично, можно пропустить)</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install <span class="at">-y</span> ffmpeg imagemagick</span></code></pre></div>
+<h2 id="уровень-2-клиенты-deepseek-для-termux">🤖 <strong>УРОВЕНЬ 2:
+Клиенты DeepSeek для Termux</strong></h2>
+<p>Здесь мы настроим два инструмента, чтобы общаться с DeepSeek прямо из
+терминала. Оба требуют <strong>API-ключа</strong>.</p>
+<h3 id="где-взять-api-ключ"><strong>Где взять API-ключ:</strong></h3>
+<ol type="1">
+<li>Зарегистрируйся на <strong>platform.deepseek.com</strong> .</li>
+<li>В разделе <strong>API Keys</strong> создай новый ключ.</li>
+<li><strong>Скопируй и сохрани его сразу</strong> — после закрытия окна
+ты его больше не увидишь .</li>
+<li>Для активации может потребоваться пополнить баланс (обычно дают
+небольшой бонус на старте) .</li>
+</ol>
+<h3 id="вариант-а-termux-deepseek-красивый-вывод"><strong>Вариант А:
+termux-deepseek (красивый вывод)</strong></h3>
+<p>Этот клиент специализирован для Termux и умеет красиво отображать
+<strong>Markdown</strong>, таблицы и код прямо в терминале . То, что
+нужно.</p>
+<ul>
+<li><p><strong>Что делает:</strong> Отвечает на запросы, поддерживает
+историю диалога, выделяет код цветом.</p></li>
+<li><p><strong>Установка зависимостей :</strong></p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install requests pygments termcolor python-dotenv rich</span></code></pre></div></li>
+<li><p><strong>Как использовать:</strong> После установки нужно скачать
+файлы самого клиента с GitHub . Обычно это делается командой
+<code>git clone</code>. Но для начала мы можем создать простой скрипт,
+как в следующем варианте.</p></li>
+</ul>
+<h3
+id="вариант-б-deepseek-termux-командный-ai-с-доступом-к-файлам"><strong>Вариант
+Б: deepseek-termux (командный AI с доступом к файлам)</strong></h3>
+<p>Этот инструмент гораздо мощнее. Он позволяет AI не просто общаться,
+но и <strong>взаимодействовать с твоей файловой системой</strong>:
+читать и создавать файлы, классифицировать папки . Идеально для
+автоматизации.</p>
+<ul>
+<li><p><strong>Что делает:</strong> AI может выполнять команды вроде
+“напиши этот код в файл script.py” или “разложи файлы по
+папкам”.</p></li>
+<li><p><strong>Установка:</strong> Этот проект еще не опубликован, но мы
+можем создать его упрощенную версию. Создай файл
+<code>~/deepseek-cli.py</code> и вставь туда базовый код для общения
+(см. следующий пункт). Позже, когда проект появится в открытом доступе,
+установка будет такой :</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-sS</span> https://raw.githubusercontent.com/grras-gif/deepseek-termux/main/install.sh <span class="kw">|</span> <span class="fu">bash</span></span></code></pre></div></li>
+</ul>
+<h3
+id="универсальный-python-скрипт-для-быстрого-старта"><strong>Универсальный
+Python-скрипт для быстрого старта</strong></h3>
+<p>Пока ты ищешь или настраиваешь продвинутые клиенты, можно сделать
+свой простой. Создай файл <code>deepseek.py</code> и скопируй этот код
+(не забудь вставить свой ключ) .</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># deepseek.py</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># --- НАСТРОЙКИ ---</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>API_KEY <span class="op">=</span> <span class="st">&quot;sk-твой_ключ_скопированный_с_platform.deepseek.com&quot;</span>  <span class="co"># ВСТАВЬ СВОЙ КЛЮЧ!</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>MODEL <span class="op">=</span> <span class="st">&quot;deepseek-chat&quot;</span>  <span class="co"># Или &quot;deepseek-reasoner&quot; для R1</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">&quot;https://api.deepseek.com/chat/completions&quot;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>headers <span class="op">=</span> {</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Content-Type&quot;</span>: <span class="st">&quot;application/json&quot;</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Authorization&quot;</span>: <span class="ss">f&quot;Bearer </span><span class="sc">{</span>API_KEY<span class="sc">}</span><span class="ss">&quot;</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ask_deepseek(prompt):</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> {</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;model&quot;</span>: MODEL,</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;messages&quot;</span>: [{<span class="st">&quot;role&quot;</span>: <span class="st">&quot;user&quot;</span>, <span class="st">&quot;content&quot;</span>: prompt}],</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;stream&quot;</span>: <span class="va">False</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        response <span class="op">=</span> requests.post(url, headers<span class="op">=</span>headers, json<span class="op">=</span>data)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> response.status_code <span class="op">==</span> <span class="dv">200</span>:</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>            result <span class="op">=</span> response.json()</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> result[<span class="st">&#39;choices&#39;</span>][<span class="dv">0</span>][<span class="st">&#39;message&#39;</span>][<span class="st">&#39;content&#39;</span>]</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="ss">f&quot;Ошибка </span><span class="sc">{</span>response<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>response<span class="sc">.</span>text<span class="sc">}</span><span class="ss">&quot;</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f&quot;Ошибка подключения: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">&quot;</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    user_input <span class="op">=</span> <span class="bu">input</span>(<span class="st">&quot;👤 Твой запрос: &quot;</span>)</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;🤖 DeepSeek:&quot;</span>)</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(ask_deepseek(user_input))</span></code></pre></div>
+<p>Запускать его можно командой <code>python deepseek.py</code>.</p>
+<h2 id="уровень-3-интеграция-с-системой-заметок-obsidian">📝
+<strong>УРОВЕНЬ 3: Интеграция с системой заметок
+(Obsidian)</strong></h2>
+<p>Obsidian — это твой второй мозг. А с плагином DeepSeek он становится
+еще и твоим личным AI-ассистентом по заметкам .</p>
+<h3 id="obsidian-deepseek-plugin"><strong>Obsidian + DeepSeek
+Plugin</strong></h3>
+<ul>
+<li><strong>Что это дает:</strong>
+<ul>
+<li>Пишешь заметку и можешь тут же, не переключая окно, задать вопрос AI
+командой <code>/</code>.</li>
+<li>AI может генерировать структуру документа, резюмировать другие твои
+заметки или искать связи .</li>
+<li>Весь твой контент остается у тебя на телефоне.</li>
+</ul></li>
+<li><strong>Установка :</strong>
+<ol type="1">
+<li>Установи Obsidian. Скачай APK с <a
+href="https://obsidian.md/download">официального сайта</a> (версия для
+Android там есть).</li>
+<li>Открой Obsidian, создай хранилище.</li>
+<li>Зайди в <strong>Настройки (Settings) → Сторонние плагины (Community
+plugins)</strong> → отключи безопасный режим (Safe mode) и нажми “Обзор”
+(Browse).</li>
+<li>В поиске введи “DeepSeek” и установи плагин (например,
+<strong>Obsidian DeepSeek Plugin</strong>) .</li>
+<li>В настройках плагина введи свой <strong>API Key</strong> (тот же,
+что и для Termux) .</li>
+</ol></li>
+<li><strong>Как пользоваться :</strong> Просто начни строку в заметке с
+символа <code>/</code> и напиши свой вопрос. Нажми Enter, и ответ
+появится прямо в тексте.</li>
+</ul>
+<h2 id="уровень-4-локальный-режим-без-интернета">🚀 <strong>УРОВЕНЬ 4:
+Локальный режим (без интернета)</strong></h2>
+<p>Если DeepSeek “лежит” или ты хочешь полной приватности, можно
+запустить модель локально на телефоне. Это сложнее, но возможно .</p>
+<ul>
+<li><strong>Как это работает:</strong> Мы используем специальные
+программы (<code>llama.cpp</code> или <code>Ollama</code> ), которые
+оптимизируют AI-модели для запуска на обычных процессорах, даже
+мобильных.</li>
+</ul>
+<h3 id="вариант-а-через-ollama-проще"><strong>Вариант А: Через Ollama
+(проще) </strong></h3>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Обновляем пакеты и устанавливам proot-distro</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> update <span class="kw">&amp;&amp;</span> <span class="ex">pkg</span> upgrade <span class="at">-y</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install proot-distro</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Устанавливаем легковесный Linux (например, Arch Linux)</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="ex">proot-distro</span> install archlinux</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Заходим в него</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="ex">proot-distro</span> login archlinux</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Внутри Arch Linux устанавливаем Ollama</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://ollama.com/install.sh <span class="kw">|</span> <span class="fu">sh</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Запускаем сервер Ollama</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="ex">ollama</span> serve <span class="kw">&amp;</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Скачиваем и запускаем маленькую модель DeepSeek R1 (1.5 млрд параметров)</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Она занимает около 1-2 ГБ и требует 4+ ГБ ОЗУ </span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="ex">ollama</span> run deepseek-r1:1.5b</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Для моделей побольше (7b, 14b) нужно 8+ ГБ ОЗУ и больше места </span></span></code></pre></div>
+<h3 id="вариант-б-через-llama.cpp-для-энтузиастов"><strong>Вариант Б:
+Через llama.cpp (для энтузиастов) </strong></h3>
+<p>Этот способ дает больше контроля, но сложнее. Он использует файлы
+моделей в формате GGUF.</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Устанавливаем компиляторы и инструменты</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install git cmake clang build-essential</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Клонируем и собираем llama.cpp</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/sw3nlab/llama.cpp</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> llama.cpp</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">-B</span> build</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">--build</span> build <span class="at">--config</span> Release</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Качаем модель (например, DeepSeek-R1 7B в квантованном формате)</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> models</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-O</span> models/deepseek-7b.Q4_K_M.gguf https://huggingface.co/unsloth/DeepSeek-R1-Distill-Qwen-7B-GGUF/resolve/main/DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Запускаем!</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> llama.cpp</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="ex">./build/bin/llama-cli</span> <span class="at">-m</span> ../models/deepseek-7b.Q4_K_M.gguf <span class="at">-p</span> <span class="st">&quot;Привет, как дела?&quot;</span></span></code></pre></div>
+<h2 id="уровень-5-неубиваемость-твои-скрипты">🛡️ <strong>УРОВЕНЬ 5:
+Неубиваемость (твои скрипты)</strong></h2>
+<p>Это самое важное. У тебя уже есть команды <code>бекап</code> и
+<code>рестор</code>. Они должны сохранять <strong>всю эту
+экосистему</strong>.</p>
+<p><strong>Что должно быть в бэкапе:</strong> 1. Все установленные
+пакеты (Termux сам их не сохранит). 2. Твои скрипты
+(<code>deepseek.py</code>, <code>deepseek-cli.py</code> и т.д.). 3.
+Файлы конфигурации (например, <code>.env</code> с API-ключами, но это
+небезопасно, лучше ключи вводить вручную). 4. Папка с хранилищем
+Obsidian.</p>
+<p><strong>Алгоритм работы <code>рестор</code>:</strong> 1. Восстановить
+файлы из архива. 2. Переустановить все пакеты из списка. 3. Восстановить
+права на выполнение скриптов (<code>chmod +x ~/deepseek.py</code>).</p>
+<h2 id="финальный-план-действий">🏁 <strong>ФИНАЛЬНЫЙ ПЛАН
+ДЕЙСТВИЙ</strong></h2>
+<p>Чтобы не запутаться, действуй по шагам:</p>
+<ol type="1">
+<li><strong>База:</strong> Запусти
+<code>pkg update &amp;&amp; pkg upgrade -y</code> и установи пакеты из
+Уровня 1.</li>
+<li><strong>Ключ:</strong> Зарегистрируйся на platform.deepseek.com и
+получи API-ключ.</li>
+<li><strong>Терминал:</strong> Создай и протестируй простой
+Python-скрипт (<code>deepseek.py</code>) из Уровня 2.</li>
+<li><strong>Заметки:</strong> Установи Obsidian, найди и настрой плагин
+DeepSeek (Уровень 3). Попробуй команду <code>/</code>.</li>
+<li><strong>Локально:</strong> Если есть желание и мощный телефон,
+поэкспериментируй с Ollama (Уровень 4).</li>
+<li><strong>Сохрани:</strong> Обнови свои скрипты <code>бекап</code> и
+<code>рестор</code>, чтобы они включали все новые настройки и файлы.
+Сделай <code>бекап</code>.</li>
+</ol>
+<p>Теперь у тебя есть пошаговый план и понимание, что именно искать.
+Начинай с первых двух шагов, а как дойдешь до момента, где возникла
+ошибка в прошлый раз, — пиши, разберемся детально!</p>
+</body>
+</html>

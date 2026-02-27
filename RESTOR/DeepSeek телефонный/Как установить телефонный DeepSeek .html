@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Как установить телефонный DeepSeek </title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бекап_рестор/Шаблон_формата_текста/HTML_книги/scientific_style.css" />
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#как-установить-телефонный-deepseek"
+id="toc-как-установить-телефонный-deepseek">Как установить телефонный
+DeepSeek?</a>
+<ul>
+<li><a href="#если-модель-deepseek-есть-запусти-её"
+id="toc-если-модель-deepseek-есть-запусти-её">Если модель deepseek есть,
+запусти её:</a></li>
+</ul></li>
+<li><a href="#полное-руководство-установка-локального-deepseek-в-termux"
+id="toc-полное-руководство-установка-локального-deepseek-в-termux">📱
+ПОЛНОЕ РУКОВОДСТВО: Установка локального DeepSeek в Termux</a>
+<ul>
+<li><a href="#цель" id="toc-цель">🎯 Цель</a></li>
+<li><a href="#этап-1-базовая-настройка-termux"
+id="toc-этап-1-базовая-настройка-termux">📋 Этап 1: Базовая настройка
+Termux</a>
+<ul>
+<li><a href="#зачем-это-нужно" id="toc-зачем-это-нужно">Зачем это
+нужно?</a></li>
+</ul></li>
+<li><a href="#этап-2-установка-python-и-инструментов-разработки"
+id="toc-этап-2-установка-python-и-инструментов-разработки">📋 Этап 2:
+Установка Python и инструментов разработки</a>
+<ul>
+<li><a href="#зачем-это-нужно-1" id="toc-зачем-это-нужно-1">Зачем это
+нужно?</a></li>
+</ul></li>
+<li><a href="#этап-3-установка-системы-виртуализации-proot"
+id="toc-этап-3-установка-системы-виртуализации-proot">📋 Этап 3:
+Установка системы виртуализации (Proot)</a>
+<ul>
+<li><a href="#зачем-это-нужно-2" id="toc-зачем-это-нужно-2">Зачем это
+нужно?</a></li>
+</ul></li>
+<li><a href="#этап-4-установка-debian-linux"
+id="toc-этап-4-установка-debian-linux">📋 Этап 4: Установка Debian
+Linux</a>
+<ul>
+<li><a href="#зачем-это-нужно-3" id="toc-зачем-это-нужно-3">Зачем это
+нужно?</a></li>
+</ul></li>
+<li><a href="#этап-5-установка-ollama-внутри-debian"
+id="toc-этап-5-установка-ollama-внутри-debian">📋 Этап 5: Установка
+Ollama внутри Debian</a>
+<ul>
+<li><a href="#зачем-это-нужно-4" id="toc-зачем-это-нужно-4">Зачем это
+нужно?</a></li>
+</ul></li>
+<li><a href="#этап-6-запуск-ollama-и-выбор-модели-deepseek"
+id="toc-этап-6-запуск-ollama-и-выбор-модели-deepseek">📋 Этап 6: Запуск
+Ollama и выбор модели DeepSeek</a>
+<ul>
+<li><a href="#зачем-это-нужно-5" id="toc-зачем-это-нужно-5">Зачем это
+нужно?</a></li>
+</ul></li>
+<li><a
+href="#этап-7-установка-дополнительных-инструментов-для-работы-с-файлами"
+id="toc-этап-7-установка-дополнительных-инструментов-для-работы-с-файлами">📋
+Этап 7: Установка дополнительных инструментов для работы с файлами</a>
+<ul>
+<li><a href="#зачем-это-нужно-6" id="toc-зачем-это-нужно-6">Зачем это
+нужно?</a></li>
+<li><a href="#calibre-не-найден-для-электронных-книг-epub-mobi-azw3"
+id="toc-calibre-не-найден-для-электронных-книг-epub-mobi-azw3"><strong>calibre</strong>
+❌ Не найден Для электронных книг (epub, mobi, azw3)</a></li>
+</ul></li>
+<li><a href="#установленные-компоненты"
+id="toc-установленные-компоненты">✅ <strong>Установленные
+компоненты</strong></a></li>
+<li><a href="#что-дальше" id="toc-что-дальше">📝 <strong>Что
+дальше?</strong></a>
+<ul>
+<li><a
+href="#calibre-не-установился-это-нормально-в-стандартных-репозиториях-termux-его-нет.-для-установки-calibre-нужно-подключать-дополнительные-репозитории-или-собирать-вручную.-пока-можешь-работать-без-него-используя-pandoc-для-базовой-конвертации."
+id="toc-calibre-не-установился-это-нормально-в-стандартных-репозиториях-termux-его-нет.-для-установки-calibre-нужно-подключать-дополнительные-репозитории-или-собирать-вручную.-пока-можешь-работать-без-него-используя-pandoc-для-базовой-конвертации.">1.
+<strong>Calibre не установился</strong> — это нормально, в стандартных
+репозиториях Termux его нет. Для установки Calibre нужно подключать
+дополнительные репозитории или собирать вручную. Пока можешь работать
+без него, используя pandoc для базовой конвертации.</a></li>
+<li><a href="#проверка-работы-pandoc" id="toc-проверка-работы-pandoc">2.
+<strong>Проверка работы pandoc:</strong></a></li>
+<li><a href="#проверка-ffmpeg" id="toc-проверка-ffmpeg">3.
+<strong>Проверка ffmpeg:</strong></a></li>
+</ul></li>
+<li><a href="#если-pdflatex-не-работает-используй-альтернативный-движок"
+id="toc-если-pdflatex-не-работает-используй-альтернативный-движок">🚀
+<strong>Если pdflatex не работает, используй альтернативный
+движок:</strong></a></li>
+<li><a href="#совет" id="toc-совет">💡 <strong>Совет:</strong></a></li>
+<li><a href="#этап-8-создание-удобного-алиаса-для-запуска"
+id="toc-этап-8-создание-удобного-алиаса-для-запуска">📋 Этап 8: Создание
+удобного алиаса для запуска</a>
+<ul>
+<li><a href="#зачем-это-нужно-7" id="toc-зачем-это-нужно-7">Зачем это
+нужно?</a></li>
+<li><a href="#если-не-сработает-тогда"
+id="toc-если-не-сработает-тогда">Если не сработает тогда:</a></li>
+<li><a href="#альтернативный-способ-установки-ollama"
+id="toc-альтернативный-способ-установки-ollama">🔧 Альтернативный способ
+установки Ollama</a></li>
+<li><a href="#что-делать-если-и-это-не-помогает"
+id="toc-что-делать-если-и-это-не-помогает">💡 Что делать, если и это не
+помогает?</a></li>
+</ul></li>
+<li><a href="#проверка-после-установки"
+id="toc-проверка-после-установки">🔍 <strong>Проверка после
+установки</strong></a></li>
+<li><a href="#что-означают-команды" id="toc-что-означают-команды">📋
+<strong>Что означают команды</strong></a></li>
+<li><a href="#что-делать-если-ds-не-работает"
+id="toc-что-делать-если-ds-не-работает">🚀 <strong>Что делать, если
+<code>ds</code> не работает</strong></a></li>
+<li><a
+href="#этап-9-установка-инструментов-для-распознавания-речи-опционально"
+id="toc-этап-9-установка-инструментов-для-распознавания-речи-опционально">📋
+Этап 9: Установка инструментов для распознавания речи (опционально)</a>
+<ul>
+<li><a href="#зачем-это-нужно-8" id="toc-зачем-это-нужно-8">Зачем это
+нужно?</a></li>
+</ul></li>
+<li><a href="#если-не-заработало-тогда"
+id="toc-если-не-заработало-тогда">Если не заработало, тогда…</a></li>
+<li><a href="#не-работало" id="toc-не-работало">Не работало! 🤷‍♂️</a></li>
+<li><a href="#если-модель-есть-запусти-её"
+id="toc-если-модель-есть-запусти-её">Если модель есть, запусти
+её:</a></li>
+<li><a href="#этап-10-проверка-работоспособности"
+id="toc-этап-10-проверка-работоспособности">📋 Этап 10: Проверка
+работоспособности</a>
+<ul>
+<li><a href="#тест-1-запуск-локального-deepseek"
+id="toc-тест-1-запуск-локального-deepseek">Тест 1: Запуск локального
+DeepSeek</a></li>
+<li><a href="#тест-2-работа-с-файлом"
+id="toc-тест-2-работа-с-файлом">Тест 2: Работа с файлом</a></li>
+</ul></li>
+<li><a
+href="#полный-универсальный-скрипт-установки-скопируй-и-вставь-целиком"
+id="toc-полный-универсальный-скрипт-установки-скопируй-и-вставь-целиком">📝
+Полный универсальный скрипт установки (скопируй и вставь
+целиком)</a></li>
+<li><a href="#если-модель-есть-запусти-её-1"
+id="toc-если-модель-есть-запусти-её-1">Если модель есть, запусти
+её:</a></li>
+<li><a href="#важные-замечания" id="toc-важные-замечания">💡 Важные
+замечания</a></li>
+</ul></li>
+<li><a
+href="#а-если-что-то-уже-установлено-переустановка-ничего-не-портит"
+id="toc-а-если-что-то-уже-установлено-переустановка-ничего-не-портит">А
+если что-то уже установлено, переустановка ничего не портит?</a>
+<ul>
+<li><a href="#как-работает-переустановка"
+id="toc-как-работает-переустановка">🔄 <strong>Как работает
+переустановка</strong></a>
+<ul>
+<li><a href="#пакеты-termux-pkg-install"
+id="toc-пакеты-termux-pkg-install">1. <strong>Пакеты Termux (pkg
+install)</strong></a></li>
+<li><a href="#proot-distro-и-debian" id="toc-proot-distro-и-debian">2.
+<strong>Proot-distro и Debian</strong></a></li>
+<li><a href="#ollama-в-debian" id="toc-ollama-в-debian">3.
+<strong>Ollama в Debian</strong></a></li>
+<li><a href="#модели-deepseek" id="toc-модели-deepseek">4.
+<strong>Модели DeepSeek</strong></a></li>
+<li><a href="#python-пакеты-pip-install"
+id="toc-python-пакеты-pip-install">5. <strong>Python пакеты (pip
+install)</strong></a></li>
+</ul></li>
+<li><a href="#итог" id="toc-итог">✅ <strong>Итог</strong></a></li>
+<li><a href="#представим-что-я-переустановил-термукс"
+id="toc-представим-что-я-переустановил-термукс">Представим что я
+переустановил термукс</a></li>
+<li><a href="#обязательные-компоненты-ядро-системы"
+id="toc-обязательные-компоненты-ядро-системы">📦 <strong>Обязательные
+компоненты (ядро системы)</strong></a>
+<ul>
+<li><a href="#базовые-утилиты-и-доступ-к-файлам"
+id="toc-базовые-утилиты-и-доступ-к-файлам">1. <strong>Базовые утилиты и
+доступ к файлам</strong></a></li>
+<li><a href="#языки-программирования-и-компиляторы"
+id="toc-языки-программирования-и-компиляторы">2. <strong>Языки
+программирования и компиляторы</strong></a></li>
+<li><a href="#система-виртуализации-proot"
+id="toc-система-виртуализации-proot">3. <strong>Система виртуализации
+(Proot)</strong></a></li>
+<li><a href="#установка-ollama-основной-движок-для-моделей"
+id="toc-установка-ollama-основной-движок-для-моделей">4.
+<strong>Установка Ollama (основной движок для моделей)</strong></a></li>
+</ul></li>
+<li><a href="#выбор-и-установка-модели-deepseek"
+id="toc-выбор-и-установка-модели-deepseek">🤖 <strong>Выбор и установка
+модели DeepSeek</strong></a></li>
+<li><a href="#дополнительные-инструменты-для-работы-с-файлами"
+id="toc-дополнительные-инструменты-для-работы-с-файлами">🛠️
+<strong>Дополнительные инструменты для работы с файлами</strong></a>
+<ul>
+<li><a href="#для-обработки-документов-конвертация-анализ"
+id="toc-для-обработки-документов-конвертация-анализ">1. <strong>Для
+обработки документов (конвертация, анализ)</strong></a></li>
+<li><a href="#для-работы-с-аудио-и-видео"
+id="toc-для-работы-с-аудио-и-видео">2. <strong>Для работы с аудио и
+видео</strong></a></li>
+<li><a href="#для-распознавания-речи-превращение-видео-в-текст"
+id="toc-для-распознавания-речи-превращение-видео-в-текст">3. <strong>Для
+распознавания речи (превращение видео в текст)</strong></a></li>
+<li><a href="#для-создания-удобного-интерфейса"
+id="toc-для-создания-удобного-интерфейса">4. <strong>Для создания
+удобного интерфейса</strong></a></li>
+</ul></li>
+<li><a href="#автоматический-скрипт-установки-всего-необходимого"
+id="toc-автоматический-скрипт-установки-всего-необходимого">🚀
+<strong>Автоматический скрипт установки всего
+необходимого</strong></a></li>
+<li><a href="#важные-замечания-1" id="toc-важные-замечания-1">📌
+<strong>Важные замечания</strong></a></li>
+<li><a href="#установка-ollama-внутри-debian"
+id="toc-установка-ollama-внутри-debian">🔧 <strong>Установка Ollama
+внутри Debian</strong></a></li>
+<li><a href="#если-нужно-выйти-из-debian-в-termux"
+id="toc-если-нужно-выйти-из-debian-в-termux">📝 <strong>Если нужно выйти
+из Debian в Termux:</strong></a></li>
+<li><a href="#после-установки" id="toc-после-установки">🚀 <strong>После
+установки:</strong></a></li>
+</ul></li>
+<li><a
+href="#а-если-что-то-уже-установлено-переустановка-ничего-не-портит-1"
+id="toc-а-если-что-то-уже-установлено-переустановка-ничего-не-портит-1">А
+если что-то уже установлено, переустановка ничего не портит?</a>
+<ul>
+<li><a href="#как-работает-переустановка-1"
+id="toc-как-работает-переустановка-1">🔄 <strong>Как работает
+переустановка</strong></a>
+<ul>
+<li><a href="#пакеты-termux-pkg-install-1"
+id="toc-пакеты-termux-pkg-install-1">1. <strong>Пакеты Termux (pkg
+install)</strong></a></li>
+<li><a href="#proot-distro-и-debian-1"
+id="toc-proot-distro-и-debian-1">2. <strong>Proot-distro и
+Debian</strong></a></li>
+<li><a href="#ollama-в-debian-1" id="toc-ollama-в-debian-1">3.
+<strong>Ollama в Debian</strong></a></li>
+<li><a href="#модели-deepseek-1" id="toc-модели-deepseek-1">4.
+<strong>Модели DeepSeek</strong></a></li>
+<li><a href="#python-пакеты-pip-install-1"
+id="toc-python-пакеты-pip-install-1">5. <strong>Python пакеты (pip
+install)</strong></a></li>
+</ul></li>
+<li><a href="#итог-1" id="toc-итог-1">✅ <strong>Итог</strong></a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="как-установить-телефонный-deepseek">Как установить телефонный
+DeepSeek?</h1>
+<p>Ты абсолютно прав! Давай сделаем полный, структурированный гайд по
+установке локального DeepSeek в Termux с нуля, с четким объяснением
+каждого шага и необходимыми скриптами.</p>
+<h2 id="если-модель-deepseek-есть-запусти-её">Если модель deepseek есть,
+запусти её:</h2>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ollama</span> run deepseek-r1:1.5b</span></code></pre></div>
+<h1 id="полное-руководство-установка-локального-deepseek-в-termux">📱
+ПОЛНОЕ РУКОВОДСТВО: Установка локального DeepSeek в Termux</h1>
+<h2 id="цель">🎯 Цель</h2>
+<p>Установить на телефон локальный AI-ассистент (DeepSeek), который
+сможет читать и анализировать файлы в памяти телефона, помогать с
+написанием книг, обработкой текстов и другими задачами.</p>
+<hr />
+<h2 id="этап-1-базовая-настройка-termux">📋 Этап 1: Базовая настройка
+Termux</h2>
+<h3 id="зачем-это-нужно">Зачем это нужно?</h3>
+<p>Эти шаги дают Termux доступ к файловой системе телефона и
+устанавливают самые необходимые инструменты.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Предоставить доступ к хранилищу телефона (папки Documents, Downloads и т.д.)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">termux-setup-storage</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Обновить список пакетов и сами пакеты</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> update <span class="kw">&amp;&amp;</span> <span class="ex">pkg</span> upgrade <span class="at">-y</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Установить базовые утилиты для работы в терминале</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install <span class="at">-y</span> git wget curl nano vim tree</span></code></pre></div>
+<hr />
+<h2 id="этап-2-установка-python-и-инструментов-разработки">📋 Этап 2:
+Установка Python и инструментов разработки</h2>
+<h3 id="зачем-это-нужно-1">Зачем это нужно?</h3>
+<p>Python нужен для работы многих скриптов и дополнительных
+AI-инструментов (например, Whisper для распознавания речи).</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install <span class="at">-y</span> python python-pip clang cmake make</span></code></pre></div>
+<hr />
+<h2 id="этап-3-установка-системы-виртуализации-proot">📋 Этап 3:
+Установка системы виртуализации (Proot)</h2>
+<h3 id="зачем-это-нужно-2">Зачем это нужно?</h3>
+<p>Ollama (программа для запуска AI-моделей) лучше всего работает в
+среде Linux. Proot позволяет запускать Linux (например, Debian) прямо
+внутри Termux без прав root.</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install <span class="at">-y</span> proot-distro</span></code></pre></div>
+<hr />
+<h2 id="этап-4-установка-debian-linux">📋 Этап 4: Установка Debian
+Linux</h2>
+<h3 id="зачем-это-нужно-3">Зачем это нужно?</h3>
+<p>Debian будет служить “контейнером”, в котором мы установим Ollama и
+модели DeepSeek.</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">proot-distro</span> install debian</span></code></pre></div>
+<p>После установки войди в Debian:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">proot-distro</span> login debian</span></code></pre></div>
+<hr />
+<h2 id="этап-5-установка-ollama-внутри-debian">📋 Этап 5: Установка
+Ollama внутри Debian</h2>
+<h3 id="зачем-это-нужно-4">Зачем это нужно?</h3>
+<p>Ollama — это программа, которая управляет загрузкой и запуском
+AI-моделей. Она работает как “движок” для DeepSeek.</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Обновить пакеты в Debian</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> update <span class="kw">&amp;&amp;</span> <span class="ex">apt</span> upgrade <span class="at">-y</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Установить curl (нужен для скачивания Ollama)</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> install curl <span class="at">-y</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Скачать и установить Ollama</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://ollama.com/install.sh <span class="kw">|</span> <span class="fu">sh</span></span></code></pre></div>
+<hr />
+<h2 id="этап-6-запуск-ollama-и-выбор-модели-deepseek">📋 Этап 6: Запуск
+Ollama и выбор модели DeepSeek</h2>
+<h3 id="зачем-это-нужно-5">Зачем это нужно?</h3>
+<p>Теперь нужно запустить сервер Ollama и скачать конкретную модель
+DeepSeek, которая будет выполнять твои задания.</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Запустить сервер Ollama в фоновом режиме</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ollama</span> serve <span class="kw">&amp;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Выбрать и скачать модель (рекомендую 1.5b для начала, 7b для мощных телефонов)</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">ollama</span> run deepseek-r1:1.5b</span></code></pre></div>
+<p><strong>Пояснение по моделям:</strong> -
+<strong>deepseek-r1:1.5b</strong> — 1.5 миллиарда параметров, требует
+4-6 ГБ RAM, работает на любом современном телефоне. Идеально для начала.
+- <strong>deepseek-r1:7b</strong> — 7 миллиардов параметров, требует 8+
+ГБ RAM, для флагманов. Более умная, но медленнее.</p>
+<hr />
+<h2
+id="этап-7-установка-дополнительных-инструментов-для-работы-с-файлами">📋
+Этап 7: Установка дополнительных инструментов для работы с файлами</h2>
+<h3 id="зачем-это-нужно-6">Зачем это нужно?</h3>
+<p>Эти программы расширяют возможности локального DeepSeek, позволяя ему
+работать с разными форматами файлов.</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Выйти из Debian в Termux</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Теперь мы снова в Termux. Установим дополнительные пакеты:</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install <span class="at">-y</span> pandoc        <span class="co"># Универсальный конвертер документов (md, docx, html, pdf)</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install <span class="at">-y</span> calibre        <span class="co"># Для электронных книг (epub, mobi, azw3)</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install <span class="at">-y</span> ffmpeg         <span class="co"># Для работы с аудио/видео (извлечение звука из видео)</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install <span class="at">-y</span> termux-api     <span class="co"># Доступ к буферу обмена, уведомлениям и т.д.</span></span></code></pre></div>
+<h3
+id="calibre-не-найден-для-электронных-книг-epub-mobi-azw3"><strong>calibre</strong>
+❌ Не найден Для электронных книг (epub, mobi, azw3)</h3>
+<h2 id="установленные-компоненты">✅ <strong>Установленные
+компоненты</strong></h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 29%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr>
+<th>Пакет</th>
+<th>Статус</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>pandoc</strong></td>
+<td>✅ Уже установлен</td>
+<td>Конвертер документов (md, docx, html, pdf)</td>
+</tr>
+<tr>
+<td><strong>calibre</strong></td>
+<td>❌ Не найден</td>
+<td>Для электронных книг (epub, mobi, azw3)</td>
+</tr>
+<tr>
+<td><strong>ffmpeg</strong></td>
+<td>✅ Уже установлен</td>
+<td>Работа с аудио/видео</td>
+</tr>
+<tr>
+<td><strong>termux-api</strong></td>
+<td>✅ Уже установлен</td>
+<td>Доступ к функциям телефона</td>
+</tr>
+</tbody>
+</table>
+<h2 id="что-дальше">📝 <strong>Что дальше?</strong></h2>
+<h3
+id="calibre-не-установился-это-нормально-в-стандартных-репозиториях-termux-его-нет.-для-установки-calibre-нужно-подключать-дополнительные-репозитории-или-собирать-вручную.-пока-можешь-работать-без-него-используя-pandoc-для-базовой-конвертации.">1.
+<strong>Calibre не установился</strong> — это нормально, в стандартных
+репозиториях Termux его нет. Для установки Calibre нужно подключать
+дополнительные репозитории или собирать вручную. Пока можешь работать
+без него, используя pandoc для базовой конвертации.</h3>
+<h3 id="проверка-работы-pandoc">2. <strong>Проверка работы
+pandoc:</strong></h3>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Создай тестовый файл (это создаст файл в твоей домашней папке)</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;# Заголовок&quot;</span> <span class="op">&gt;</span> ~/test.md</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;Текст для проверки&quot;</span> <span class="op">&gt;&gt;</span> ~/test.md</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Проверь, что файл создался</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span> ~/test.md</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Конвертируй в PDF (если pdflatex не найден, установи texlive-bin)</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install <span class="at">-y</span> texlive-bin</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> ~/test.md <span class="at">-o</span> ~/test.pdf <span class="at">--pdf-engine</span><span class="op">=</span>pdflatex</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Проверь результат</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span> ~/test.pdf</span></code></pre></div>
+<h3 id="проверка-ffmpeg">3. <strong>Проверка ffmpeg:</strong></h3>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Создай тестовый аудиофайл (если есть где-то видео)</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ffmpeg</span> <span class="at">-i</span> видео.mp4 <span class="at">-vn</span> <span class="at">-acodec</span> libmp3lame аудио.mp3</span></code></pre></div>
+<h2 id="если-pdflatex-не-работает-используй-альтернативный-движок">🚀
+<strong>Если pdflatex не работает, используй альтернативный
+движок:</strong></h2>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Попробуй использовать xelatex</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> ~/test.md <span class="at">-o</span> ~/test.pdf <span class="at">--pdf-engine</span><span class="op">=</span>xelatex</span></code></pre></div>
+<h2 id="совет">💡 <strong>Совет:</strong></h2>
+<p>Вместо <code>~</code> можно писать полный путь:<br />
+<code>/data/data/com.termux/files/home/test.md</code></p>
+<hr />
+<h2 id="этап-8-создание-удобного-алиаса-для-запуска">📋 Этап 8: Создание
+удобного алиаса для запуска</h2>
+<h3 id="зачем-это-нужно-7">Зачем это нужно?</h3>
+<p>Чтобы каждый раз не писать длинную команду для входа в Debian и
+запуска модели, создадим короткую команду.</p>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;alias ds=&#39;proot-distro login debian -- ollama run deepseek-r1:1.5b&#39;&quot;</span> <span class="op">&gt;&gt;</span> ~/.bashrc</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span></code></pre></div>
+<p>Теперь ты можешь запускать локальный DeepSeek просто командой
+<code>ds</code></p>
+<h3 id="если-не-сработает-тогда">Если не сработает тогда:</h3>
+<p>Кажется, возникла проблема с доступом к сайту Ollama или с самим
+скриптом установки. Не волнуйтесь, это бывает. Давайте попробуем другой,
+более надежный способ установки Ollama в Debian.</p>
+<h3 id="альтернативный-способ-установки-ollama">🔧 Альтернативный способ
+установки Ollama</h3>
+<p>Вместо использования curl-скрипта, мы можем установить Ollama
+напрямую через пакетный менеджер Debian, добавив официальный
+репозиторий. Это часто бывает стабильнее.</p>
+<p>Вот пошаговая инструкция для выполнения внутри Debian:</p>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Убедитесь, что вы внутри Debian (приглашение root@localhost)</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Обновите список пакетов</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> update</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Установите необходимые зависимости</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> install <span class="at">-y</span> gpg curl</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Добавьте официальный репозиторий Ollama</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://d2wa6v88drphlo.cloudfront.net/key.gpg <span class="kw">|</span> <span class="ex">gpg</span> <span class="at">--dearmor</span> <span class="at">-o</span> /usr/share/keyrings/ollama-archive-keyring.gpg</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;deb [signed-by=/usr/share/keyrings/ollama-archive-keyring.gpg] https://d2wa6v88drphlo.cloudfront.net/apt ollama main&quot;</span> <span class="kw">|</span> <span class="fu">tee</span> /etc/apt/sources.list.d/ollama.list</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Обновите список пакетов с новым репозиторием</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> update</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Установите Ollama</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> install <span class="at">-y</span> ollama</span></code></pre></div>
+<p>После выполнения этих шагов, Ollama должна установиться корректно.
+Затем можно запустить сервер:</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Запустите сервер Ollama</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ollama</span> serve <span class="kw">&amp;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Подождите немного и проверьте, работает ли он</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ps</span> aux <span class="kw">|</span> <span class="fu">grep</span> ollama</span></code></pre></div>
+<h3 id="что-делать-если-и-это-не-помогает">💡 Что делать, если и это не
+помогает?</h3>
+<p>Если и этот способ не сработает, возможно, проблема во временных
+неполадках сети или в самом Debian. Тогда можно попробовать:</p>
+<ol type="1">
+<li><strong>Проверить подключение к интернету</strong> внутри Debian,
+например, выполнив <code>ping google.com</code>.</li>
+<li><strong>Перезапустить сессию Debian</strong> и попробовать
+снова.</li>
+<li><strong>Как крайнюю меру</strong>, переустановить Debian командой
+<code>proot-distro reset debian</code> и начать установку заново.</li>
+</ol>
+<p>Пожалуйста, попробуйте выполнить команды из первого блока и сообщите,
+что получилось. Я здесь, чтобы помочь на каждом шагу!</p>
+<h2 id="проверка-после-установки">🔍 <strong>Проверка после
+установки</strong></h2>
+<p>После всех установок нужно проверить работу локального DeepSeek
+командой <strong><code>ds</code></strong> (не <code>sd</code>):</p>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ds</span></span></code></pre></div>
+<p>Если эта команда работает и ты видишь приглашение
+<code>&gt;&gt;&gt;</code>, значит всё установлено правильно!</p>
+<h2 id="что-означают-команды">📋 <strong>Что означают
+команды</strong></h2>
+<ul>
+<li><strong><code>ds</code></strong> — твой локальный DeepSeek (мы
+создали этот алиас)</li>
+<li><strong><code>sd</code></strong> — это другая программа (если она
+установлена), не наша</li>
+</ul>
+<h2 id="что-делать-если-ds-не-работает">🚀 <strong>Что делать, если
+<code>ds</code> не работает</strong></h2>
+<p>Если <code>ds</code> не работает, давай проверим шаги:</p>
+<ol type="1">
+<li>Войди в Debian:</li>
+</ol>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">proot-distro</span> login debian</span></code></pre></div>
+<ol start="2" type="1">
+<li>Проверь, запущен ли сервер Ollama:</li>
+</ol>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ps</span> aux <span class="kw">|</span> <span class="fu">grep</span> ollama</span></code></pre></div>
+<ol start="3" type="1">
+<li>Если сервер не запущен, запусти:</li>
+</ol>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ollama</span> serve <span class="kw">&amp;</span></span></code></pre></div>
+<ol start="4" type="1">
+<li>Проверь список моделей:</li>
+</ol>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ollama</span> list</span></code></pre></div>
+<ol start="5" type="1">
+<li>Попробуй запустить модель вручную:</li>
+</ol>
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ollama</span> run deepseek-r1:1.5b</span></code></pre></div>
+<ol start="6" type="1">
+<li>Выйди и попробуй снова:</li>
+</ol>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ds</span></span></code></pre></div>
+<p>Дай знать, что показывают эти команды.</p>
+<hr />
+<h2
+id="этап-9-установка-инструментов-для-распознавания-речи-опционально">📋
+Этап 9: Установка инструментов для распознавания речи (опционально)</h2>
+<h3 id="зачем-это-нужно-8">Зачем это нужно?</h3>
+<p>Если ты хочешь, чтобы DeepSeek мог анализировать видео и извлекать из
+них текст (например, для создания книги на основе лекций), тебе
+понадобится система распознавания речи (Speech-to-Text).</p>
+<p><strong>Вариант А: Whisper (рекомендуется, лучшее
+качество)</strong></p>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install openai-whisper</span></code></pre></div>
+<p><strong>Вариант Б: Vosk (быстрее, легче)</strong></p>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install vosk</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Скачать модель для русского языка: https://alphacephei.com/vosk/models</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Например: wget https://alphacephei.com/vosk/models/vosk-model-small-ru-0.22.zip</span></span></code></pre></div>
+<h2 id="если-не-заработало-тогда">Если не заработало, тогда…</h2>
+<h2 id="не-работало">Не работало! 🤷‍♂️</h2>
+<h2 id="если-модель-есть-запусти-её">Если модель есть, запусти её:</h2>
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ollama</span> run deepseek-r1:1.5b</span></code></pre></div>
+<hr />
+<h2 id="этап-10-проверка-работоспособности">📋 Этап 10: Проверка
+работоспособности</h2>
+<h3 id="тест-1-запуск-локального-deepseek">Тест 1: Запуск локального
+DeepSeek</h3>
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ds</span></span></code></pre></div>
+<p>Ты должен увидеть приглашение <code>&gt;&gt;&gt;</code> — это значит,
+что модель готова к работе.</p>
+<h3 id="тест-2-работа-с-файлом">Тест 2: Работа с файлом</h3>
+<p>Введи в чат с DeepSeek:</p>
+<pre><code>Прочитай файл /storage/emulated/0/Documents/test.txt и напиши краткое содержание</code></pre>
+<p>(Предварительно создай тестовый файл <code>test.txt</code> в папке
+Documents)</p>
+<hr />
+<h2
+id="полный-универсальный-скрипт-установки-скопируй-и-вставь-целиком">📝
+Полный универсальный скрипт установки (скопируй и вставь целиком)</h2>
+<div class="sourceCode" id="cb28"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/data/data/com.termux/files/usr/bin/bash</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;🚀 НАЧИНАЮ ПОЛНУЮ УСТАНОВКУ ЛОКАЛЬНОГО DEEPSEEK&quot;</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;==========================================&quot;</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Функция для проверки успешности</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="fu">check()</span> <span class="kw">{</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">[</span> <span class="va">$?</span> <span class="ot">-eq</span> 0 <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span> <span class="bu">echo</span> <span class="st">&quot;✅ </span><span class="va">$1</span><span class="st"> установлен&quot;</span><span class="kw">;</span> <span class="cf">else</span> <span class="bu">echo</span> <span class="st">&quot;❌ Ошибка при установке </span><span class="va">$1</span><span class="st">&quot;</span><span class="kw">;</span> <span class="cf">fi</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Базовая настройка Termux</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="ex">termux-setup-storage</span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> update <span class="at">-y</span> <span class="kw">&amp;&amp;</span> <span class="ex">pkg</span> upgrade <span class="at">-y</span></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install <span class="at">-y</span> git wget curl nano vim tree python python-pip clang cmake make proot-distro</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="ex">check</span> <span class="st">&quot;базовые утилиты&quot;</span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Установка Debian</span></span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="ex">proot-distro</span> install debian</span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a><span class="ex">check</span> <span class="st">&quot;Debian&quot;</span></span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Установка Ollama в Debian</span></span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a><span class="ex">proot-distro</span> login debian <span class="at">--</span> bash <span class="at">-c</span> <span class="st">&quot;</span></span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a><span class="st">    apt update &amp;&amp; apt upgrade -y</span></span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a><span class="st">    apt install -y curl</span></span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a><span class="st">    curl -fsSL https://ollama.com/install.sh | sh</span></span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a><span class="st">    echo &#39;✅ Ollama установлен в Debian&#39;</span></span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-29"><a href="#cb28-29" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Выбор и установка модели DeepSeek</span></span>
+<span id="cb28-30"><a href="#cb28-30" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb28-31"><a href="#cb28-31" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;Выберите модель DeepSeek:&quot;</span></span>
+<span id="cb28-32"><a href="#cb28-32" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;1) 1.5B (рекомендуется, для любых телефонов)&quot;</span></span>
+<span id="cb28-33"><a href="#cb28-33" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;2) 7B (для мощных телефонов с 8+ ГБ RAM)&quot;</span></span>
+<span id="cb28-34"><a href="#cb28-34" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="at">-p</span> <span class="st">&quot;Введите номер (1 или 2): &quot;</span> <span class="va">model_choice</span></span>
+<span id="cb28-35"><a href="#cb28-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-36"><a href="#cb28-36" aria-hidden="true" tabindex="-1"></a><span class="cf">case</span> <span class="va">$model_choice</span> <span class="kw">in</span></span>
+<span id="cb28-37"><a href="#cb28-37" aria-hidden="true" tabindex="-1"></a>    <span class="ss">1</span><span class="kw">)</span> <span class="va">MODEL</span><span class="op">=</span><span class="st">&quot;deepseek-r1:1.5b&quot;</span> <span class="cf">;;</span></span>
+<span id="cb28-38"><a href="#cb28-38" aria-hidden="true" tabindex="-1"></a>    <span class="ss">2</span><span class="kw">)</span> <span class="va">MODEL</span><span class="op">=</span><span class="st">&quot;deepseek-r1:7b&quot;</span> <span class="cf">;;</span></span>
+<span id="cb28-39"><a href="#cb28-39" aria-hidden="true" tabindex="-1"></a>    <span class="pp">*</span><span class="kw">)</span> <span class="va">MODEL</span><span class="op">=</span><span class="st">&quot;deepseek-r1:1.5b&quot;</span> <span class="cf">;;</span></span>
+<span id="cb28-40"><a href="#cb28-40" aria-hidden="true" tabindex="-1"></a><span class="cf">esac</span></span>
+<span id="cb28-41"><a href="#cb28-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-42"><a href="#cb28-42" aria-hidden="true" tabindex="-1"></a><span class="ex">proot-distro</span> login debian <span class="at">--</span> bash <span class="at">-c</span> <span class="st">&quot;</span></span>
+<span id="cb28-43"><a href="#cb28-43" aria-hidden="true" tabindex="-1"></a><span class="st">    ollama serve &amp;</span></span>
+<span id="cb28-44"><a href="#cb28-44" aria-hidden="true" tabindex="-1"></a><span class="st">    sleep 5</span></span>
+<span id="cb28-45"><a href="#cb28-45" aria-hidden="true" tabindex="-1"></a><span class="st">    ollama pull </span><span class="va">$MODEL</span></span>
+<span id="cb28-46"><a href="#cb28-46" aria-hidden="true" tabindex="-1"></a><span class="st">    echo &#39;✅ Модель </span><span class="va">$MODEL</span><span class="st"> загружена&#39;</span></span>
+<span id="cb28-47"><a href="#cb28-47" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb28-48"><a href="#cb28-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-49"><a href="#cb28-49" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Установка дополнительных инструментов в Termux</span></span>
+<span id="cb28-50"><a href="#cb28-50" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install <span class="at">-y</span> pandoc calibre ffmpeg termux-api</span>
+<span id="cb28-51"><a href="#cb28-51" aria-hidden="true" tabindex="-1"></a><span class="ex">check</span> <span class="st">&quot;дополнительные инструменты&quot;</span></span>
+<span id="cb28-52"><a href="#cb28-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-53"><a href="#cb28-53" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Создание алиаса для удобного запуска</span></span>
+<span id="cb28-54"><a href="#cb28-54" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;alias ds=&#39;proot-distro login debian -- ollama run </span><span class="va">$MODEL</span><span class="st">&#39;&quot;</span> <span class="op">&gt;&gt;</span> ~/.bashrc</span>
+<span id="cb28-55"><a href="#cb28-55" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span>
+<span id="cb28-56"><a href="#cb28-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-57"><a href="#cb28-57" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. Опциональная установка распознавания речи</span></span>
+<span id="cb28-58"><a href="#cb28-58" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb28-59"><a href="#cb28-59" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;Хотите установить инструменты для распознавания речи (для анализа видео)?&quot;</span></span>
+<span id="cb28-60"><a href="#cb28-60" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;1) Whisper (OpenAI) - рекомендуется, лучшее качество&quot;</span></span>
+<span id="cb28-61"><a href="#cb28-61" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;2) Vosk - быстрее, легче&quot;</span></span>
+<span id="cb28-62"><a href="#cb28-62" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;3) Пропустить&quot;</span></span>
+<span id="cb28-63"><a href="#cb28-63" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="at">-p</span> <span class="st">&quot;Введите номер: &quot;</span> <span class="va">stt_choice</span></span>
+<span id="cb28-64"><a href="#cb28-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-65"><a href="#cb28-65" aria-hidden="true" tabindex="-1"></a><span class="cf">case</span> <span class="va">$stt_choice</span> <span class="kw">in</span></span>
+<span id="cb28-66"><a href="#cb28-66" aria-hidden="true" tabindex="-1"></a>    <span class="ss">1</span><span class="kw">)</span></span>
+<span id="cb28-67"><a href="#cb28-67" aria-hidden="true" tabindex="-1"></a>        <span class="ex">pip</span> install openai-whisper</span>
+<span id="cb28-68"><a href="#cb28-68" aria-hidden="true" tabindex="-1"></a>        <span class="ex">check</span> <span class="st">&quot;Whisper&quot;</span></span>
+<span id="cb28-69"><a href="#cb28-69" aria-hidden="true" tabindex="-1"></a>        <span class="cf">;;</span></span>
+<span id="cb28-70"><a href="#cb28-70" aria-hidden="true" tabindex="-1"></a>    <span class="ss">2</span><span class="kw">)</span></span>
+<span id="cb28-71"><a href="#cb28-71" aria-hidden="true" tabindex="-1"></a>        <span class="ex">pip</span> install vosk</span>
+<span id="cb28-72"><a href="#cb28-72" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> <span class="st">&quot;📥 Скачайте модель Vosk для русского языка:&quot;</span></span>
+<span id="cb28-73"><a href="#cb28-73" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> <span class="st">&quot;wget https://alphacephei.com/vosk/models/vosk-model-small-ru-0.22.zip&quot;</span></span>
+<span id="cb28-74"><a href="#cb28-74" aria-hidden="true" tabindex="-1"></a>        <span class="ex">check</span> <span class="st">&quot;Vosk&quot;</span></span>
+<span id="cb28-75"><a href="#cb28-75" aria-hidden="true" tabindex="-1"></a>        <span class="cf">;;</span></span>
+<span id="cb28-76"><a href="#cb28-76" aria-hidden="true" tabindex="-1"></a>    <span class="pp">*</span><span class="kw">)</span></span>
+<span id="cb28-77"><a href="#cb28-77" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> <span class="st">&quot;Пропускаем установку распознавания речи&quot;</span></span>
+<span id="cb28-78"><a href="#cb28-78" aria-hidden="true" tabindex="-1"></a>        <span class="cf">;;</span></span>
+<span id="cb28-79"><a href="#cb28-79" aria-hidden="true" tabindex="-1"></a><span class="cf">esac</span></span>
+<span id="cb28-80"><a href="#cb28-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-81"><a href="#cb28-81" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;==========================================&quot;</span></span>
+<span id="cb28-82"><a href="#cb28-82" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;🎉 УСТАНОВКА ЗАВЕРШЕНА!&quot;</span></span>
+<span id="cb28-83"><a href="#cb28-83" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb28-84"><a href="#cb28-84" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;📌 Теперь ты можешь:&quot;</span></span>
+<span id="cb28-85"><a href="#cb28-85" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;  • Запускать локальный DeepSeek командой: ds&quot;</span></span>
+<span id="cb28-86"><a href="#cb28-86" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;  • Давать задания с файлами, например:&quot;</span></span>
+<span id="cb28-87"><a href="#cb28-87" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;    &#39;Прочитай файл /storage/emulated/0/Documents/книга.md и сделай анализ&#39;&quot;</span></span>
+<span id="cb28-88"><a href="#cb28-88" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;  • Устанавливать дополнительные модели: ollama pull deepseek-r1:7b&quot;</span></span>
+<span id="cb28-89"><a href="#cb28-89" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;  • Использовать распознавание речи для видео (если установлено)&quot;</span></span></code></pre></div>
+<h2 id="если-модель-есть-запусти-её-1">Если модель есть, запусти
+её:</h2>
+<div class="sourceCode" id="cb29"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ollama</span> run deepseek-r1:1.5b</span></code></pre></div>
+<h2 id="важные-замечания">💡 Важные замечания</h2>
+<ol type="1">
+<li><strong>Пути к файлам</strong> в Termux:
+<code>/storage/emulated/0/Documents/...</code> — это твоя обычная папка
+Documents</li>
+<li><strong>После переустановки Termux</strong> нужно заново выполнить
+<code>termux-setup-storage</code></li>
+<li><strong>Для работы с видео</strong> сначала извлеки аудио через
+<code>ffmpeg</code>,然后用 Whisper для распознавания</li>
+<li><strong>Модели DeepSeek</strong> хранятся в папке
+<code>~/.ollama/models/</code> и занимают много места (1-5 ГБ)</li>
+</ol>
+<p>Теперь у тебя есть полная, работающая система! Если что-то пойдет не
+так на каком-то этапе, просто напиши мне, и мы решим проблему.</p>
+<h1 id="а-если-что-то-уже-установлено-переустановка-ничего-не-портит">А
+если что-то уже установлено, переустановка ничего не портит?</h1>
+<p>Отличный вопрос! Нет, переустановка не испортит уже установленные
+компоненты. Скрипт просто проверит, что уже есть, и установит только
+недостающее. Давай разберем подробнее:</p>
+<h2 id="как-работает-переустановка">🔄 <strong>Как работает
+переустановка</strong></h2>
+<h3 id="пакеты-termux-pkg-install">1. <strong>Пакеты Termux (pkg
+install)</strong></h3>
+<p>Если пакет уже установлен, ты увидишь сообщение:</p>
+<pre><code>Package xxx is already installed, skipping</code></pre>
+<p>Ничего страшного не произойдет, пакет не будет переустановлен
+заново.</p>
+<h3 id="proot-distro-и-debian">2. <strong>Proot-distro и
+Debian</strong></h3>
+<div class="sourceCode" id="cb31"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Если Debian уже установлен, ты увидишь:</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Error:</span> distribution <span class="st">&#39;debian&#39;</span> is already installed.</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Log</span> in:     proot-distro login debian</span></code></pre></div>
+<p>Скрипт просто сообщит, что Debian уже есть, и продолжит дальше.</p>
+<h3 id="ollama-в-debian">3. <strong>Ollama в Debian</strong></h3>
+<p>Команда установки Ollama безопасна — если Ollama уже установлен, она
+просто завершится без изменений.</p>
+<h3 id="модели-deepseek">4. <strong>Модели DeepSeek</strong></h3>
+<div class="sourceCode" id="cb32"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Если модель уже скачана, ты увидишь:</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pulling</span> manifest</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pulling</span> 6e4c38e1172f... 100% </span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pulling</span> manifest</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pulling</span> 6e4c38e1172f... 100% </span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Error:</span> pull model manifest: file does not exist</span></code></pre></div>
+<p>На самом деле, если модель уже есть, Ollama просто проверит её
+наличие и продолжит работу. Никакого повторного скачивания не будет.</p>
+<h3 id="python-пакеты-pip-install">5. <strong>Python пакеты (pip
+install)</strong></h3>
+<p><code>pip install</code> при повторном запуске ничего не
+переустанавливает, если версия та же.</p>
+<h2 id="итог">✅ <strong>Итог</strong></h2>
+<p>Ты можешь спокойно запускать полный скрипт установки сколько угодно
+раз — он безопасен и не навредит твоей системе. Это как заново запустить
+программу-установщик: если компонент уже есть, он просто
+пропускается.</p>
+<p>Единственное, на что стоит обратить внимание — это выбор модели при
+повторной установке. Если ты выберешь другую модель (например, сначала
+поставил 1.5B, а потом решил поставить 7B), то скачается новая модель, и
+у тебя будет две модели в системе. Это займет дополнительное место, но
+ничего не сломает.</p>
+<h2 id="представим-что-я-переустановил-термукс">Представим что я
+переустановил термукс</h2>
+<p>Какие компоненты надо установить для полноценной работы телефонного
+дипсика который сможет работать с файлами в телефоне?</p>
+<hr />
+<hr />
+<hr />
+<p>Отлично! После переустановки Termux, чтобы твой локальный DeepSeek
+мог полноценно работать с файлами в телефоне, нужно установить следующие
+компоненты. Я разделил их на обязательные и опциональные, чтобы ты мог
+выбрать под свои нужды.</p>
+<h2 id="обязательные-компоненты-ядро-системы">📦 <strong>Обязательные
+компоненты (ядро системы)</strong></h2>
+<h3 id="базовые-утилиты-и-доступ-к-файлам">1. <strong>Базовые утилиты и
+доступ к файлам</strong></h3>
+<div class="sourceCode" id="cb33"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> update <span class="kw">&amp;&amp;</span> <span class="ex">pkg</span> upgrade <span class="at">-y</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="ex">termux-setup-storage</span>  <span class="co"># Доступ к файловой системе телефона</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install <span class="at">-y</span> git wget curl nano vim tree</span></code></pre></div>
+<h3 id="языки-программирования-и-компиляторы">2. <strong>Языки
+программирования и компиляторы</strong></h3>
+<div class="sourceCode" id="cb34"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install <span class="at">-y</span> python python-pip clang cmake make</span></code></pre></div>
+<h3 id="система-виртуализации-proot">3. <strong>Система виртуализации
+(Proot)</strong></h3>
+<div class="sourceCode" id="cb35"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install <span class="at">-y</span> proot-distro  <span class="co"># Для запуска Linux дистрибутивов</span></span></code></pre></div>
+<h3 id="установка-ollama-основной-движок-для-моделей">4.
+<strong>Установка Ollama (основной движок для моделей)</strong></h3>
+<div class="sourceCode" id="cb36"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">proot-distro</span> install debian  <span class="co"># Установка Debian</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="ex">proot-distro</span> login debian    <span class="co"># Вход в Debian</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Внутри Debian:</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> update <span class="kw">&amp;&amp;</span> <span class="ex">apt</span> upgrade <span class="at">-y</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> install <span class="at">-y</span> curl</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://ollama.com/install.sh <span class="kw">|</span> <span class="fu">sh</span></span></code></pre></div>
+<h2 id="выбор-и-установка-модели-deepseek">🤖 <strong>Выбор и установка
+модели DeepSeek</strong></h2>
+<p>После установки Ollama, выбери подходящую модель:</p>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 11%" />
+<col style="width: 19%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Модель</th>
+<th>RAM</th>
+<th>Размер</th>
+<th>Для каких телефонов</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>deepseek-r1:1.5b</strong></td>
+<td>4-6 GB</td>
+<td>~1.1 GB</td>
+<td>Любые современные телефоны</td>
+</tr>
+<tr>
+<td><strong>deepseek-r1:7b</strong></td>
+<td>8+ GB</td>
+<td>~4.7 GB</td>
+<td>Флагманы, мощные устройства</td>
+</tr>
+</tbody>
+</table>
+<p>Установка модели:</p>
+<div class="sourceCode" id="cb37"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Внутри Debian</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ollama</span> run deepseek-r1:1.5b  <span class="co"># или :7b для более мощной версии</span></span></code></pre></div>
+<h2 id="дополнительные-инструменты-для-работы-с-файлами">🛠️
+<strong>Дополнительные инструменты для работы с файлами</strong></h2>
+<h3 id="для-обработки-документов-конвертация-анализ">1. <strong>Для
+обработки документов (конвертация, анализ)</strong></h3>
+<div class="sourceCode" id="cb38"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install <span class="at">-y</span> pandoc  <span class="co"># Универсальный конвертер документов</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install <span class="at">-y</span> calibre  <span class="co"># Для электронных книг (epub, mobi, azw3)</span></span></code></pre></div>
+<h3 id="для-работы-с-аудио-и-видео">2. <strong>Для работы с аудио и
+видео</strong></h3>
+<div class="sourceCode" id="cb39"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install <span class="at">-y</span> ffmpeg  <span class="co"># Извлечение аудио из видео, конвертация</span></span></code></pre></div>
+<h3 id="для-распознавания-речи-превращение-видео-в-текст">3. <strong>Для
+распознавания речи (превращение видео в текст)</strong></h3>
+<div class="sourceCode" id="cb40"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Вариант А: Whisper (OpenAI) - лучшее качество, но требовательнее</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install openai-whisper</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Вариант Б: Vosk - быстрее, легче, работает офлайн</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install <span class="at">-y</span> python</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install vosk</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Скачать модель: https://alphacephei.com/vosk/models</span></span></code></pre></div>
+<h3 id="для-создания-удобного-интерфейса">4. <strong>Для создания
+удобного интерфейса</strong></h3>
+<div class="sourceCode" id="cb41"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install <span class="at">-y</span> termux-api  <span class="co"># Доступ к буферу обмена, уведомлениям</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install <span class="at">-g</span> @mmmbuto/nexuscli  <span class="co"># Веб-интерфейс для нескольких AI моделей </span></span></code></pre></div>
+<h2 id="автоматический-скрипт-установки-всего-необходимого">🚀
+<strong>Автоматический скрипт установки всего необходимого</strong></h2>
+<p>Вот единый скрипт, который установит всё вышеперечисленное:</p>
+<div class="sourceCode" id="cb42"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/data/data/com.termux/files/usr/bin/bash</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;🚀 Начинаю установку компонентов для локального DeepSeek...&quot;</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;==========================================&quot;</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Функция проверки установки</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="fu">check()</span> <span class="kw">{</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">[</span> <span class="va">$?</span> <span class="ot">-eq</span> 0 <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span> <span class="bu">echo</span> <span class="st">&quot;✅ </span><span class="va">$1</span><span class="st"> установлен&quot;</span><span class="kw">;</span> <span class="cf">else</span> <span class="bu">echo</span> <span class="st">&quot;❌ Ошибка при установке </span><span class="va">$1</span><span class="st">&quot;</span><span class="kw">;</span> <span class="cf">fi</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Базовая настройка</span></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a><span class="ex">termux-setup-storage</span></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> update <span class="at">-y</span> <span class="kw">&amp;&amp;</span> <span class="ex">pkg</span> upgrade <span class="at">-y</span></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install <span class="at">-y</span> git wget curl nano vim tree python python-pip clang cmake make proot-distro</span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a><span class="ex">check</span> <span class="st">&quot;базовые утилиты&quot;</span></span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Установка Debian и Ollama</span></span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a><span class="ex">proot-distro</span> install debian</span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a><span class="ex">proot-distro</span> login debian <span class="at">--</span> bash <span class="at">-c</span> <span class="st">&quot;</span></span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a><span class="st">    apt update &amp;&amp; apt upgrade -y</span></span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a><span class="st">    apt install -y curl</span></span>
+<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a><span class="st">    curl -fsSL https://ollama.com/install.sh | sh</span></span>
+<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a><span class="st">    echo &#39;✅ Ollama установлен в Debian&#39;</span></span>
+<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Выбор модели</span></span>
+<span id="cb42-27"><a href="#cb42-27" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb42-28"><a href="#cb42-28" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;Выберите модель DeepSeek для установки:&quot;</span></span>
+<span id="cb42-29"><a href="#cb42-29" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;1) 1.5B (4-6 GB RAM, рекомендуется)&quot;</span></span>
+<span id="cb42-30"><a href="#cb42-30" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;2) 7B (8+ GB RAM, для мощных телефонов)&quot;</span></span>
+<span id="cb42-31"><a href="#cb42-31" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="at">-p</span> <span class="st">&quot;Введите номер (1 или 2): &quot;</span> <span class="va">model_choice</span></span>
+<span id="cb42-32"><a href="#cb42-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-33"><a href="#cb42-33" aria-hidden="true" tabindex="-1"></a><span class="cf">case</span> <span class="va">$model_choice</span> <span class="kw">in</span></span>
+<span id="cb42-34"><a href="#cb42-34" aria-hidden="true" tabindex="-1"></a>    <span class="ss">1</span><span class="kw">)</span> <span class="va">MODEL</span><span class="op">=</span><span class="st">&quot;deepseek-r1:1.5b&quot;</span> <span class="cf">;;</span></span>
+<span id="cb42-35"><a href="#cb42-35" aria-hidden="true" tabindex="-1"></a>    <span class="ss">2</span><span class="kw">)</span> <span class="va">MODEL</span><span class="op">=</span><span class="st">&quot;deepseek-r1:7b&quot;</span> <span class="cf">;;</span></span>
+<span id="cb42-36"><a href="#cb42-36" aria-hidden="true" tabindex="-1"></a>    <span class="pp">*</span><span class="kw">)</span> <span class="va">MODEL</span><span class="op">=</span><span class="st">&quot;deepseek-r1:1.5b&quot;</span> <span class="cf">;;</span></span>
+<span id="cb42-37"><a href="#cb42-37" aria-hidden="true" tabindex="-1"></a><span class="cf">esac</span></span>
+<span id="cb42-38"><a href="#cb42-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-39"><a href="#cb42-39" aria-hidden="true" tabindex="-1"></a><span class="ex">proot-distro</span> login debian <span class="at">--</span> bash <span class="at">-c</span> <span class="st">&quot;</span></span>
+<span id="cb42-40"><a href="#cb42-40" aria-hidden="true" tabindex="-1"></a><span class="st">    ollama serve &amp;</span></span>
+<span id="cb42-41"><a href="#cb42-41" aria-hidden="true" tabindex="-1"></a><span class="st">    sleep 5</span></span>
+<span id="cb42-42"><a href="#cb42-42" aria-hidden="true" tabindex="-1"></a><span class="st">    ollama pull </span><span class="va">$MODEL</span></span>
+<span id="cb42-43"><a href="#cb42-43" aria-hidden="true" tabindex="-1"></a><span class="st">    echo &#39;✅ Модель </span><span class="va">$MODEL</span><span class="st"> загружена&#39;</span></span>
+<span id="cb42-44"><a href="#cb42-44" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb42-45"><a href="#cb42-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-46"><a href="#cb42-46" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Дополнительные инструменты</span></span>
+<span id="cb42-47"><a href="#cb42-47" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">&quot;\n📥 Установка дополнительных инструментов...&quot;</span></span>
+<span id="cb42-48"><a href="#cb42-48" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install <span class="at">-y</span> pandoc calibre ffmpeg termux-api</span>
+<span id="cb42-49"><a href="#cb42-49" aria-hidden="true" tabindex="-1"></a><span class="ex">check</span> <span class="st">&quot;дополнительные инструменты&quot;</span></span>
+<span id="cb42-50"><a href="#cb42-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-51"><a href="#cb42-51" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Алиас для удобного запуска</span></span>
+<span id="cb42-52"><a href="#cb42-52" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;alias ds=&#39;proot-distro login debian -- ollama run </span><span class="va">$MODEL</span><span class="st">&#39;&quot;</span> <span class="op">&gt;&gt;</span> ~/.bashrc</span>
+<span id="cb42-53"><a href="#cb42-53" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;alias ds-help=&#39;echo </span><span class="dt">\&quot;</span><span class="st">Запустите ds и указывайте пути к файлам в формате: /storage/emulated/0/Documents/...</span><span class="dt">\&quot;</span><span class="st">&#39;&quot;</span> <span class="op">&gt;&gt;</span> ~/.bashrc</span>
+<span id="cb42-54"><a href="#cb42-54" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span>
+<span id="cb42-55"><a href="#cb42-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-56"><a href="#cb42-56" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;==========================================&quot;</span></span>
+<span id="cb42-57"><a href="#cb42-57" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;✅ Установка завершена!&quot;</span></span>
+<span id="cb42-58"><a href="#cb42-58" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb42-59"><a href="#cb42-59" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;📌 Теперь ты можешь:&quot;</span></span>
+<span id="cb42-60"><a href="#cb42-60" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;  • Запускать локальный DeepSeek командой: ds&quot;</span></span>
+<span id="cb42-61"><a href="#cb42-61" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;  • Давать задания с файлами, например:&quot;</span></span>
+<span id="cb42-62"><a href="#cb42-62" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;    &#39;Прочитай файл /storage/emulated/0/Documents/моя_книга.md и сделай краткое содержание&#39;&quot;</span></span>
+<span id="cb42-63"><a href="#cb42-63" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;  • Устанавливать дополнительные модели: ollama pull deepseek-r1:7b&quot;</span></span></code></pre></div>
+<h2 id="важные-замечания-1">📌 <strong>Важные замечания</strong></h2>
+<ol type="1">
+<li><strong>Пути к файлам</strong> в Termux:
+<code>/storage/emulated/0/Documents/...</code> — это твоя обычная папка
+Documents</li>
+<li><strong>После переустановки</strong> Termux нужно заново выполнить
+<code>termux-setup-storage</code></li>
+<li><strong>Для работы с видео</strong> сначала извлеки аудио через
+<code>ffmpeg</code>,然后用 Whisper для распознавания</li>
+<li><strong>NexusCLI</strong> даёт веб-интерфейс для работы с
+несколькими моделями сразу</li>
+</ol>
+<p>Готово! Теперь у тебя полноценный локальный AI-ассистент, который
+может работать с файлами твоего телефона.</p>
+<hr />
+<hr />
+<hr />
+<p>Ой, ты внутри Debian, а Ollama там не установлена! Давай исправим
+это.</p>
+<h2 id="установка-ollama-внутри-debian">🔧 <strong>Установка Ollama
+внутри Debian</strong></h2>
+<p>Сейчас ты находишься в Debian (приглашение
+<code>root@localhost:/#</code>). Выполни эти команды:</p>
+<div class="sourceCode" id="cb43"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Обновление пакетов</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> update <span class="kw">&amp;&amp;</span> <span class="ex">apt</span> upgrade <span class="at">-y</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Установка curl</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> install curl <span class="at">-y</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Установка Ollama</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://ollama.com/install.sh <span class="kw">|</span> <span class="fu">sh</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Запуск сервера Ollama в фоне</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a><span class="ex">ollama</span> serve <span class="kw">&amp;</span></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Скачивание и запуск модели DeepSeek</span></span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a><span class="ex">ollama</span> run deepseek-r1:1.5b</span></code></pre></div>
+<h2 id="если-нужно-выйти-из-debian-в-termux">📝 <strong>Если нужно выйти
+из Debian в Termux:</strong></h2>
+<div class="sourceCode" id="cb44"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span></span></code></pre></div>
+<h2 id="после-установки">🚀 <strong>После установки:</strong></h2>
+<p>Теперь твой локальный DeepSeek готов к работе с файлами! Можешь
+давать ему задания вроде: - “Прочитай файл
+/storage/emulated/0/Documents/книга.md и сделай анализ” - “Напиши план
+книги на основе файлов в папке
+/storage/emulated/0/Documents/проект/”</p>
+<p>Попробуй сейчас!</p>
+<h1
+id="а-если-что-то-уже-установлено-переустановка-ничего-не-портит-1">А
+если что-то уже установлено, переустановка ничего не портит?</h1>
+<p>Отличный вопрос! Нет, переустановка не испортит уже установленные
+компоненты. Скрипт просто проверит, что уже есть, и установит только
+недостающее. Давай разберем подробнее:</p>
+<h2 id="как-работает-переустановка-1">🔄 <strong>Как работает
+переустановка</strong></h2>
+<h3 id="пакеты-termux-pkg-install-1">1. <strong>Пакеты Termux (pkg
+install)</strong></h3>
+<p>Если пакет уже установлен, ты увидишь сообщение:</p>
+<pre><code>Package xxx is already installed, skipping</code></pre>
+<p>Ничего страшного не произойдет, пакет не будет переустановлен
+заново.</p>
+<h3 id="proot-distro-и-debian-1">2. <strong>Proot-distro и
+Debian</strong></h3>
+<div class="sourceCode" id="cb46"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Если Debian уже установлен, ты увидишь:</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Error:</span> distribution <span class="st">&#39;debian&#39;</span> is already installed.</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Log</span> in:     proot-distro login debian</span></code></pre></div>
+<p>Скрипт просто сообщит, что Debian уже есть, и продолжит дальше.</p>
+<h3 id="ollama-в-debian-1">3. <strong>Ollama в Debian</strong></h3>
+<p>Команда установки Ollama безопасна — если Ollama уже установлен, она
+просто завершится без изменений.</p>
+<h3 id="модели-deepseek-1">4. <strong>Модели DeepSeek</strong></h3>
+<div class="sourceCode" id="cb47"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Если модель уже скачана, ты увидишь:</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pulling</span> manifest</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pulling</span> 6e4c38e1172f... 100% </span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pulling</span> manifest</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pulling</span> 6e4c38e1172f... 100% </span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Error:</span> pull model manifest: file does not exist</span></code></pre></div>
+<p>На самом деле, если модель уже есть, Ollama просто проверит её
+наличие и продолжит работу. Никакого повторного скачивания не будет.</p>
+<h3 id="python-пакеты-pip-install-1">5. <strong>Python пакеты (pip
+install)</strong></h3>
+<p><code>pip install</code> при повторном запуске ничего не
+переустанавливает, если версия та же.</p>
+<h2 id="итог-1">✅ <strong>Итог</strong></h2>
+<p>Ты можешь спокойно запускать полный скрипт установки сколько угодно
+раз — он безопасен и не навредит твоей системе. Это как заново запустить
+программу-установщик: если компонент уже есть, он просто
+пропускается.</p>
+<p>Единственное, на что стоит обратить внимание — это выбор модели при
+повторной установке. Если ты выберешь другую модель (например, сначала
+поставил 1.5B, а потом решил поставить 7B), то скачается новая модель, и
+у тебя будет две модели в системе. Это займет дополнительное место, но
+ничего не сломает.</p>
+</body>
+</html>
