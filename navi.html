@@ -198,6 +198,12 @@
             font-size: 1.2em;
         }
         
+        .md-icon {
+            color: #6c5ce7;
+            margin-right: 8px;
+            font-size: 1.2em;
+        }
+        
         .toggle-icon {
             width: 20px;
             text-align: center;
@@ -242,9 +248,9 @@
         }
         
         .github-badge {
-            background: rgba(255, 107, 107, 0.2);
-            border: 1px solid #ff6b6b;
-            color: #ff6b6b;
+            background: rgba(108, 92, 231, 0.2);
+            border: 1px solid #6c5ce7;
+            color: #6c5ce7;
         }
         
         .search-badge {
@@ -284,6 +290,24 @@
             padding: 50px;
             color: rgba(255,255,255,0.5);
             font-size: 1.2em;
+        }
+        
+        .note {
+            background: rgba(255, 214, 107, 0.1);
+            border-left: 4px solid #ffd166;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 10px;
+            color: #ffd166;
+        }
+        
+        .note a {
+            color: #4cc9f0;
+            text-decoration: none;
+        }
+        
+        .note a:hover {
+            text-decoration: underline;
         }
         
         a {
@@ -328,7 +352,7 @@
                     <div class="stat-label">Папок</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value">493</div>
+                    <div class="stat-value">494</div>
                     <div class="stat-label">Файлов</div>
                 </div>
                 <div class="stat">
@@ -343,7 +367,12 @@
             <button class="search-btn" onclick="performSearch()">🔍 Найти</button>
         </div>
         
-        <a href="https://github.com/raliev866/Termux/blob/main" target="_blank" class="github-link">📦 Открыть репозиторий на GitHub</a>
+        <a href="https://github.com/raliev866/Termux" target="_blank" class="github-link">📦 Открыть репозиторий на GitHub</a>
+        
+        <div class="note">
+            <strong>📌 Как читать файлы:</strong> Нажми на любой файл - он откроется на GitHub в режиме просмотра.
+            Для HTML и MD файлов ты увидишь красиво оформленное содержимое, а не исходный код!
+        </div>
         
         <div class="file-tree" id="fileTree">
             <div style="text-align: center; padding: 50px; color: rgba(255,255,255,0.5);">
@@ -353,9 +382,9 @@
         
         <div class="footer">
             <div class="badge">⚡ Сгенерировано Termux</div>
-            <div>📅 2026-02-27 07:36:02</div>
+            <div>📅 2026-02-27 07:42:44</div>
             <div class="badge search-badge">🔍 Нажми "Найти" для поиска</div>
-            <div class="badge github-badge">🌐 Ссылки ведут на GitHub</div>
+            <div class="badge github-badge">🌐 Клик по файлу - просмотр</div>
         </div>
     </div>
     
@@ -685,6 +714,7 @@
             {"type":"file","path":"Termux/Шаблон_формата_текста/Из md в docx. мддок/Шрифты для текста шаблона/Шрифты. Charter, Montserrat, PT_Serif , Roboto, JetBrains_Mono./Roboto/static/Roboto_SemiCondensed-ThinItalic.ttf","size":"164K","url":"https://github.com/raliev866/Termux/blob/main/Termux/Шаблон_формата_текста/Из%20md%20в%20docx.%20мддок/Шрифты%20для%20текста%20шаблона/Шрифты.%20Charter,%20Montserrat,%20PT_Serif%20,%20Roboto,%20JetBrains_Mono./Roboto/static/Roboto_SemiCondensed-ThinItalic.ttf"},
             {"type":"file","path":"Termux/бекап.html","size":"4.0K","url":"https://github.com/raliev866/Termux/blob/main/Termux/бекап.html"},
             {"type":"file","path":"Termux/бекап.md","size":"4.0K","url":"https://github.com/raliev866/Termux/blob/main/Termux/бекап.md"},
+            {"type":"file","path":"navi.html","size":"292K","url":"https://github.com/raliev866/Termux/blob/main/navi.html"},
             {"type":"folder","path":"Издательство книг"},
             {"type":"file","path":"Издательство книг/Инструкция издателя. ВАЖНО ОЧЕНЬ!!!.html","size":"84K","url":"https://github.com/raliev866/Termux/blob/main/Издательство%20книг/Инструкция%20издателя.%20ВАЖНО%20ОЧЕНЬ!!!.html"},
             {"type":"folder","path":"Издательство книг/При общении с ии послать это к нему на заметку - html"},
@@ -1018,7 +1048,7 @@
         function openFile(url, filename) {
             if (url) {
                 window.open(url, '_blank');
-                showInfo('Открываю: ' + filename);
+                showInfo('📖 Открываю для чтения: ' + filename);
             } else {
                 showInfo('Ссылка не найдена', true);
             }
@@ -1119,20 +1149,25 @@
                         iconClass = 'html-icon';
                     } else if (ext === 'md') {
                         icon = '📝';
+                        iconClass = 'md-icon';
                     } else if (ext === 'pdf') {
                         icon = '📕';
-                    } else if (ext === 'jpg' || ext === 'png' || ext === 'gif') {
+                    } else if (ext === 'jpg' || ext === 'png' || ext === 'gif' || ext === 'jpeg') {
                         icon = '🖼️';
-                    } else if (ext === 'mp3' || ext === 'wav') {
+                    } else if (ext === 'mp3' || ext === 'wav' || ext === 'ogg') {
                         icon = '🎵';
-                    } else if (ext === 'mp4') {
+                    } else if (ext === 'mp4' || ext === 'avi' || ext === 'mov') {
                         icon = '🎬';
-                    } else if (ext === 'zip' || ext === 'rar') {
+                    } else if (ext === 'zip' || ext === 'rar' || ext === '7z' || ext === 'tar' || ext === 'gz') {
                         icon = '🗜️';
-                    } else if (ext === 'sh' || ext === 'bash') {
+                    } else if (ext === 'sh' || ext === 'bash' || ext === 'zsh') {
                         icon = '⚡';
-                    } else if (ext === 'txt') {
+                    } else if (ext === 'txt' || ext === 'text') {
                         icon = '📃';
+                    } else if (ext === 'json' || ext === 'xml' || ext === 'yaml' || ext === 'yml') {
+                        icon = '📋';
+                    } else if (ext === 'js' || ext === 'py' || ext === 'rb' || ext === 'php' || ext === 'java' || ext === 'c' || ext === 'cpp' || ext === 'h') {
+                        icon = '💻';
                     }
                     
                     contentDiv.innerHTML = `
@@ -1145,7 +1180,7 @@
                     // Добавляем обработчик открытия на GitHub
                     if (file.url) {
                         contentDiv.style.cursor = 'pointer';
-                        contentDiv.title = 'Нажми, чтобы открыть на GitHub';
+                        contentDiv.title = 'Нажми, чтобы открыть на GitHub (режим просмотра)';
                         contentDiv.addEventListener('click', (e) => {
                             e.stopPropagation();
                             openFile(file.url, file.name);
@@ -1206,14 +1241,17 @@
                         iconClass = 'html-icon';
                     } else if (ext === 'md') {
                         icon = '📝';
+                        iconClass = 'md-icon';
                     } else if (ext === 'pdf') {
                         icon = '📕';
-                    } else if (ext === 'jpg' || ext === 'png' || ext === 'gif') {
+                    } else if (ext === 'jpg' || ext === 'png' || ext === 'gif' || ext === 'jpeg') {
                         icon = '🖼️';
                     } else if (ext === 'sh' || ext === 'bash') {
                         icon = '⚡';
                     } else if (ext === 'txt') {
                         icon = '📃';
+                    } else if (ext === 'json' || ext === 'xml' || ext === 'yaml') {
+                        icon = '📋';
                     }
                 }
                 
@@ -1227,7 +1265,7 @@
                 // Добавляем обработчик для открытия файлов из результатов поиска
                 if (item.type !== 'folder' && item.url) {
                     contentDiv.style.cursor = 'pointer';
-                    contentDiv.title = 'Нажми, чтобы открыть на GitHub';
+                    contentDiv.title = 'Нажми, чтобы открыть на GitHub (режим просмотра)';
                     contentDiv.addEventListener('click', (e) => {
                         e.stopPropagation();
                         openFile(item.url, item.path.split('/').pop());
@@ -1252,7 +1290,7 @@
             console.log('Страница загружена, строим дерево...');
             const tree = buildTree();
             renderTree(tree, document.getElementById('fileTree'));
-            showInfo('Навигатор загружен. Клик по файлу - открыть на GitHub!', false);
+            showInfo('Навигатор загружен. Клик по файлу - откроется для чтения!', false);
         };
     </script>
 </body>
