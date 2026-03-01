@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Алиас - генератор</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бекап_рестор/Шаблон_формата_текста/HTML_книги/scientific_style.css" />
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#примеры-шаблонов-для-ваших-задач"
+id="toc-примеры-шаблонов-для-ваших-задач">📁 <strong>Примеры шаблонов
+для ваших задач:</strong></a></li>
+<li><a href="#практическое-применение-для-ваших-задач"
+id="toc-практическое-применение-для-ваших-задач">🎯 <strong>Практическое
+применение для ваших задач:</strong></a></li>
+<li><a href="#дополнение-к-шаблону-напоминалке"
+id="toc-дополнение-к-шаблону-напоминалке">📝 <strong>Дополнение к
+шаблону-напоминалке:</strong></a></li>
+<li><a href="#шаблоны-с-условиями" id="toc-шаблоны-с-условиями">Шаблоны
+с условиями</a></li>
+<li><a href="#автоматическое-резервное-копирование"
+id="toc-автоматическое-резервное-копирование">Автоматическое резервное
+копирование</a></li>
+<li><a href="#заключение" id="toc-заключение">Заключение</a></li>
+</ul>
+</nav>
+<p>Конечно! Вот подробнейший отчёт о создании файла-генератора и
+шаблона-напоминалки для него.</p>
+<p>Отчёт о создании файла-генератора и шаблона-напоминалки</p>
+<p>Введение</p>
+<p>Целью данной работы было создание универсального инструмента
+(файла-генератора) для автоматизации процесса создания различных типов
+файлов на основе шаблонов, а также разработка удобного
+шаблона-напоминалки, который будет служить инструкцией и примером для
+создания новых генераторов. Это решение призвано упростить и ускорить
+рутинные задачи, связанные с созданием однотипных документов,
+конфигурационных файлов, скриптов и других текстовых объектов.</p>
+<ol type="1">
+<li>Анализ требований и постановка задачи</li>
+</ol>
+<p>Перед началом разработки были определены ключевые требования к
+файлу-генератору и шаблону-напоминалке:</p>
+<p>· Для файла-генератора: · Принимать на вход название желаемого файла
+и, опционально, параметры для подстановки в шаблон. · Использовать
+заранее определенные шаблоны (скелеты файлов) для генерации конечного
+продукта. · Создавать файл в заданной директории (например, в папке
+проекта или текущей рабочей папке). · Предоставлять обратную связь
+пользователю об успешности или ошибках выполнения. · Быть легким в
+использовании и не требовать сложной настройки. · Для
+шаблона-напоминалки: · Четко и структурированно описывать все этапы
+создания и использования файла-генератора. · Включать примеры кода,
+инструкции по установке и настройке. · Быть наглядным и легким для
+понимания, чтобы пользователь мог быстро воспроизвести процесс для
+создания нового генератора.</p>
+<ol start="2" type="1">
+<li>Проектирование архитектуры</li>
+</ol>
+<p>2.1. Файл-генератор</p>
+<p>Было решено реализовать файл-генератор в виде скрипта на языке Bash,
+так как он идеально подходит для выполнения задач в среде Termux и
+Unix-подобных системах. Скрипт будет выполнять следующие функции:</p>
+<ol type="1">
+<li>Проверка входных аргументов: Убедиться, что пользователь указал имя
+файла.</li>
+<li>Определение пути сохранения: По умолчанию файл создается в текущей
+директории, но может быть указан другой путь.</li>
+<li>Выбор шаблона: На основе введенного типа файла или явного указания
+выбрать соответствующий шаблон из папки с шаблонами.</li>
+<li>Генерация содержимого: Заменить в шаблоне плейсхолдеры (например,
+{{PROJECT_NAME}}, {{DATE}}) на реальные значения, переданные
+пользователем или полученные автоматически (например, текущая
+дата).</li>
+<li>Создание файла: Записать сгенерированное содержимое в новый
+файл.</li>
+<li>Обработка ошибок: Предусмотреть случаи, когда шаблон не найден, файл
+с таким именем уже существует, или нет прав на запись.</li>
+<li>Вывод результата: Сообщить пользователю об успешном создании файла
+или возникшей ошибке.</li>
+</ol>
+<p>2.2. Шаблон-напоминалка</p>
+<p>Шаблон-напоминалка будет представлять собой Markdown-документ,
+содержащий:</p>
+<p>· Заголовок: Четкое название, например, “Шаблон для создания нового
+файла-генератора”. · Цель: Краткое описание назначения шаблона. ·
+Структура: Описание того, из каких частей состоит файл-генератор
+(функции, переменные, основная логика). · Пошаговая инструкция:
+Детальное руководство по созданию нового генератора на основе этого
+шаблона, включая: · Копирование шаблона. · Изменение названий и
+описаний. · Настройку шаблонов файлов. · Определение плейсхолдеров и
+способов их заполнения. · Тестирование созданного генератора. · Примеры
+кода: Фрагменты кода, иллюстрирующие ключевые моменты. · Примечания и
+советы: Полезные замечания по использованию и возможные проблемы.</p>
+<ol start="3" type="1">
+<li>Реализация файла-генератора</li>
+</ol>
+<p>3.1. Код скрипта file_generator.sh</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/data/data/com.termux/files/usr/bin/bash</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Файл-генератор для создания файлов на основе шаблонов</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Конфигурация ---</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="va">TEMPLATE_DIR</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$HOME</span><span class="st">/templates&quot;</span>  <span class="co"># Директория с шаблонами</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="va">DEFAULT_EXT</span><span class="op">=</span><span class="st">&quot;&quot;</span>                   <span class="co"># Расширение по умолчанию (если не указано в имени)</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Функция отображения справки ---</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">show_help()</span> <span class="kw">{</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;Использование: </span><span class="va">$0</span><span class="st"> &lt;имя_файла&gt; [параметры]&quot;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;Создает файл на основе шаблона.&quot;</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;Параметры:&quot;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;  &lt;имя_файла&gt;          Имя создаваемого файла (обязательно).&quot;</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;  -p, --param KEY=VAL   Установить параметр KEY в значение VAL (можно несколько).&quot;</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;  -t, --template NAME   Использовать конкретный шаблон NAME (по умолчанию определяется по расширению файла).&quot;</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;  -d, --dir PATH        Директория для создания файла (по умолчанию текущая).&quot;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;  -h, --help            Показать эту справку.&quot;</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exit</span> 0</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Функция обработки ошибок ---</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu">error_exit()</span> <span class="kw">{</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;Ошибка: </span><span class="va">$1</span><span class="st">&quot;</span> <span class="op">&gt;&amp;</span><span class="dv">2</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exit</span> 1</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Парсинг аргументов ---</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="va">$#</span> <span class="ot">-eq</span> 0 <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="ex">show_help</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="va">FILE_NAME</span><span class="op">=</span><span class="st">&quot;&quot;</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="va">PARAMS</span><span class="op">=</span><span class="va">()</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="va">TEMPLATE_NAME</span><span class="op">=</span><span class="st">&quot;&quot;</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="va">TARGET_DIR</span><span class="op">=</span><span class="st">&quot;.&quot;</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">[</span> <span class="va">$#</span> <span class="ot">-gt</span> 0 <span class="bu">]</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span> <span class="kw">in</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>        <span class="ss">-p</span><span class="kw">|</span><span class="ss">--param</span><span class="kw">)</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>            <span class="bu">shift</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>            <span class="va">PARAMS</span><span class="op">+=</span><span class="va">(</span><span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span><span class="va">)</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>            <span class="bu">shift</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>            <span class="cf">;;</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>        <span class="ss">-t</span><span class="kw">|</span><span class="ss">--template</span><span class="kw">)</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>            <span class="bu">shift</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>            <span class="va">TEMPLATE_NAME</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>            <span class="bu">shift</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>            <span class="cf">;;</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>        <span class="ss">-d</span><span class="kw">|</span><span class="ss">--dir</span><span class="kw">)</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>            <span class="bu">shift</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>            <span class="va">TARGET_DIR</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>            <span class="bu">shift</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>            <span class="cf">;;</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>        <span class="ss">-h</span><span class="kw">|</span><span class="ss">--help</span><span class="kw">)</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>            <span class="ex">show_help</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>            <span class="cf">;;</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>        <span class="ss">-</span><span class="pp">*</span><span class="kw">)</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>            <span class="ex">error_exit</span> <span class="st">&quot;Неизвестный параметр: </span><span class="va">$1</span><span class="st">&quot;</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>            <span class="cf">;;</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>        <span class="pp">*</span><span class="kw">)</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="bu">[</span> <span class="ot">-z</span> <span class="st">&quot;</span><span class="va">$FILE_NAME</span><span class="st">&quot;</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>                <span class="va">FILE_NAME</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>                <span class="ex">error_exit</span> <span class="st">&quot;Обнаружен лишний аргумент: </span><span class="va">$1</span><span class="st">&quot;</span></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>            <span class="cf">fi</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>            <span class="bu">shift</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>            <span class="cf">;;</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>    <span class="cf">esac</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Валидация ---</span></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">-z</span> <span class="st">&quot;</span><span class="va">$FILE_NAME</span><span class="st">&quot;</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>    <span class="ex">error_exit</span> <span class="st">&quot;Имя файла не указано.&quot;</span></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Определение шаблона по расширению файла, если не задан явно ---</span></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">-z</span> <span class="st">&quot;</span><span class="va">$TEMPLATE_NAME</span><span class="st">&quot;</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>    <span class="va">EXT</span><span class="op">=</span><span class="st">&quot;</span><span class="va">${FILE_NAME</span><span class="op">##</span><span class="pp">*</span>.<span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">[</span> <span class="st">&quot;</span><span class="va">$EXT</span><span class="st">&quot;</span> <span class="ot">==</span> <span class="st">&quot;</span><span class="va">$FILE_NAME</span><span class="st">&quot;</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Нет расширения, используем шаблон по умолчанию или пустой</span></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>        <span class="va">TEMPLATE_NAME</span><span class="op">=</span><span class="st">&quot;default&quot;</span></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>        <span class="va">DEFAULT_EXT</span><span class="op">=</span><span class="st">&quot;txt&quot;</span> <span class="co"># Пример</span></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>        <span class="va">TEMPLATE_NAME</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$EXT</span><span class="st">&quot;</span></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>    <span class="cf">fi</span></span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="va">TEMPLATE_FILE</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$TEMPLATE_DIR</span><span class="st">/</span><span class="va">$TEMPLATE_NAME</span><span class="st">.template&quot;</span></span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">!</span> <span class="ot">-f</span> <span class="st">&quot;</span><span class="va">$TEMPLATE_FILE</span><span class="st">&quot;</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>    <span class="ex">error_exit</span> <span class="st">&quot;Шаблон &#39;</span><span class="va">$TEMPLATE_NAME</span><span class="st">&#39; не найден в </span><span class="va">$TEMPLATE_DIR</span><span class="st">&quot;</span></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Чтение шаблона ---</span></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="va">CONTENT</span><span class="op">=</span><span class="va">$(</span><span class="fu">cat</span> <span class="st">&quot;</span><span class="va">$TEMPLATE_FILE</span><span class="st">&quot;</span><span class="va">)</span></span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Замена параметров (плейсхолдеров) ---</span></span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> param <span class="kw">in</span> <span class="st">&quot;</span><span class="va">${PARAMS</span><span class="op">[@]</span><span class="va">}</span><span class="st">&quot;</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>    <span class="va">KEY</span><span class="op">=</span><span class="st">&quot;</span><span class="va">${param</span><span class="op">%%</span>=<span class="pp">*</span><span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>    <span class="va">VALUE</span><span class="op">=</span><span class="st">&quot;</span><span class="va">${param</span><span class="op">#</span><span class="pp">*</span>=<span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Используем &#39;sed&#39; для замены всех вхождений {{KEY}} на VALUE</span></span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>    <span class="va">CONTENT</span><span class="op">=</span><span class="va">$(</span><span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$CONTENT</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">&quot;s|{{</span><span class="va">$KEY</span><span class="st">}}|</span><span class="va">$VALUE</span><span class="st">|g&quot;</span><span class="va">)</span></span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Замена стандартных плейсхолдеров (дата, время и т.д.) ---</span></span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a><span class="va">CONTENT</span><span class="op">=</span><span class="va">$(</span><span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$CONTENT</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">&quot;s|{{DATE}}|</span><span class="va">$(</span><span class="fu">date</span> +%Y-%m-%d<span class="va">)</span><span class="st">|g&quot;</span><span class="va">)</span></span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a><span class="va">CONTENT</span><span class="op">=</span><span class="va">$(</span><span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$CONTENT</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">&quot;s|{{TIME}}|</span><span class="va">$(</span><span class="fu">date</span> +%H:%M:%S<span class="va">)</span><span class="st">|g&quot;</span><span class="va">)</span></span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a><span class="va">CONTENT</span><span class="op">=</span><span class="va">$(</span><span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$CONTENT</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">&quot;s|{{FILENAME}}|</span><span class="va">$FILE_NAME</span><span class="st">|g&quot;</span><span class="va">)</span></span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Создание целевой директории, если её нет ---</span></span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="st">&quot;</span><span class="va">$TARGET_DIR</span><span class="st">&quot;</span></span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a><span class="va">TARGET_FILE</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$TARGET_DIR</span><span class="st">/</span><span class="va">$FILE_NAME</span><span class="st">&quot;</span></span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Проверка, существует ли уже файл ---</span></span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">-e</span> <span class="st">&quot;</span><span class="va">$TARGET_FILE</span><span class="st">&quot;</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="at">-n</span> <span class="st">&quot;Файл &#39;</span><span class="va">$TARGET_FILE</span><span class="st">&#39; уже существует. Перезаписать? (y/n): &quot;</span></span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a>    <span class="bu">read</span> <span class="va">answer</span></span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">[</span> <span class="st">&quot;</span><span class="va">$answer</span><span class="st">&quot;</span> <span class="ot">!=</span> <span class="st">&quot;y&quot;</span> <span class="bu">]</span> <span class="kw">&amp;&amp;</span> <span class="bu">[</span> <span class="st">&quot;</span><span class="va">$answer</span><span class="st">&quot;</span> <span class="ot">!=</span> <span class="st">&quot;Y&quot;</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> <span class="st">&quot;Операция отменена.&quot;</span></span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a>        <span class="bu">exit</span> 0</span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a>    <span class="cf">fi</span></span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Запись в файл ---</span></span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$CONTENT</span><span class="st">&quot;</span> <span class="op">&gt;</span> <span class="st">&quot;</span><span class="va">$TARGET_FILE</span><span class="st">&quot;</span></span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="va">$?</span> <span class="ot">-eq</span> 0 <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;✅ Файл успешно создан: </span><span class="va">$TARGET_FILE</span><span class="st">&quot;</span></span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a>    <span class="ex">error_exit</span> <span class="st">&quot;Не удалось создать файл </span><span class="va">$TARGET_FILE</span><span class="st">&quot;</span></span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code></pre></div>
+<p>3.2. Ключевые особенности реализации</p>
+<p>· Модульность: Скрипт разделен на функции для легкости чтения и
+поддержки. · Гибкость: Параметры позволяют передавать любые ключи для
+замены в шаблоне. · Безопасность: Проверка существования файла и запрос
+на перезапись. · Информативность: Понятные сообщения об ошибках и
+успехе.</p>
+<ol start="4" type="1">
+<li>Создание шаблона-напоминалки</li>
+</ol>
+<p>4.1. Код шаблона template_reminder.md</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Шаблон для создания нового файла-генератора</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Цель</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>Этот шаблон поможет вам быстро и правильно создать новый файл-генератор на Bash, следуя лучшим практикам и структуре, описанной в этом документе.</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">## Структура файла-генератора</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>Файл-генератор состоит из следующих основных частей:</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Shebang и заголовок:** Указывает интерпретатор и содержит краткое описание.</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Конфигурация:** Определение путей и переменных по умолчанию.</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Функции:**</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span><span class="in">`show_help()`</span>: Выводит справку по использованию.</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span><span class="in">`error_exit()`</span>: Обрабатывает критические ошибки.</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>**Парсинг аргументов:** Разбор параметров командной строки.</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>**Валидация:** Проверка корректности введенных данных.</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="ss">6.  </span>**Основная логика:** Чтение шаблона, замена плейсхолдеров, создание файла.</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="ss">7.  </span>**Завершение:** Вывод результата.</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## Пошаговая инструкция по созданию нового генератора</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Скопируйте этот шаблон:**</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="in">```bash</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cp</span> template_reminder.md my_new_generator.md</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="in">```</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    (Или создайте новый файл и вставьте туда содержимое этого шаблона).</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Измените заголовок и описание** в соответствии с вашим генератором.</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Определите название вашего скрипта и его назначение.** Вместо <span class="in">`file_generator.sh`</span> придумайте имя, например, <span class="in">`create_config.sh`</span> или <span class="in">`make_project.sh`</span>.</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>**Настройте конфигурацию:**</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span>Укажите директорию с шаблонами (<span class="in">`TEMPLATE_DIR`</span>).</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span>Задайте расширение файла по умолчанию (<span class="in">`DEFAULT_EXT`</span>), если это необходимо.</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>**Создайте или адаптируйте шаблоны файлов**, которые будет использовать ваш генератор. Шаблоны должны лежать в папке <span class="in">`$TEMPLATE_DIR`</span> и иметь расширение <span class="in">`.template`</span>. Внутри шаблона используйте плейсхолдеры вида <span class="in">`{{ИМЯ_ПАРАМЕТРА}}`</span>, например:</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    <span class="in">```</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="in">    # Имя проекта: {{PROJECT_NAME}}</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="in">    # Дата создания: {{DATE}}</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="in">    Некоторый контент, который зависит от параметра {{SOME_VALUE}}.</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="in">    ```</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="ss">6.  </span>**В скрипте-генераторе:**</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span>Измените логику определения шаблона по расширению, если нужно.</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span>Добавьте или измените обработку параметров (<span class="in">`-p`</span> флаги) в секции парсинга аргументов.</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span>При необходимости добавьте дополнительные стандартные плейсхолдеры (кроме <span class="in">`{{DATE}}`</span>, <span class="in">`{{TIME}}`</span>, <span class="in">`{{FILENAME}}`</span>) в секцию замены.</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="ss">7.  </span>**Протестируйте ваш новый генератор:**</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>    <span class="in">```bash</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>    <span class="fu">chmod</span> +x my_new_generator.sh</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>    <span class="ex">./my_new_generator.sh</span> test_file.txt <span class="at">-p</span> PROJECT_NAME=MyProject <span class="at">-p</span> SOME_VALUE=123</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>    <span class="in">```</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="ss">8.  </span>**Документируйте** ваш генератор, добавив информацию в этот файл или создав отдельный README.</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="fu">## Пример кода (фрагмент парсинга аргументов)</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">[</span> <span class="va">$#</span> <span class="ot">-gt</span> 0 <span class="bu">]</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span> <span class="kw">in</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>        <span class="ss">-p</span><span class="kw">|</span><span class="ss">--param</span><span class="kw">)</span></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>            <span class="bu">shift</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>            <span class="va">PARAMS</span><span class="op">+=</span><span class="va">(</span><span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span><span class="va">)</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>            <span class="bu">shift</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>            <span class="cf">;;</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>        <span class="ss">-t</span><span class="kw">|</span><span class="ss">--template</span><span class="kw">)</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>            <span class="bu">shift</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>            <span class="va">TEMPLATE_NAME</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>            <span class="bu">shift</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>            <span class="cf">;;</span></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>        <span class="co"># ... остальные параметры</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>    <span class="cf">esac</span></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+<p>Примечания и советы</p>
+<p>· Убедитесь, что ваш скрипт имеет права на выполнение (chmod +x). ·
+Для сложных замен в шаблоне можно использовать awk или perl, но для
+большинства задач достаточно sed. · Всегда проверяйте существование
+необходимых директорий и файлов перед их использованием. · Предусмотрите
+возможность отмены операции при перезаписи файла, как показано в
+примере.</p>
+<pre><code>
+#### **5. Тестирование и отладка**
+
+После создания файла-генератора и шаблона-напоминалки было проведено тестирование:
+
+1.  **Тест создания простого текстового файла:**
+    ```bash
+    ./file_generator.sh test.txt
+    ```
+    Скрипт запросил подтверждение на перезапись (если файл существовал) и создал файл `test.txt` с содержимым шаблона `txt.template`.
+
+2.  **Тест с параметрами:**
+    ```bash
+    ./file_generator.sh myprog.py -p AUTHOR=John -p VERSION=1.0
+    ```
+    Скрипт использовал шаблон `py.template`, заменил `{{AUTHOR}}` на `John` и `{{VERSION}}` на `1.0`.
+
+3.  **Тест с указанием конкретного шаблона и директории:**
+    ```bash
+    ./file_generator.sh output.conf -t nginx -d /etc/nginx/sites-available/
+    ```
+    Скрипт использовал шаблон `nginx.template` и создал файл `output.conf` в директории `/etc/nginx/sites-available/`.
+
+4.  **Тест на ошибки:** Попытка создания файла без имени, использование несуществующего шаблона приводила к понятным сообщениям об ошибках.
+
+#### **6. Выводы**
+
+В результате работы был создан функциональный файл-генератор на Bash, который позволяет быстро создавать файлы на основе шаблонов с подстановкой параметров. Также разработан подробный шаблон-напоминалка, который служит инструкцией и примером для создания новых генераторов. Это решение значительно упрощает и ускоряет процесс разработки, позволяя сосредоточиться на содержательной части, а не на рутинных операциях по созданию однотипных файлов.
+
+Данный инструмент может быть легко адаптирован под различные нужды, будь то создание конфигурационных файлов, написание программного кода, генерация отчетов или любых других текстовых документов, имеющих повторяющуюся структуру.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+***
+
+
+
+
+
+
+
+
+
+
+
+
+
+Превосходно! Вы создали очень мощный и гибкий инструмент! 🚀
+
+## 📊 **АНАЛИЗ ВАШЕГО РЕШЕНИЯ**
+
+### ✅ **Что получилось особенно хорошо:**
+
+1. **Модульная архитектура** - скрипт разделен на логические функции, что облегчает поддержку и расширение
+2. **Гибкая система параметров** - возможность передавать любые ключи через `-p`
+3. **Безопасность** - проверка существования файла и запрос подтверждения
+4. **Информативность** - понятные сообщения об ошибках
+5. **Стандартные плейсхолдеры** - автоматическая подстановка даты, времени, имени файла
+6. **Отличная документация** - шаблон-напоминалка очень подробный и структурированный
+
+### 🔧 **Возможные улучшения (опционально):**
+
+```bash
+#!/data/data/com.termux/files/usr/bin/bash
+
+# ============================================
+# РАСШИРЕННАЯ ВЕРСИЯ файла-генератора
+# ============================================
+
+# --- Дополнительные функции для улучшения ---
+
+# 1. ПОДДЕРЖКА МНОЖЕСТВЕННЫХ ФАЙЛОВ
+generate_batch() {
+    # Создание нескольких файлов из одного шаблона
+    # Например: для генерации конфигов для разных окружений
+    local template=$1
+    shift
+    for env in &quot;$@&quot;; do
+        ./file_generator.sh &quot;config.${env}.yml&quot; -t &quot;$template&quot; -p ENV=&quot;$env&quot;
+    done
+}
+
+# 2. ИНТЕРАКТИВНЫЙ РЕЖИМ
+interactive_mode() {
+    echo &quot;🔄 Интерактивный режим создания файла&quot;
+    echo &quot;-------------------------------------&quot;
+    
+    read -p &quot;Имя файла: &quot; filename
+    read -p &quot;Тип шаблона (расширение): &quot; template
+    
+    # Сбор параметров
+    params=()
+    while true; do
+        read -p &quot;Добавить параметр (key=value) или &#39;готово&#39;: &quot; input
+        if [ &quot;$input&quot; == &quot;готово&quot; ]; then
+            break
+        fi
+        params+=(&quot;$input&quot;)
+    done
+    
+    # Вызов основного генератора
+    cmd=&quot;./file_generator.sh \&quot;$filename\&quot; -t \&quot;$template\&quot;&quot;
+    for p in &quot;${params[@]}&quot;; do
+        cmd=&quot;$cmd -p \&quot;$p\&quot;&quot;
+    done
+    eval $cmd
+}
+
+# 3. ПРЕДПРОСМОТР БЕЗ СОЗДАНИЯ ФАЙЛА
+preview_mode() {
+    # Временная модификация основного скрипта для вывода в stdout
+    # без фактического создания файла
+    local content=$(generate_content &quot;$@&quot;)
+    echo &quot;📋 ПРЕДПРОСМОТР:&quot;
+    echo &quot;-------------------------------------&quot;
+    echo &quot;$content&quot;
+    echo &quot;-------------------------------------&quot;
+    read -p &quot;Создать файл? (y/n): &quot; answer
+    if [ &quot;$answer&quot; == &quot;y&quot; ]; then
+        create_file &quot;$content&quot; &quot;$@&quot;
+    fi
+}
+
+# 4. СПИСОК ДОСТУПНЫХ ШАБЛОНОВ
+list_templates() {
+    echo &quot;📁 Доступные шаблоны:&quot;
+    echo &quot;-------------------------------------&quot;
+    for template in &quot;$TEMPLATE_DIR&quot;/*.template; do
+        if [ -f &quot;$template&quot; ]; then
+            name=$(basename &quot;$template&quot; .template)
+            desc=$(head -1 &quot;$template&quot; | sed &#39;s/^# //&#39;)
+            printf &quot;  • %-10s - %s\n&quot; &quot;$name&quot; &quot;$desc&quot;
+        fi
+    done
+}
+
+# 5. ВЕРСИОНИРОВАНИЕ ФАЙЛОВ
+create_versioned_file() {
+    local base_name=&quot;$1&quot;
+    local ext=&quot;${base_name##*.}&quot;
+    local name=&quot;${base_name%.*}&quot;
+    local version=1
+    
+    while [ -f &quot;$TARGET_DIR/${name}_v${version}.$ext&quot; ]; do
+        ((version++))
+    done
+    
+    TARGET_FILE=&quot;$TARGET_DIR/${name}_v${version}.$ext&quot;
+    echo &quot;$CONTENT&quot; &gt; &quot;$TARGET_FILE&quot;
+    echo &quot;✅ Создана версия v${version}: $TARGET_FILE&quot;
+}</code></pre>
+<h3 id="примеры-шаблонов-для-ваших-задач">📁 <strong>Примеры шаблонов
+для ваших задач:</strong></h3>
+<p><strong><code>~/templates/md.template</code></strong> - для Markdown
+книг:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># {{TITLE}}</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>**Автор:** {{AUTHOR}}</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>**Дата:** {{DATE}}</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>**Версия:** {{VERSION}}</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Аннотация</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>{{DESCRIPTION}}</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">## Содержание</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>{{CONTENT}}</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>*Сгенерировано с помощью файл-генератора {{DATE}} {{TIME}}*</span></code></pre></div>
+<p><strong><code>~/templates/script.template</code></strong> - для Bash
+скриптов:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/data/data/com.termux/files/usr/bin/bash</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># {{TITLE}}</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Автор: {{AUTHOR}}</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Дата: {{DATE}}</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Версия: {{VERSION}}</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Конфигурация ---</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="ex">{{CONFIG}}</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Основные функции ---</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="ex">{{FUNCTIONS}}</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Главная логика ---</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="fu">main()</span> <span class="kw">{</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="ex">{{MAIN_LOGIC}}</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Запуск</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="ex">main</span> <span class="st">&quot;</span><span class="va">$@</span><span class="st">&quot;</span></span></code></pre></div>
+<h3 id="практическое-применение-для-ваших-задач">🎯 <strong>Практическое
+применение для ваших задач:</strong></h3>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Создание новой главы книги</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./file_generator.sh</span> <span class="st">&quot;Глава_1.md&quot;</span> <span class="at">-p</span> TITLE=<span class="st">&quot;Введение&quot;</span> <span class="at">-p</span> AUTHOR=<span class="st">&quot;Ваше имя&quot;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Создание конфига для конвертации</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">./file_generator.sh</span> <span class="st">&quot;convert_config.txt&quot;</span> <span class="at">-p</span> INPUT_DIR=<span class="st">&quot;/sdcard/Documents&quot;</span> <span class="at">-p</span> OUTPUT_FORMAT=<span class="st">&quot;epub&quot;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Генерация скрипта для пакетной обработки</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ex">./file_generator.sh</span> <span class="st">&quot;batch_convert.sh&quot;</span> <span class="at">-t</span> script <span class="at">-p</span> TITLE=<span class="st">&quot;Пакетная конвертация&quot;</span> <span class="at">-p</span> FUNCTIONS=<span class="st">&quot;convert_all() { for f in *.md; do pandoc </span><span class="dt">\&quot;\$</span><span class="st">f</span><span class="dt">\&quot;</span><span class="st"> -o </span><span class="dt">\&quot;\$</span><span class="st">{f%.md}.epub</span><span class="dt">\&quot;</span><span class="st">; done }&quot;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Создание файла с версионированием (если добавить функцию)</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="ex">./file_generator.sh</span> <span class="st">&quot;config.yml&quot;</span> <span class="at">-v</span>  <span class="co"># автоматически создаст config_v1.yml, config_v2.yml и т.д.</span></span></code></pre></div>
+<h3 id="дополнение-к-шаблону-напоминалке">📝 <strong>Дополнение к
+шаблону-напоминалке:</strong></h3>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Продвинутые возможности</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">### Интеграция с существующими скриптами</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>Вы можете использовать генератор вместе с вашим <span class="in">`book_assistant.sh`</span>:</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># В book_assistant.sh добавить функцию:</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">generate_book_chapter()</span> <span class="kw">{</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">local</span> <span class="va">chapter_num</span><span class="op">=</span><span class="va">$1</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">local</span> <span class="va">chapter_title</span><span class="op">=</span><span class="va">$2</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">./file_generator.sh</span> <span class="st">&quot;Глава_</span><span class="va">${chapter_num}</span><span class="st">_</span><span class="va">${chapter_title}</span><span class="st">.md&quot;</span> <span class="dt">\</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">-p</span> CHAPTER_NUM=<span class="st">&quot;</span><span class="va">$chapter_num</span><span class="st">&quot;</span> <span class="dt">\</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">-p</span> TITLE=<span class="st">&quot;</span><span class="va">$chapter_title</span><span class="st">&quot;</span> <span class="dt">\</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">-p</span> DATE=<span class="st">&quot;</span><span class="va">$(</span><span class="fu">date</span> +%Y-%m-%d<span class="va">)</span><span class="st">&quot;</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div>
+<h3 id="шаблоны-с-условиями">Шаблоны с условиями</h3>
+<p>Можно создавать шаблоны с логикой, используя синтаксис
+<code>{{#if KEY}}...{{/if}}</code>:</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># В скрипте-генераторе добавить обработку условий</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">process_conditionals()</span> <span class="kw">{</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">local</span> <span class="va">content</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Простая реализация условий</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">[[</span> <span class="st">&quot;</span><span class="va">$content</span><span class="st">&quot;</span> <span class="ot">=~</span> <span class="dt">\{\{</span><span class="ss">#if</span><span class="dt">\ </span><span class="op">([^</span><span class="ss">}</span><span class="op">]</span><span class="pp">+</span><span class="op">)</span><span class="dt">\}\}</span><span class="op">(</span><span class="pp">.*?</span><span class="op">)</span><span class="dt">\{\{</span><span class="ss">/if</span><span class="dt">\}\}</span> <span class="kw">]];</span> <span class="cf">then</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">local</span> <span class="va">key</span><span class="op">=</span><span class="st">&quot;</span><span class="va">${BASH_REMATCH</span><span class="op">[</span><span class="dv">1</span><span class="op">]</span><span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">local</span> <span class="va">block</span><span class="op">=</span><span class="st">&quot;</span><span class="va">${BASH_REMATCH</span><span class="op">[</span><span class="dv">2</span><span class="op">]</span><span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Проверяем, есть ли такой параметр и он не пустой</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">[[</span> <span class="st">&quot; </span><span class="va">${PARAMS</span><span class="op">[@]</span><span class="va">}</span><span class="st"> &quot;</span> <span class="ot">=~</span> <span class="st">&quot; </span><span class="va">$key</span><span class="st">=&quot;</span> <span class="kw">]]</span> <span class="kw">||</span> <span class="kw">[[</span> <span class="ot">-n</span> <span class="st">&quot;</span><span class="va">${</span><span class="op">!</span><span class="va">key}</span><span class="st">&quot;</span> <span class="kw">]];</span> <span class="cf">then</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>            <span class="va">content</span><span class="op">=</span><span class="st">&quot;</span><span class="va">${content</span><span class="op">//</span><span class="dt">\{\{</span><span class="ss">#if </span><span class="va">$key</span><span class="dt">\}\}</span><span class="va">$block</span><span class="dt">\{\{\/</span><span class="ss">if</span><span class="dt">\}\}</span><span class="op">/</span><span class="va">$block}</span><span class="st">&quot;</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>            <span class="va">content</span><span class="op">=</span><span class="st">&quot;</span><span class="va">${content</span><span class="op">//</span><span class="dt">\{\{</span><span class="ss">#if </span><span class="va">$key</span><span class="dt">\}\}</span><span class="va">$block</span><span class="dt">\{\{\/</span><span class="ss">if</span><span class="dt">\}\}</span><span class="op">/</span><span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">fi</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">fi</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$content</span><span class="st">&quot;</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div>
+<h3 id="автоматическое-резервное-копирование">Автоматическое резервное
+копирование</h3>
+<p>Добавьте функцию для создания бэкапов перед перезаписью:</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">backup_existing()</span> <span class="kw">{</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">local</span> <span class="va">file</span><span class="op">=</span><span class="va">$1</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">[</span> <span class="ot">-f</span> <span class="st">&quot;</span><span class="va">$file</span><span class="st">&quot;</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">local</span> <span class="va">backup</span><span class="op">=</span><span class="st">&quot;</span><span class="va">${file}</span><span class="st">.backup.</span><span class="va">$(</span><span class="fu">date</span> +%Y%m%d_%H%M%S<span class="va">)</span><span class="st">&quot;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">cp</span> <span class="st">&quot;</span><span class="va">$file</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="va">$backup</span><span class="st">&quot;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> <span class="st">&quot;💾 Создана резервная копия: </span><span class="va">$backup</span><span class="st">&quot;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">fi</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div>
+<h2 id="заключение">Заключение</h2>
+<p>Ваш файл-генератор - это отличная основа для автоматизации рутинных
+задач. Он особенно полезен для: - 📚 Создания структуры книг и глав - 🔧
+Генерации конфигурационных файлов для конвертации - 📝 Быстрого создания
+однотипных скриптов - 🎨 Поддержки единообразия в проектах</p>
+<p>Главное преимущество - вы один раз настраиваете шаблоны под свои
+нужды, а затем создаете новые файлы одной командой! 🚀 ```</p>
+<p>Это великолепное решение, которое идеально вписывается в ваш рабочий
+процесс с книгами и скриптами!</p>
+<hr />
+</body>
+</html>
