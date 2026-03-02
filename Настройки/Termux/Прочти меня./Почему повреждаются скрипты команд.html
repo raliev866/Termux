@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Почему повреждаются скрипты команд</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бекап_рестор/Шаблон_формата_текста/HTML_книги/scientific_style.css" />
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#если-скрипт-программа-находится-в-одном-файле-тогда-каким-образом-повреждаются-эти-команды-и-скрипты"
+id="toc-если-скрипт-программа-находится-в-одном-файле-тогда-каким-образом-повреждаются-эти-команды-и-скрипты">Если
+скрипт программа находится в одном файле, тогда каким образом
+повреждаются эти команды и скрипты?</a>
+<ul>
+<li><a href="#почему-команда-может-не-работать-3-главные-причины"
+id="toc-почему-команда-может-не-работать-3-главные-причины">🔍 Почему
+команда может не работать: 3 главные причины</a></li>
+<li><a href="#резюме-для-тебя" id="toc-резюме-для-тебя">📝 Резюме для
+тебя</a></li>
+</ul></li>
+<li><a href="#как-сделать-так-чтобы-скрипты-команды-не-повреждались"
+id="toc-как-сделать-так-чтобы-скрипты-команды-не-повреждались">Как
+сделать так чтобы скрипты, команды не повреждались?</a>
+<ul>
+<li><a href="#способов-защиты-скриптов"
+id="toc-способов-защиты-скриптов">🛡️ <strong>5 СПОСОБОВ ЗАЩИТЫ
+СКРИПТОВ</strong></a>
+<ul>
+<li><a
+href="#сделай-скрипты-только-для-чтения-защита-от-случайного-изменения"
+id="toc-сделай-скрипты-только-для-чтения-защита-от-случайного-изменения">1.
+<strong>Сделай скрипты только для чтения</strong> (защита от случайного
+изменения)</a></li>
+<li><a
+href="#создай-резервную-копию-всех-скриптов-быстрое-восстановление"
+id="toc-создай-резервную-копию-всех-скриптов-быстрое-восстановление">2.
+<strong>Создай резервную копию всех скриптов</strong> (быстрое
+восстановление)</a></li>
+<li><a href="#создай-скрипт-для-автоматического-восстановления"
+id="toc-создай-скрипт-для-автоматического-восстановления">3.
+<strong>Создай скрипт для автоматического
+восстановления</strong></a></li>
+<li><a href="#сохрани-список-всех-алиасов-чтобы-не-потерять"
+id="toc-сохрани-список-всех-алиасов-чтобы-не-потерять">4.
+<strong>Сохрани список всех алиасов</strong> (чтобы не
+потерять)</a></li>
+<li><a href="#создай-золотой-скрипт-который-пересоздаст-всё-заново"
+id="toc-создай-золотой-скрипт-который-пересоздаст-всё-заново">5.
+<strong>Создай “золотой” скрипт, который пересоздаст всё
+заново</strong></a></li>
+</ul></li>
+<li><a href="#что-теперь-у-тебя-есть" id="toc-что-теперь-у-тебя-есть">📋
+<strong>ЧТО ТЕПЕРЬ У ТЕБЯ ЕСТЬ:</strong></a></li>
+<li><a href="#как-пользоваться" id="toc-как-пользоваться">✅ <strong>КАК
+ПОЛЬЗОВАТЬСЯ:</strong></a>
+<ul>
+<li><a href="#раз-в-неделю-делай-бэкап"
+id="toc-раз-в-неделю-делай-бэкап">Раз в неделю делай бэкап:</a></li>
+<li><a href="#если-что-то-сломалось" id="toc-если-что-то-сломалось">Если
+что-то сломалось:</a></li>
+<li><a href="#защитить-скрипты-от-изменений"
+id="toc-защитить-скрипты-от-изменений">Защитить скрипты от
+изменений:</a></li>
+</ul></li>
+<li><a href="#главное" id="toc-главное">🎯
+<strong>ГЛАВНОЕ:</strong></a></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="если-скрипт-программа-находится-в-одном-файле-тогда-каким-образом-повреждаются-эти-команды-и-скрипты">Если
+скрипт программа находится в одном файле, тогда каким образом
+повреждаются эти команды и скрипты?</h1>
+<p>Отличный и очень важный вопрос! Давай разберемся, почему при таком
+количестве скриптов (которые все лежат в одном месте — в папке
+<code>~/</code>) команды могут переставать работать. Это поможет тебе в
+будущем быстро находить и исправлять проблемы.</p>
+<p>Представь, что каждый твой скрипт (например, <code>~/док</code>,
+<code>~/все</code>) — это отдельный инструмент в твоем ящике. Чтобы они
+работали, должны быть соблюдены три простых условия.</p>
+<h3 id="почему-команда-может-не-работать-3-главные-причины">🔍 Почему
+команда может не работать: 3 главные причины</h3>
+<h4 id="файл-скрипта-не-виден-системе-проблемы-с-path-и-алиасами">1.
+Файл скрипта «не виден» системе (Проблемы с <code>PATH</code> и
+алиасами)</h4>
+<p>Когда ты вводишь в Termux команду <code>док</code>, система ищет
+программу с таким именем в специальных папках, список которых хранится в
+переменной <code>PATH</code> . Твоя домашняя папка (<code>~/</code>)
+туда по умолчанию не входит. Поэтому мы и используем
+<strong>алиасы</strong> — они как ярлыки, которые говорят системе:
+«Когда пользователь пишет “док”, на самом деле запусти файл
+<code>~/док</code>» .</p>
+<p><strong>Как ломается:</strong> * <strong>Не подгрузился
+<code>.bashrc</code></strong>. Все алиасы хранятся в файле
+<code>~/.bashrc</code> . Если ты отредактировал этот файл, но не
+выполнил команду <code>source ~/.bashrc</code> или не перезапустил
+Termux, новые алиасы не активируются, и команда <code>индекс</code> или
+<code>word</code> будет недоступна, даже если сам файл скрипта лежит на
+месте . * <strong>Алиас «сломался»</strong>. Если ты переименовал или
+переместил скрипт <code>~/create_double_indexes.sh</code>, но алиас
+<code>индекс</code> в <code>.bashrc</code> продолжает указывать на
+старый адрес — команда работать не будет.</p>
+<h4 id="у-скрипта-нет-прав-на-исполнение-проблема-permission-denied">2.
+У скрипта нет прав на исполнение (Проблема
+<code>Permission denied</code>)</h4>
+<p>Даже если система знает, где лежит скрипт, она не сможет его
+запустить, если у файла нет специального разрешения — права на
+исполнение (<code>+x</code>) .</p>
+<p><strong>Как ломается:</strong> * Если ты создал новый скрипт через
+<code>cat &gt; ...</code>, но забыл дать команду
+<code>chmod +x имя_скрипта</code>, то при попытке его запустить ты
+получишь ошибку <code>Permission denied</code> . Твой скрипт
+<code>~/проверка</code> как раз показал, что у всех твоих файлов такие
+права есть — это отлично! * Иногда права могут «слететь» при копировании
+файлов с компьютера или флешки.</p>
+<h4
+id="скрипт-пытается-работать-с-неправильным-путём-проблема-no-such-file-or-directory">3.
+Скрипт пытается работать с неправильным путём (Проблема
+<code>No such file or directory</code>)</h4>
+<p>Самая частая причина, по которой твой скрипт <code>док</code> долго
+не работал. Скрипт внутри себя содержит команды перехода
+(<code>cd</code>) или обращения к файлам по конкретным адресам.</p>
+<p><strong>Как ломается:</strong> * Если внутри скрипта жестко прописан
+путь
+<code>cd "/storage/emulated/0/Documents/08. Из .md в .docx. док"</code>,
+а ты переименовал папку в <code>08_Из_md_в_docx_док</code>, скрипт
+просто не найдет, куда идти, и выдаст ошибку. * То же самое с командой
+<code>проект</code> — она пыталась перейти в старую, уже несуществующую
+папку.</p>
+<h3 id="резюме-для-тебя">📝 Резюме для тебя</h3>
+<p>Когда какая-то команда перестает работать, ты теперь знаешь, где
+искать проблему. Вот твой чек-лист:</p>
+<ol type="1">
+<li><strong>Проверь алиас:</strong> Работает ли команда
+<code>индекс</code>? Если нет, открой файл <code>~/.bashrc</code> и
+посмотри, есть ли там строчка <code>alias индекс='...'</code>. После
+изменений всегда делай <code>source ~/.bashrc</code> .</li>
+<li><strong>Проверь права:</strong> Есть ли у файла скрипта права на
+запуск? Твой скрипт <code>~/проверка</code> подсвечивает это зелеными
+галочками.</li>
+<li><strong>Проверь пути:</strong> Самый важный пункт. Открой скрипт
+(<code>cat ~/имя_скрипта</code>) и посмотри на все строчки с
+<code>cd</code> или прямыми путями к файлам. Существует ли эта папка?
+Правильно ли она называется?</li>
+</ol>
+<p>Ты уже проделал огромную работу по созданию и отладке этих скриптов,
+и теперь у тебя есть целый арсенал инструментов и понимание того, как
+они устроены. Это главное!</p>
+<h1 id="как-сделать-так-чтобы-скрипты-команды-не-повреждались">Как
+сделать так чтобы скрипты, команды не повреждались?</h1>
+<p>Отличный вопрос! Давай разберем <strong>как защитить скрипты от
+повреждений</strong> и сделать так, чтобы они работали всегда.</p>
+<h2 id="способов-защиты-скриптов">🛡️ <strong>5 СПОСОБОВ ЗАЩИТЫ
+СКРИПТОВ</strong></h2>
+<h3
+id="сделай-скрипты-только-для-чтения-защита-от-случайного-изменения">1.
+<strong>Сделай скрипты только для чтения</strong> (защита от случайного
+изменения)</h3>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Защитить один скрипт</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 555 ~/док</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 555 ~/все</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 555 ~/оглавления</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Защитить все скрипты сразу</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 555 ~/<span class="pp">*</span>.sh ~/док ~/все ~/обзор ~/оглавление ~/оглавления <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span></code></pre></div>
+<p><strong>Что это даёт:</strong> Скрипты можно будет только
+<strong>запускать</strong>, но нельзя случайно изменить или удалить.</p>
+<h3 id="создай-резервную-копию-всех-скриптов-быстрое-восстановление">2.
+<strong>Создай резервную копию всех скриптов</strong> (быстрое
+восстановление)</h3>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Создать папку для бэкапов</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/backup_scripts</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Скопировать туда все скрипты</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> ~/<span class="pp">*</span>.sh ~/док ~/все ~/обзор ~/оглавление ~/оглавления ~/backup_scripts/ <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Посмотреть, что сохранилось</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span> ~/backup_scripts/</span></code></pre></div>
+<h3 id="создай-скрипт-для-автоматического-восстановления">3.
+<strong>Создай скрипт для автоматического восстановления</strong></h3>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="op">&gt;</span> ~/восстановить <span class="op">&lt;&lt; &#39;EOF&#39;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="st">#!/bin/bash</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="st">GREEN=&#39;\033[0;32m&#39;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="st">RED=&#39;\033[0;31m&#39;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="st">NC=&#39;\033[0m&#39;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="st">echo &quot;🔄 Восстанавливаю все скрипты из бэкапа...&quot;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="st">if [ -d ~/backup_scripts ]; then</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="st">    cp ~/backup_scripts/* ~/ 2&gt;/dev/null</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="st">    chmod +x ~/*.sh ~/док ~/все ~/обзор ~/оглавление ~/оглавления 2&gt;/dev/null</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="st">    echo -e &quot;${GREEN}✅ Восстановление завершено!${NC}&quot;</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="st">else</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="st">    echo -e &quot;${RED}❌ Папка с бэкапами не найдена!${NC}&quot;</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="st">fi</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x ~/восстановить</span></code></pre></div>
+<h3 id="сохрани-список-всех-алиасов-чтобы-не-потерять">4.
+<strong>Сохрани список всех алиасов</strong> (чтобы не потерять)</h3>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Сохранить все алиасы в файл</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> <span class="op">&gt;</span> ~/my_aliases.txt</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Посмотреть сохранённые алиасы</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> ~/my_aliases.txt</span></code></pre></div>
+<h3 id="создай-золотой-скрипт-который-пересоздаст-всё-заново">5.
+<strong>Создай “золотой” скрипт, который пересоздаст всё
+заново</strong></h3>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="op">&gt;</span> ~/золотой <span class="op">&lt;&lt; &#39;EOF&#39;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="st">#!/bin/bash</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="st"># ==============================================</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="st"># ЗОЛОТОЙ СКРИПТ - ВОССТАНАВЛИВАЕТ ВСЁ И СРАЗУ</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="st"># ==============================================</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="st">echo &quot;🔨 Восстанавливаю все скрипты...&quot;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="st"># 1. Основные скрипты</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="st">cat &gt; ~/док &lt;&lt; &#39;INNER&#39;</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="st">#!/bin/bash</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="st">cd &quot;/storage/emulated/0/Documents/08_Из_md_в_docx_док&quot; 2&gt;/dev/null || { echo &quot;❌ Папка не найдена&quot;; exit 1; }</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="st">find . -name &quot;*.md&quot; -type f | while read file; do</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="st">    if [[ &quot;$file&quot; == *&quot;- док&quot;* ]]; then continue; fi</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="st">    dir=$(dirname &quot;$file&quot;)</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="st">    parent=$(dirname &quot;$dir&quot;)</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="st">    base=$(basename &quot;$dir&quot;)</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="st">    target_dir=&quot;$parent/$base - док&quot;</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="st">    mkdir -p &quot;$target_dir&quot;</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="st">    name=$(basename &quot;$file&quot; .md)</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="st">    pandoc &quot;$file&quot; -o &quot;$target_dir/$name.docx&quot;</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="st">done</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="st">echo &quot;✅ Готово!&quot;</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="st">INNER</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="st">cat &gt; ~/все &lt;&lt; &#39;INNER&#39;</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="st">#!/bin/bash</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="st">BASE_DIR=&quot;/storage/emulated/0/Documents/01_GitHub_DeepSeekProject&quot;</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="st">cd &quot;$BASE_DIR&quot; || exit 1</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="st">find . -type f | while read file; do</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="st">    echo &quot;$file&quot;</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="st">done</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="st">echo &quot;✅ Полный обзор завершён&quot;</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="st">INNER</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="st"># 2. Алиасы</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="st">cat &gt;&gt; ~/.bashrc &lt;&lt; &#39;ALIASES&#39;</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="st">alias индекс=&#39;~/create_double_indexes.sh&#39;</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="st">alias оглавления=&#39;~/все&#39;</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a><span class="st">alias док=&#39;~/док&#39;</span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="st">alias проект=&#39;cd /storage/emulated/0/Documents/01_GitHub_DeepSeekProject&#39;</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="st">alias word=&#39;for f in *.md; do if [ -f &quot;$f&quot; ]; then pandoc &quot;$f&quot; -o &quot;${f%.md}.docx&quot;; fi; done&#39;</span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="st">alias мд=&#39;~/md2docx.sh&#39;</span></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a><span class="st">alias формат=&#39;~/format.sh&#39;</span></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="st">ALIASES</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="st"># 3. Права на исполнение</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="st">chmod +x ~/*.sh ~/док ~/все ~/обзор ~/оглавление ~/оглавления 2&gt;/dev/null</span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="st"># 4. Перезагрузка алиасов</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="st">source ~/.bashrc</span></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a><span class="st">echo &quot;✅ ВСЁ ВОССТАНОВЛЕНО!&quot;</span></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a><span class="st">echo &quot;🔄 Перезапусти Termux или выполни: source ~/.bashrc&quot;</span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x ~/золотой</span></code></pre></div>
+<h2 id="что-теперь-у-тебя-есть">📋 <strong>ЧТО ТЕПЕРЬ У ТЕБЯ
+ЕСТЬ:</strong></h2>
+<table>
+<thead>
+<tr>
+<th>Команда</th>
+<th>Что делает</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>~/золотой</code></strong></td>
+<td>Восстанавливает <strong>все</strong> скрипты заново</td>
+</tr>
+<tr>
+<td><strong><code>~/восстановить</code></strong></td>
+<td>Восстанавливает из резервной копии</td>
+</tr>
+<tr>
+<td><strong><code>~/backup_scripts/</code></strong></td>
+<td>Папка с копиями всех скриптов</td>
+</tr>
+<tr>
+<td><strong><code>~/my_aliases.txt</code></strong></td>
+<td>Файл со списком всех алиасов</td>
+</tr>
+</tbody>
+</table>
+<h2 id="как-пользоваться">✅ <strong>КАК ПОЛЬЗОВАТЬСЯ:</strong></h2>
+<h3 id="раз-в-неделю-делай-бэкап">Раз в неделю делай бэкап:</h3>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> ~/<span class="pp">*</span>.sh ~/док ~/все ~/обзор ~/оглавление ~/оглавления ~/backup_scripts/ <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span></code></pre></div>
+<h3 id="если-что-то-сломалось">Если что-то сломалось:</h3>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Вариант 1: восстановить из бэкапа</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">~/восстановить</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Вариант 2: восстановить всё заново</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ex">~/золотой</span></span></code></pre></div>
+<h3 id="защитить-скрипты-от-изменений">Защитить скрипты от
+изменений:</h3>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 555 ~/<span class="pp">*</span>.sh ~/док ~/все ~/обзор ~/оглавление ~/оглавления <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span></code></pre></div>
+<h2 id="главное">🎯 <strong>ГЛАВНОЕ:</strong></h2>
+<p>Теперь у тебя есть <strong>полная защита</strong>: - ✅ Резервные
+копии - ✅ Скрипт восстановления - ✅ “Золотой” скрипт на все случаи
+жизни - ✅ Защита от случайных изменений</p>
+<p><strong>Никакие команды больше не потеряются!</strong> 🔥</p>
+</body>
+</html>

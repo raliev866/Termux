@@ -1,0 +1,122 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+# ==============================================
+# mddocx - Конвертер md → docx
+# ЗЕРКАЛЬНАЯ ЛОГИКА: СОХРАНЕНИЕ СТРУКТУРЫ ПАПОК
+# ==============================================
+# Дата создания: 2026.02.24
+# Автор: Рафаэль
+# Описание: Конвертер md в docx
+# ==============================================
+
+WORK_DIR="/storage/emulated/0/Documents/02_md_docx_mddocx"
+INPUT_EXT="md"
+OUTPUT_EXT="docx"
+FOLDER_SUFFIX=" - docx"  # Пробел перед тире для красоты
+
+echo "══════════════════════════════════════════════"
+echo "   mddocx - Конвертер md → docx"
+echo "══════════════════════════════════════════════"
+echo "📁 Рабочая папка: $WORK_DIR"
+echo "📁 Суффикс для папок: $FOLDER_SUFFIX"
+echo ""
+
+# Проверка pandoc
+if ! command -v pandoc &> /dev/null; then
+    echo "📦 Устанавливаю pandoc..."
+    pkg install -y pandoc
+fi
+
+# Создаём рабочую папку, если её нет
+mkdir -p "$WORK_DIR"
+
+# Счетчики
+TOTAL_FILES=0
+CONVERTED_FILES=0
+SKIPPED_FILES=0
+
+echo "🔍 Поиск файлов .$INPUT_EXT..."
+echo ""
+
+# Находим все файлы с нужным расширением
+find "$WORK_DIR" -type f -name "*.$INPUT_EXT" 2>/dev/null | while read -r file; do
+    
+    # Пропускаем файлы из папок с нашим суффиксом (чтобы не конвертировать повторно)
+    if [[ "$file" == *"$FOLDER_SUFFIX/"* ]]; then
+        continue
+    fi
+    
+    TOTAL_FILES=$((TOTAL_FILES + 1))
+    
+    # Получаем информацию о файле
+    file_dir=$(dirname "$file")
+    filename=$(basename "$file" ".$INPUT_EXT")
+    
+    echo "📄 [$TOTAL_FILES] $filename.$INPUT_EXT"
+    
+    # ========== ЗЕРКАЛЬНАЯ ЛОГИКА РАСПРЕДЕЛЕНИЯ ==========
+    
+    if [ "$file_dir" = "$WORK_DIR" ]; then
+        # СЛУЧАЙ 1: Файл в корне рабочей папки
+        # Результат сохраняем РЯДОМ с оригиналом
+        output_dir="$file_dir"
+        echo "   └─ 📍 Корневой файл → сохраняю рядом"
+    else
+        # СЛУЧАЙ 2: Файл во вложенной папке
+        # Получаем путь относительно рабочей папки
+        rel_path="${file_dir#$WORK_DIR/}"
+        
+        # Выделяем имя самой верхней папки (родительской)
+        top_folder="${rel_path%%/*}"
+        
+        # Определяем остаток пути после этой папки
+        sub_path="${rel_path#$top_folder}"
+        
+        # ФОРМИРУЕМ НОВУЮ ПАПКУ:
+        # Имя_Папки + Суффикс + остаток пути
+        target_folder="$WORK_DIR/${top_folder}${FOLDER_SUFFIX}${sub_path}"
+        
+        # Создаем папку, если её нет
+        mkdir -p "$target_folder"
+        output_dir="$target_folder"
+        
+        echo "   └─ 🔄 Зеркальная папка: ${top_folder}${FOLDER_SUFFIX}${sub_path}/"
+    fi
+    
+    # Итоговый путь к файлу
+    output_file="$output_dir/$filename.$OUTPUT_EXT"
+    
+    # Проверяем, нужно ли конвертировать (идемпотентность)
+    if [ -f "$output_file" ] && [ "$file" -ot "$output_file" ]; then
+        echo "      ⏭️ Результат свежее исходника, пропускаю"
+        SKIPPED_FILES=$((SKIPPED_FILES + 1))
+        continue
+    fi
+    
+    # Конвертация
+    echo "      ⚙️ Конвертирую..."
+    
+    # pandoc "$file" -o "$output_file" 2>/tmp/pandoc_error
+    pandoc "$file" -o "$output_file" 2>/dev/null
+    
+    if [ $? -eq 0 ]; then
+        echo "      ✅ Готово: $filename.$OUTPUT_EXT"
+        CONVERTED_FILES=$((CONVERTED_FILES + 1))
+    else
+        echo "      ❌ Ошибка конвертации"
+        # cat /tmp/pandoc_error | head -3
+    fi
+    
+    echo ""
+done
+
+echo "══════════════════════════════════════════════"
+echo "✅ КОНВЕРТАЦИЯ ЗАВЕРШЕНА"
+echo "📊 Найдено файлов: $TOTAL_FILES"
+echo "📊 Сконвертировано: $CONVERTED_FILES"
+echo "📊 Пропущено: $SKIPPED_FILES"
+echo "══════════════════════════════════════════════"
+echo ""
+echo "📁 Файлы в корне: сохранены рядом с оригиналами"
+echo "📁 Файлы в папках: зеркально отражены с суффиксом '$FOLDER_SUFFIX'"
+echo "══════════════════════════════════════════════"

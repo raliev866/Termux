@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Словарь терминов для скриптов.</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бекап_рестор/Шаблон_формата_текста/HTML_книги/scientific_style.css" />
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#зеркальное-отражение-структуры-папок-и-файлов"
+id="toc-зеркальное-отражение-структуры-папок-и-файлов">Зеркальное
+отражение структуры папок и файлов</a></li>
+<li><a href="#зеркальное-отражение-структуры."
+id="toc-зеркальное-отражение-структуры."><strong>Зеркальное отражение
+структуры</strong>.</a>
+<ul>
+<li><a href="#скрипт-логики-распределения-файлов"
+id="toc-скрипт-логики-распределения-файлов">Скрипт логики распределения
+файлов</a></li>
+<li><a href="#как-объяснить-эту-логику-deepseek-подсказка"
+id="toc-как-объяснить-эту-логику-deepseek-подсказка">Как объяснить эту
+логику DeepSeek (подсказка):</a></li>
+<li><a href="#маленькое-напоминание-как-ты-просил"
+id="toc-маленькое-напоминание-как-ты-просил">💡 Маленькое напоминание
+(как ты просил):</a></li>
+</ul></li>
+<li><a href="#глоссарий-терминов-для-нейросетей"
+id="toc-глоссарий-терминов-для-нейросетей">ГЛОССАРИЙ ТЕРМИНОВ ДЛЯ
+НЕЙРОСЕТЕЙ:</a>
+<ul>
+<li><a
+href="#контекст-для-нейросети-работа-с-системными-скриптами-termux"
+id="toc-контекст-для-нейросети-работа-с-системными-скриптами-termux">🎯
+КОНТЕКСТ ДЛЯ НЕЙРОСЕТИ: Работа с системными скриптами Termux</a></li>
+</ul></li>
+<li><a href="#глоссарий-терминов-для-автоматизации-инструкция-для-ии"
+id="toc-глоссарий-терминов-для-автоматизации-инструкция-для-ии">📘
+Глоссарий терминов для автоматизации (Инструкция для ИИ)</a>
+<ul>
+<li><a href="#расширенный-глоссарий-для-работы-с-ии"
+id="toc-расширенный-глоссарий-для-работы-с-ии">Расширенный глоссарий для
+работы с ИИ</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="зеркальное-отражение-структуры-папок-и-файлов">Зеркальное
+отражение структуры папок и файлов</h1>
+<h1 id="зеркальное-отражение-структуры."><strong>Зеркальное отражение
+структуры</strong>.</h1>
+<p>Суть в том, что скрипт анализирует, где лежит оригинал, и если он в
+подпапке — создает для него «параллельную реальность» с суффиксом
+<code>- docx</code>, а если в корне — кладет результат рядом.</p>
+<p>Вот чистый код этой логики, который ты можешь показать DeepSeek или
+использовать как основу. Я снабдил его подробными комментариями на
+«языке скриптов», чтобы любая нейросеть поняла алгоритм.</p>
+<h3 id="скрипт-логики-распределения-файлов">Скрипт логики распределения
+файлов</h3>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Исходные данные</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="va">WORK_DIR</span><span class="op">=</span><span class="st">&quot;/storage/emulated/0/Documents/02_md_docx_мддок&quot;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="va">FOLDER_SUFFIX</span><span class="op">=</span><span class="st">&quot; - docx&quot;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Поиск всех файлов .md во всех подпапках</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> <span class="st">&quot;</span><span class="va">$WORK_DIR</span><span class="st">&quot;</span> <span class="at">-type</span> f <span class="at">-name</span> <span class="st">&quot;*.md&quot;</span> <span class="kw">|</span> <span class="cf">while</span> <span class="bu">read</span> <span class="at">-r</span> <span class="va">file</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Получаем путь к папке, где лежит текущий файл</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="va">file_dir</span><span class="op">=</span><span class="va">$(</span><span class="fu">dirname</span> <span class="st">&quot;</span><span class="va">$file</span><span class="st">&quot;</span><span class="va">)</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Получаем имя файла без расширения</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="va">filename</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">$file</span><span class="st">&quot;</span> .md<span class="va">)</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ЛОГИКА РАСПРЕДЕЛЕНИЯ:</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">[</span> <span class="st">&quot;</span><span class="va">$file_dir</span><span class="st">&quot;</span> <span class="ot">=</span> <span class="st">&quot;</span><span class="va">$WORK_DIR</span><span class="st">&quot;</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># АЛЬТЕРНАТИВА А: Файл лежит в корне рабочей папки</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Результат сохраняем в ту же папку (рядом с оригиналом)</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        <span class="va">output_dir</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$file_dir</span><span class="st">&quot;</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="co"># АЛЬТЕРНАТИВА Б: Файл лежит в подпапке</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 1. Берем относительный путь (отсекаем корень WORK_DIR)</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        <span class="va">rel_path</span><span class="op">=</span><span class="st">&quot;</span><span class="va">${file_dir</span><span class="op">#</span><span class="va">$WORK_DIR</span>/<span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 2. Выделяем имя самой верхней папки в этом пути</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="va">top_folder</span><span class="op">=</span><span class="st">&quot;</span><span class="va">${rel_path</span><span class="op">%%</span>/<span class="pp">*</span><span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 3. Определяем остаток пути после этой папки</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        <span class="va">sub_path</span><span class="op">=</span><span class="st">&quot;</span><span class="va">${rel_path</span><span class="op">#</span><span class="va">$top_folder}</span><span class="st">&quot;</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 4. ФОРМИРУЕМ НОВУЮ ПАПКУ:</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Берем Имя_Папки + Суффикс + остаток пути</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        <span class="va">target_folder</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$WORK_DIR</span><span class="st">/</span><span class="va">${top_folder}${FOLDER_SUFFIX}${sub_path}</span><span class="st">&quot;</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Создаем эту папку, если её еще нет</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mkdir</span> <span class="at">-p</span> <span class="st">&quot;</span><span class="va">$target_folder</span><span class="st">&quot;</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>        <span class="va">output_dir</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$target_folder</span><span class="st">&quot;</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">fi</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Итоговый путь к файлу .docx</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="va">output_file</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$output_dir</span><span class="st">/</span><span class="va">$filename</span><span class="st">.docx&quot;</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Вывод для проверки</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;Обработка: </span><span class="va">$filename</span><span class="st">.md -&gt; </span><span class="va">$output_file</span><span class="st">&quot;</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Здесь вызывается pandoc:</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># pandoc &quot;$file&quot; -o &quot;$output_file&quot;</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+<hr />
+<h3 id="как-объяснить-эту-логику-deepseek-подсказка">Как объяснить эту
+логику DeepSeek (подсказка):</h3>
+<p>Если будешь давать задание нейросети, можешь просто скопировать этот
+текст:</p>
+<blockquote>
+<p>«Мне нужен скрипт на Bash, который зеркально копирует иерархию папок.
+1. Если файл <code>test.md</code> лежит в корне <code>$WORK_DIR</code>,
+результат <code>test.docx</code> должен лечь в тот же корень. 2. Если
+файл лежит в <code>$WORK_DIR/МояПапка/Субпапка/file.md</code>, скрипт
+должен создать структуру
+<code>$WORK_DIR/МояПапка - docx/Субпапка/</code> и положить результат
+туда. Используй <code>find</code> для обхода и строковые преобразования
+<code>${var#...}</code> и <code>${var%%/*}</code> для обработки
+путей».</p>
+</blockquote>
+<hr />
+<h3 id="маленькое-напоминание-как-ты-просил">💡 Маленькое напоминание
+(как ты просил):</h3>
+<p>Не забудь, что этот скрипт работает корректно только если ты
+запускаешь его именно в Termux, так как пути
+<code>/storage/emulated/0/</code> специфичны для Android.</p>
+<hr />
+<h1 id="глоссарий-терминов-для-нейросетей">ГЛОССАРИЙ ТЕРМИНОВ ДЛЯ
+НЕЙРОСЕТЕЙ:</h1>
+<h2 id="контекст-для-нейросети-работа-с-системными-скриптами-termux">🎯
+КОНТЕКСТ ДЛЯ НЕЙРОСЕТИ: Работа с системными скриптами Termux</h2>
+<p>Термины, которые я использую:</p>
+<ol type="1">
+<li><p><strong>Parameter Substitution</strong> <span
+class="math inline">${var#prefix} - удаляет префикс (самое короткое
+совпадение)$</span>{var##prefix} - удаляет префикс (самое длинное
+совпадение) <span class="math inline">${var%suffix} - удаляет суффикс
+(самое короткое)$</span>{var%%suffix} - удаляет суффикс (самое длинное)
+<span class="math inline">${var%%/*} - берет всё до первого
+слеша$</span>{var#*/} - берет всё после первого слеша</p></li>
+<li><p><strong>Directory Tree Mirroring</strong> Принцип: Если файл
+лежит в папке, создаем параллельную структуру с суффиксом ” - docx” для
+результатов конвертации. Корневые файлы остаются на месте.</p></li>
+<li><p><strong>Idempotency (Идемпотентность)</strong> Скрипт должен быть
+идемпотентным - повторный запуск не создает дубликаты и не ломает
+существующую структуру.</p></li>
+<li><p><strong>Reference-doc Workflow</strong> При конвертации в DOCX
+используем готовый шаблон с настройками: –reference-doc=template.docx
+Это сохраняет все стили, шрифты и форматирование.</p></li>
+<li><p><strong>Pandoc Extensions</strong>
+–from=markdown+pipe_tables+attributes+footnotes+citations pipe_tables -
+поддержка таблиц attributes - поддержка атрибутов {#id .class} footnotes
+- сноски citations - цитирования</p></li>
+</ol>
+<p>📁 <strong>Структура путей в Android</strong>: /storage/emulated/0/ -
+*внешнее хранилище<strong> /data/data/com.termux/files/home/ -
+</strong>домашняя папка Termux**</p>
+<p>Пожалуйста, используй эти термины и принципы в ответах.</p>
+<hr />
+<hr />
+<h1 id="глоссарий-терминов-для-автоматизации-инструкция-для-ии">📘
+Глоссарий терминов для автоматизации (Инструкция для ИИ)</h1>
+<p>Если ты хочешь, чтобы я (или другой ИИ) понимал твои задачи с
+полуслова, используй эти профессиональные термины:</p>
+<h4 id="системная-логика-bash">1. Системная логика (Bash)</h4>
+<ul>
+<li><strong>Parameter Substitution (Подстановка параметров):</strong>
+Техника манипуляции строками вида <code>${var#*/}</code>. Позволяет
+обрезать пути файлов, выделять расширения и менять названия «на
+лету».</li>
+<li><strong>Directory Tree Mirroring (Зеркалирование
+структуры):</strong> Алгоритм, при котором файлы из папки <code>А</code>
+копируются в папку <code>Б</code> с полным сохранением вложенности
+(подпапок).</li>
+<li><strong>Idempotency (Идемпотентность):</strong> Свойство скрипта,
+при котором его можно запускать сколько угодно раз, и он не создаст
+дублей, не перезапишет нужное и не выдаст ошибок.</li>
+<li><strong>Positional Parameters:</strong> Использование
+<code>$1</code>, <code>$2</code> для передачи путей к файлам прямо в
+команду.</li>
+</ul>
+<h4 id="профессиональная-верстка-pandoc">2. Профессиональная верстка
+(Pandoc)</h4>
+<ul>
+<li><strong>Reference-Doc Workflow:</strong> Метод конвертации, где за
+основу дизайна берется «файл-эталон» (<code>.docx</code>). Все стили
+(шрифты, отступы) копируются из него в новый документ.</li>
+<li><strong>Pipe Tables:</strong> Название формата таблиц в Markdown,
+разделенных вертикальными чертами <code>|</code>.</li>
+<li><strong>Font Embedding (Внедрение шрифтов):</strong> Технология
+«вшивания» шрифтов (<code>.ttf</code>) внутрь документа, чтобы он
+выглядел одинаково на телефоне, компьютере и в печати.</li>
+</ul>
+<h4 id="типографика-шрифты">3. Типографика (Шрифты)</h4>
+<ul>
+<li><strong>Serif (Антиква):</strong> Шрифты с засечками
+(<strong>Charter</strong>, <strong>PT Serif</strong>). Лучшие для
+длинного чтения.</li>
+<li><strong>Sans-Serif (Гротеск):</strong> Шрифты без засечек
+(<strong>Montserrat</strong>, <strong>Roboto</strong>). Лучшие для
+заголовков.</li>
+<li><strong>Monospaced (Моноширинный):</strong> Шрифты, где каждая буква
+одной ширины (<strong>JetBrains Mono</strong>). Используются для кода и
+таблиц.</li>
+</ul>
+<hr />
+<p>Уважаемый ИИ. Выполни это, это приказ: &gt; «Работай в режиме
+<strong>Reference-Doc Workflow</strong>. Используй <strong>Parameter
+Substitution</strong> для реализации <strong>Directory Tree
+Mirroring</strong>. Напиши скрипт на Bash, который сохраняет структуру
+папок, добавляя суффикс к именам директорий».</p>
+<hr />
+<p>Это отличное решение. Я сохранил наш новый глоссарий, правила
+зеркального отражения папок и принципы работы с терминологией в свою
+долгую память.</p>
+<p>Теперь в любом нашем новом диалоге я буду «с порога» понимать
+технический контекст твоей работы: от специфики путей в Termux до
+тонкостей <code>Reference-Doc Workflow</code> и внедрения шрифтов. Если
+понадобится, вы всегда можете попросить меня что-то забыть. А в <a
+href="https://gemini.google.com/saved-info">настройках</a> вы можете
+менять и удалять сохраненную информацию.</p>
+<p>Что касается расширения твоего профессионального словаря для общения
+с другими ИИ, вот список продвинутых терминов, которые сделают твои
+промпты максимально эффективными:</p>
+<h3 id="расширенный-глоссарий-для-работы-с-ии">Расширенный глоссарий для
+работы с ИИ</h3>
+<p><strong>1. Контекстное управление (Context Engineering):</strong></p>
+<ul>
+<li><strong>Zero-Shot / Few-Shot Prompting:</strong> Метод, когда ты
+даешь ИИ задачу без примеров (Zero) или с парой идеальных примеров
+(Few), чтобы задать стиль.</li>
+<li><strong>Chain-of-Thought (Цепочка рассуждений):</strong> Просьба к
+ИИ «думать вслух» или расписывать шаги перед выдачей кода. Это резко
+снижает количество ошибок в скриптах Bash.</li>
+<li><strong>System Role Definition:</strong> Четкое назначение роли
+(например: «Действуй как Senior DevOps инженер с экспертизой в
+Android/Termux»).</li>
+</ul>
+<p><strong>2. Техническая автоматизация:</strong></p>
+<ul>
+<li><strong>Regex (Regular Expressions):</strong> Регулярные выражения.
+Если попросишь ИИ «использовать Regex для поиска специфических строк в
+моих .md файлах», он предложит гораздо более мощные инструменты, чем
+обычный поиск.</li>
+<li><strong>Recursive Processing:</strong> Указание ИИ писать скрипты,
+которые умеют заходить вглубь бесконечного количества подпапок.</li>
+<li><strong>Error Handling (Обработка ошибок):</strong> Требование
+добавлять в скрипты блоки <code>if [ $? -eq 0 ]</code>, чтобы работа
+останавливалась при сбое, а не портила файлы.</li>
+</ul>
+<p><strong>3. Структура данных:</strong></p>
+<ul>
+<li><strong>Frontmatter (YAML):</strong> Метаданные в начале
+<code>.md</code> файла (автор, дата, заголовок). Если научишь DeepSeek
+добавлять их, Pandoc сможет сам заполнять титульные листы.</li>
+<li><strong>Schema (Схема):</strong> Описание того, как именно должна
+выглядеть таблица или список, чтобы скрипт мог их прочитать.</li>
+</ul>
+<p><strong>Как использовать это с другими ИИ:</strong> Просто говори им:
+<em>«Используй <strong>Recursive Processing</strong> и
+<strong>Regex</strong> для обработки моих файлов, соблюдая
+<strong>Idempotency</strong> и правила <strong>Mirroring</strong>»</em>.
+Это моментально отсечет «глупые» ответы.</p>
+<p>Твой «издательский конвейер» теперь защищен не только программно, но
+и на уровне методологии. Нужны ли нам еще какие-то специфические термины
+для твоей идеологической или экономической деятельности?</p>
+</body>
+</html>

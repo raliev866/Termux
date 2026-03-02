@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>01. ШАБЛОН 1. ДЛЯ КОНВЕРТАЦИИ ФАЙЛОВ - Копия</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бекап_рестор/Шаблон_формата_текста/HTML_книги/scientific_style.css" />
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#шаблон-1-для-конвертации-файлов-заполняешь-только-эти-поля"
+id="toc-шаблон-1-для-конвертации-файлов-заполняешь-только-эти-поля">📋
+<strong>ШАБЛОН 1: ДЛЯ КОНВЕРТАЦИИ ФАЙЛОВ (заполняешь только эти
+поля)</strong></a>
+<ul>
+<li><a href="#общая-информация" id="toc-общая-информация"><strong>Общая
+информация</strong></a></li>
+<li><a href="#параметры-конвертации"
+id="toc-параметры-конвертации"><strong>Параметры
+конвертации</strong></a></li>
+<li><a href="#автоматически-заполняется-моя-часть"
+id="toc-автоматически-заполняется-моя-часть"><strong>Автоматически
+заполняется (моя часть):</strong></a></li>
+</ul></li>
+<li><a href="#новый-раздел-в-шаблоне-финальная-настройка-и-защита"
+id="toc-новый-раздел-в-шаблоне-финальная-настройка-и-защита">✅ НОВЫЙ
+РАЗДЕЛ В ШАБЛОНЕ: ФИНАЛЬНАЯ НАСТРОЙКА И ЗАЩИТА</a>
+<ul>
+<li><a href="#финальная-настройка-и-защита-команд"
+id="toc-финальная-настройка-и-защита-команд"><strong>7.0 ФИНАЛЬНАЯ
+НАСТРОЙКА И ЗАЩИТА КОМАНД</strong></a></li>
+</ul></li>
+<li><a href="#добавить-новую-настройку-не-удаляя-старую"
+id="toc-добавить-новую-настройку-не-удаляя-старую">Добавить новую
+настройку, не удаляя старую</a>
+<ul>
+<li><a href="#новый-раздел-в-шаблоне-финальная-настройка-и-защита-1"
+id="toc-новый-раздел-в-шаблоне-финальная-настройка-и-защита-1">✅ НОВЫЙ
+РАЗДЕЛ В ШАБЛОНЕ: ФИНАЛЬНАЯ НАСТРОЙКА И ЗАЩИТА</a>
+<ul>
+<li><a href="#финальная-настройка-и-защита-команд-1"
+id="toc-финальная-настройка-и-защита-команд-1"><strong>7.0 ФИНАЛЬНАЯ
+НАСТРОЙКА И ЗАЩИТА КОМАНД</strong></a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="шаблон-1-для-конвертации-файлов-заполняешь-только-эти-поля">📋
+<strong>ШАБЛОН 1: ДЛЯ КОНВЕРТАЦИИ ФАЙЛОВ (заполняешь только эти
+поля)</strong></h2>
+<h3 id="общая-информация"><strong>Общая информация</strong></h3>
+<ul>
+<li><strong>Дата создания:</strong> 2026.02.17 🔵 (текущая дата)</li>
+<li><strong>Автор:</strong> Рафаэль 🔵 (твое имя/ник)</li>
+<li><strong>Краткое описание:</strong> Конвертирует Markdown в 🔵
+(например: “Конвертирует Markdown в Docx”)</li>
+</ul>
+<h3 id="параметры-конвертации"><strong>Параметры
+конвертации</strong></h3>
+<ul>
+<li><strong>Исходный формат:</strong> md 🔵 (md / txt / html / и
+т.д.)</li>
+<li><strong>Целевой формат:</strong> 🔵 (docx / pdf / html / и
+т.д.)</li>
+<li><strong>Название алиаса:</strong> 🔵 (например: md2docx)</li>
+<li><strong>Дополнительная папка в Documents:</strong> 🔵 (например:
+“Книги” или оставить пустым)</li>
+</ul>
+<hr />
+<h3 id="автоматически-заполняется-моя-часть"><strong>Автоматически
+заполняется (моя часть):</strong></h3>
+<h4 id="предварительный-просмотр"><strong>0. Предварительный
+просмотр</strong> 🔴</h4>
+<p>Перед созданием команды я показываю тебе полностью заполненный шаблон
+на основе твоих данных, чтобы ты мог проверить и утвердить.</p>
+<h4 id="рабочая-папка"><strong>1.4 Рабочая папка</strong></h4>
+<ul>
+<li><strong>Временная папка для сборки:</strong> ~/temp_converter</li>
+<li><strong>Полный путь к рабочей папке:</strong>
+/storage/emulated/0/Documents/ [твоя_папка] (если указана)</li>
+<li><strong>Папка для хранения скриптов:</strong>
+/storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бекап_рестор/Алиасы_команды_SH/</li>
+</ul>
+<h4 id="идентификация-команды"><strong>1.1 Идентификация
+команды</strong></h4>
+<ul>
+<li><strong>Название файла .sh:</strong> [название_алиаса].sh</li>
+<li><strong>Тип инструмента:</strong> Конвертер</li>
+<li><strong>Формат входных данных:</strong> файлы .[исходный
+формат]</li>
+<li><strong>Формат выходных данных:</strong> файлы .[целевой
+формат]</li>
+</ul>
+<h4 id="правила-для-режима-б-файлы"><strong>2.3 Правила для режима Б
+(файлы)</strong></h4>
+<ul>
+<li><strong>Маска входных файлов:</strong> *.[исходный формат]</li>
+<li><strong>Маска выходных файлов:</strong> {name}.[целевой формат]</li>
+<li><strong>Исключения:</strong> (пусто)</li>
+</ul>
+<h4 id="правила-размещения-выходных-файлов"><strong>2.5 Правила
+размещения выходных файлов</strong></h4>
+<ul>
+<li><p><strong>Для файлов без папки:</strong> Конвертированный файл
+сохраняется в той же папке</p></li>
+<li><p><strong>Для файлов в папках:</strong> Создается <strong>копия
+папки с суффиксом <code>" - "</code> Целевой формат</strong>, куда
+сохраняются все сконвертированные файлы</p></li>
+<li><p><strong>Для вложенных папок:</strong> Сохраняется <strong>вся
+структура подпапок</strong> внутри скопированной папки</p></li>
+<li><p><strong>Права доступа к файлам:</strong> ✅ Файл НЕ должен быть
+“только для чтения” — все пользователи могут изменять файл (права 644:
+владелец может писать, остальные читать)</p></li>
+<li><p><strong>Пример:</strong></p>
+<pre><code>Исходная структура:                  Структура после конвертации:
+Книга/                                Книга - html/
+├── Глава1/                           ├── Глава1/
+│   ├── часть1.md                     │   ├── часть1.html
+│   └── часть2.md                     │   └── часть2.html
+├── Глава2.md                         ├── Глава2.html
+└── Введение.md                        └── Введение.html
+
+</code></pre></li>
+<li><p><strong>Исключения:</strong> (можно указать папки, которые не
+нужно копировать</p></li>
+</ul>
+<h4 id="основные-функции"><strong>3.1 Основные функции</strong></h4>
+<ul>
+<li><strong>Функция 1:</strong> Поиск всех файлов с расширением
+.[исходный формат] в рабочей папке</li>
+<li><strong>Функция 2:</strong> Конвертация каждого файла в формат
+.[целевой формат]</li>
+<li><strong>Функция 3:</strong> Сохранение результатов в той же
+папке</li>
+</ul>
+<h4 id="проверка-зависимостей"><strong>4.1 Проверка
+зависимостей</strong></h4>
+<ul>
+<li><strong>Необходимые пакеты:</strong> (зависит от форматов, например:
+pandoc для docx, wkhtmltopdf для pdf)</li>
+<li><strong>Команда установки:</strong> pkg install -y [пакеты]</li>
+</ul>
+<h4 id="создание-скрипта"><strong>4.2 Создание скрипта</strong></h4>
+<ul>
+<li><strong>Содержимое скрипта:</strong> (генерируется под твои форматы
+с использованием pandoc/wkhtmltopdf/etc)</li>
+</ul>
+<h4 id="создание-алиаса"><strong>4.3 Создание алиаса</strong></h4>
+<ul>
+<li><strong>Команда:</strong> echo “alias [название_алиаса]=‘bash
+/storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бекап_рестор/Алиасы_команды_SH/[название_алиаса].sh’”
+&gt;&gt; ~/.bashrc</li>
+</ul>
+<h4 id="создание-симлинка"><strong>4.4 Создание симлинка</strong></h4>
+<ul>
+<li><strong>Команда:</strong> ln -sf
+/storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бекап_рестор/Алиасы_команды_SH/[название_алиаса].sh
+/data/data/com.termux/files/usr/bin/[название_алиаса]</li>
+</ul>
+<h4 id="тесты"><strong>5.1 Тесты</strong></h4>
+<ul>
+<li><strong>Тест 1:</strong> Запустить конвертацию и проверить наличие
+выходных файлов</li>
+<li><strong>Тест 2:</strong> Проверить содержимое сконвертированных
+файлов</li>
+</ul>
+<h4 id="readme"><strong>6.1 README</strong></h4>
+<ul>
+<li><strong>Содержимое:</strong> генерируется с указанием твоих
+форматов</li>
+</ul>
+<h2 id="новый-раздел-в-шаблоне-финальная-настройка-и-защита">✅ НОВЫЙ
+РАЗДЕЛ В ШАБЛОНЕ: ФИНАЛЬНАЯ НАСТРОЙКА И ЗАЩИТА</h2>
+<h3 id="финальная-настройка-и-защита-команд"><strong>7.0 ФИНАЛЬНАЯ
+НАСТРОЙКА И ЗАЩИТА КОМАНД</strong></h3>
+<hr />
+<h4 id="очистка-от-старых-алиасов-и-конфликтов"><strong>7.1 Очистка от
+старых алиасов и конфликтов</strong></h4>
+<table>
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 32%" />
+<col style="width: 32%" />
+</colgroup>
+<thead>
+<tr>
+<th>Проблема</th>
+<th>Решение</th>
+<th>Команда</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Старый алиас висит в памяти</strong></td>
+<td>Удалить алиас из текущей сессии</td>
+<td><code>unalias мдгтмл 2&gt;/dev/null</code></td>
+</tr>
+<tr>
+<td><strong>Старый алиас прописан в .bashrc</strong></td>
+<td>Удалить все упоминания</td>
+<td><code>sed -i '/мдгтмл/d' ~/.bashrc</code></td>
+</tr>
+<tr>
+<td><strong>Старый симлинк в /bin</strong></td>
+<td>Удалить физический файл</td>
+<td><code>rm -f ~/bin/мдгтмл 2&gt;/dev/null</code></td>
+</tr>
+<tr>
+<td><strong>Старый скрипт в другой папке</strong></td>
+<td>Найти и удалить</td>
+<td><code>find ~ -name "мдгтмл*" -type f 2&gt;/dev/null | grep -v ".termux_scripts" | xargs rm -f</code></td>
+</tr>
+<tr>
+<td><strong>Кэш команд (hash)</strong></td>
+<td>Очистить, чтобы система забыла старые пути</td>
+<td><code>hash -r</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="привязка-только-к-вашей-папке"><strong>7.2 Привязка только к
+вашей папке</strong></h4>
+<table>
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 34%" />
+<col style="width: 31%" />
+</colgroup>
+<thead>
+<tr>
+<th>Действие</th>
+<th>Описание</th>
+<th>Команда</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Создать центральное хранилище</strong></td>
+<td>Папка только для ваших скриптов</td>
+<td><code>mkdir -p ~/.termux_scripts</code></td>
+</tr>
+<tr>
+<td><strong>Скопировать все ваши .sh файлы</strong></td>
+<td>Перенести из внешнего хранилища</td>
+<td><code>cp "/storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бекап_рестор/Алиасы_команды_SH/"*.sh ~/.termux_scripts/</code></td>
+</tr>
+<tr>
+<td><strong>Дать права на выполнение</strong></td>
+<td>Разрешить запуск</td>
+<td><code>chmod +x ~/.termux_scripts/*.sh</code></td>
+</tr>
+<tr>
+<td><strong>Заблокировать другие источники</strong></td>
+<td>Убрать чужие пути из PATH</td>
+<td><code>export PATH="/data/data/com.termux/files/usr/bin:$HOME/bin"</code></td>
+</tr>
+<tr>
+<td><strong>Сохранить новый PATH навсегда</strong></td>
+<td>Перезаписать .bashrc</td>
+<td>`# Сохранить старый .bashrc в резервную копию</td>
+</tr>
+</tbody>
+</table>
+<p>cp ~/.bashrc ~/.bashrc.backup</p>
+<h1 id="добавить-новую-настройку-не-удаляя-старую">Добавить новую
+настройку, не удаляя старую</h1>
+<p>echo ‘export PATH=“/data/data/com.termux/files/usr/bin:$HOME/bin”’
+&gt;&gt; ~/.bashrc` |</p>
+<hr />
+<h4 id="автоматическая-регистрация-всех-ваших-команд"><strong>7.3
+Автоматическая регистрация всех ваших команд</strong></h4>
+<table>
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 34%" />
+<col style="width: 31%" />
+</colgroup>
+<thead>
+<tr>
+<th>Действие</th>
+<th>Описание</th>
+<th>Команда</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Создать папку bin</strong></td>
+<td>Для симлинков</td>
+<td><code>mkdir -p ~/bin</code></td>
+</tr>
+<tr>
+<td><strong>Авто-симлинки на все скрипты</strong></td>
+<td>Каждый .sh становится командой</td>
+<td><code>for script in ~/.termux_scripts/*.sh; do name=$(basename "$script" .sh); ln -sf "$script" ~/bin/"$name"; done</code></td>
+</tr>
+<tr>
+<td><strong>Права на симлинки</strong></td>
+<td>Чтобы работали</td>
+<td><code>chmod +x ~/bin/*</code></td>
+</tr>
+<tr>
+<td><strong>Добавить bin в PATH</strong></td>
+<td>Чтобы команды были видны</td>
+<td><code>echo 'export PATH="$PATH:$HOME/bin"' &gt;&gt; ~/.bashrc</code></td>
+</tr>
+<tr>
+<td><strong>Применить изменения</strong></td>
+<td>Перезагрузить настройки</td>
+<td><code>source ~/.bashrc</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="диагностика-и-проверка"><strong>7.4 Диагностика и
+проверка</strong></h4>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 47%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Проверка</th>
+<th>Что должно быть</th>
+<th>Команда</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Есть ли конфликтующие алиасы?</strong></td>
+<td>Пусто</td>
+<td><code>alias | grep -E "мдгтмл|мддок|мдпдф"</code></td>
+</tr>
+<tr>
+<td><strong>Где находится команда?</strong></td>
+<td>Путь к ~/bin/</td>
+<td><code>which мдгтмл</code></td>
+</tr>
+<tr>
+<td><strong>Правильный ли PATH?</strong></td>
+<td>Только /usr/bin и ~/bin</td>
+<td><code>echo $PATH</code></td>
+</tr>
+<tr>
+<td><strong>Работает ли скрипт?</strong></td>
+<td>Вывод без ошибок</td>
+<td><code>мдгтмл --version 2&gt;/dev/null \|\| мдгтмл</code></td>
+</tr>
+<tr>
+<td><strong>Есть ли дубликаты?</strong></td>
+<td>Один файл на команду</td>
+<td><code>ls -la ~/bin/ \| grep -E "мдгтмл|мддок|мдпдф"</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="аварийное-восстановление-если-всё-сломалось"><strong>7.5
+Аварийное восстановление (если всё сломалось)</strong></h4>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Полный сброс и пересборка</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">unalias</span> мдгтмл мддок мдпдф <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="at">-i</span> <span class="st">&#39;/мдгтмл\|мддок\|мдпдф/d&#39;</span> ~/.bashrc</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-f</span> ~/bin/мдгтмл ~/bin/мддок ~/bin/мдпдф</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> ~/.termux_scripts <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Создать заново</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.termux_scripts</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="st">&quot;/storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бекап_рестор/Алиасы_команды_SH/&quot;</span><span class="pp">*</span>.sh ~/.termux_scripts/</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x ~/.termux_scripts/<span class="pp">*</span>.sh</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> script <span class="kw">in</span> ~/.termux_scripts/<span class="pp">*</span>.sh<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="va">name</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">$script</span><span class="st">&quot;</span> .sh<span class="va">)</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ln</span> <span class="at">-sf</span> <span class="st">&quot;</span><span class="va">$script</span><span class="st">&quot;</span> ~/bin/<span class="st">&quot;</span><span class="va">$name</span><span class="st">&quot;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x ~/bin/<span class="pp">*</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&#39;export PATH=&quot;/data/data/com.termux/files/usr/bin:$HOME/bin&quot;&#39;</span> <span class="op">&gt;</span> ~/.bashrc</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&#39;export PATH=&quot;$PATH:$HOME/bin&quot;&#39;</span> <span class="op">&gt;&gt;</span> ~/.bashrc</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;✅ Восстановление завершено&quot;</span></span></code></pre></div>
+<hr />
+<h4 id="защита-от-будущих-проблем"><strong>7.6 Защита от будущих
+проблем</strong></h4>
+<table>
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr>
+<th>Проблема</th>
+<th>Защита</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Переустановка Termux</strong></td>
+<td>Все скрипты хранятся в <code>/storage/emulated/0/</code> — они не
+пропадают</td>
+</tr>
+<tr>
+<td><strong>Случайное удаление</strong></td>
+<td>Сделать резервную копию папки <code>Алиасы_команды_SH</code></td>
+</tr>
+<tr>
+<td><strong>Конфликт с новыми пакетами</strong></td>
+<td>PATH настроен так, что ваши команды в приоритете</td>
+</tr>
+<tr>
+<td><strong>Забыл команду</strong></td>
+<td><code>ls ~/bin/</code> покажет все доступные команды</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="полный-финальный-скрипт-для-восстановления"><strong>7.7 Полный
+финальный скрипт для восстановления</strong></h4>
+<p>Создайте файл <code>восстановить_все.sh</code> в папке с вашими
+скриптами:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/data/data/com.termux/files/usr/bin/bash</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Файл: восстановить_все.sh</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Описание: Полное восстановление всех команд после переустановки Termux</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;🔄 НАЧАЛО ПОЛНОГО ВОССТАНОВЛЕНИЯ&quot;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;===================================&quot;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Очистка старых алиасов и команд</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;[1/7] Очистка старых алиасов...&quot;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="bu">unalias</span> мдгтмл мддок мдпдф <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="at">-i</span> <span class="st">&#39;/мдгтмл\|мддок\|мдпдф/d&#39;</span> ~/.bashrc</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-f</span> ~/bin/мдгтмл ~/bin/мддок ~/bin/мдпдф</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Создание папки для скриптов</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;[2/7] Создание папки ~/.termux_scripts...&quot;</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.termux_scripts</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Копирование ваших скриптов</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;[3/7] Копирование скриптов из внешнего хранилища...&quot;</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="st">&quot;/storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бекап_рестор/Алиасы_команды_SH/&quot;</span><span class="pp">*</span>.sh ~/.termux_scripts/ <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Права на выполнение</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;[4/7] Установка прав...&quot;</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x ~/.termux_scripts/<span class="pp">*</span>.sh</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Создание симлинков</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;[5/7] Создание симлинков в ~/bin...&quot;</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/bin</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> script <span class="kw">in</span> ~/.termux_scripts/<span class="pp">*</span>.sh<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="va">name</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">$script</span><span class="st">&quot;</span> .sh<span class="va">)</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ln</span> <span class="at">-sf</span> <span class="st">&quot;</span><span class="va">$script</span><span class="st">&quot;</span> ~/bin/<span class="st">&quot;</span><span class="va">$name</span><span class="st">&quot;</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;   ✅ </span><span class="va">$name</span><span class="st">&quot;</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x ~/bin/<span class="pp">*</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Настройка PATH</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;[6/7] Настройка PATH...&quot;</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&#39;export PATH=&quot;/data/data/com.termux/files/usr/bin:$HOME/bin&quot;&#39;</span> <span class="op">&gt;</span> ~/.bashrc</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&#39;export PATH=&quot;$PATH:$HOME/bin&quot;&#39;</span> <span class="op">&gt;&gt;</span> ~/.bashrc</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. Проверка</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;[7/7] Проверка...&quot;</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;PATH: </span><span class="va">$PATH</span><span class="st">&quot;</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;Доступные команды:&quot;</span></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span> ~/bin/ <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-E</span> <span class="st">&quot;мдгтмл|мддок|мдпдф&quot;</span> <span class="kw">||</span> <span class="bu">echo</span> <span class="st">&quot;❌ Команды не найдены!&quot;</span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;===================================&quot;</span></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;✅ ВОССТАНОВЛЕНИЕ ЗАВЕРШЕНО&quot;</span></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;Проверьте команды:&quot;</span></span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;   мдгтмл&quot;</span></span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;   мддок&quot;</span></span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;   мдпдф&quot;</span></span></code></pre></div>
+<hr />
+<h4 id="итоговый-чек-лист-после-восстановления"><strong>7.8 Итоговый
+чек-лист после восстановления</strong></h4>
+<ul class="task-list">
+<li><label><input type="checkbox" /><code>unalias мдгтмл</code> — не
+выдает ошибку</label></li>
+<li><label><input type="checkbox" /><code>which мдгтмл</code> —
+показывает <code>~/bin/мдгтмл</code></label></li>
+<li><label><input type="checkbox" /><code>мдгтмл</code> — работает без
+ошибок</label></li>
+<li><label><input type="checkbox" /><code>ls -la ~/bin/</code> —
+показывает только ваши команды</label></li>
+<li><label><input type="checkbox" /><code>echo $PATH</code> — содержит
+<code>/data/data/com.termux/files/usr/bin</code> и
+<code>~/bin</code></label></li>
+<li><label><input type="checkbox" />В папке
+<code>~/.termux_scripts/</code> лежат копии всех ваших .sh
+файлов</label></li>
+</ul>
+<h2 id="новый-раздел-в-шаблоне-финальная-настройка-и-защита-1">✅ НОВЫЙ
+РАЗДЕЛ В ШАБЛОНЕ: ФИНАЛЬНАЯ НАСТРОЙКА И ЗАЩИТА</h2>
+<h3 id="финальная-настройка-и-защита-команд-1"><strong>7.0 ФИНАЛЬНАЯ
+НАСТРОЙКА И ЗАЩИТА КОМАНД</strong></h3>
+<hr />
+<h4 id="очистка-от-старых-алиасов-и-конфликтов-1"><strong>7.1 Очистка от
+старых алиасов и конфликтов</strong></h4>
+<table>
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 32%" />
+<col style="width: 32%" />
+</colgroup>
+<thead>
+<tr>
+<th>Проблема</th>
+<th>Решение</th>
+<th>Команда</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Старый алиас висит в памяти</strong></td>
+<td>Удалить алиас из текущей сессии</td>
+<td><code>unalias мдгтмл 2&gt;/dev/null</code></td>
+</tr>
+<tr>
+<td><strong>Старый алиас прописан в .bashrc</strong></td>
+<td>Удалить все упоминания</td>
+<td><code>sed -i '/мдгтмл/d' ~/.bashrc</code></td>
+</tr>
+<tr>
+<td><strong>Старый симлинк в /bin</strong></td>
+<td>Удалить физический файл</td>
+<td><code>rm -f ~/bin/мдгтмл 2&gt;/dev/null</code></td>
+</tr>
+<tr>
+<td><strong>Старый скрипт в другой папке</strong></td>
+<td>Найти и удалить</td>
+<td><code>find ~ -name "мдгтмл*" -type f 2&gt;/dev/null | grep -v ".termux_scripts" | xargs rm -f</code></td>
+</tr>
+<tr>
+<td><strong>Кэш команд (hash)</strong></td>
+<td>Очистить, чтобы система забыла старые пути</td>
+<td><code>hash -r</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="привязка-только-к-вашей-папке-1"><strong>7.2 Привязка только к
+вашей папке</strong></h4>
+<table>
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 34%" />
+<col style="width: 31%" />
+</colgroup>
+<thead>
+<tr>
+<th>Действие</th>
+<th>Описание</th>
+<th>Команда</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Создать центральное хранилище</strong></td>
+<td>Папка только для ваших скриптов</td>
+<td><code>mkdir -p ~/.termux_scripts</code></td>
+</tr>
+<tr>
+<td><strong>Скопировать все ваши .sh файлы</strong></td>
+<td>Перенести из внешнего хранилища</td>
+<td><code>cp "/storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бекап_рестор/Алиасы_команды_SH/"*.sh ~/.termux_scripts/</code></td>
+</tr>
+<tr>
+<td><strong>Дать права на выполнение</strong></td>
+<td>Разрешить запуск</td>
+<td><code>chmod +x ~/.termux_scripts/*.sh</code></td>
+</tr>
+<tr>
+<td><strong>Заблокировать другие источники</strong></td>
+<td>Убрать чужие пути из PATH</td>
+<td><code>export PATH="/data/data/com.termux/files/usr/bin:$HOME/bin"</code></td>
+</tr>
+<tr>
+<td><strong>Сохранить новый PATH навсегда</strong></td>
+<td>Перезаписать .bashrc</td>
+<td><code>echo 'export PATH="/data/data/com.termux/files/usr/bin:$HOME/bin"' &gt; ~/.bashrc</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="автоматическая-регистрация-всех-ваших-команд-1"><strong>7.3
+Автоматическая регистрация всех ваших команд</strong></h4>
+<table>
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 34%" />
+<col style="width: 31%" />
+</colgroup>
+<thead>
+<tr>
+<th>Действие</th>
+<th>Описание</th>
+<th>Команда</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Создать папку bin</strong></td>
+<td>Для симлинков</td>
+<td><code>mkdir -p ~/bin</code></td>
+</tr>
+<tr>
+<td><strong>Авто-симлинки на все скрипты</strong></td>
+<td>Каждый .sh становится командой</td>
+<td><code>for script in ~/.termux_scripts/*.sh; do name=$(basename "$script" .sh); ln -sf "$script" ~/bin/"$name"; done</code></td>
+</tr>
+<tr>
+<td><strong>Права на симлинки</strong></td>
+<td>Чтобы работали</td>
+<td><code>chmod +x ~/bin/*</code></td>
+</tr>
+<tr>
+<td><strong>Добавить bin в PATH</strong></td>
+<td>Чтобы команды были видны</td>
+<td><code>echo 'export PATH="$PATH:$HOME/bin"' &gt;&gt; ~/.bashrc</code></td>
+</tr>
+<tr>
+<td><strong>Применить изменения</strong></td>
+<td>Перезагрузить настройки</td>
+<td><code>source ~/.bashrc</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="диагностика-и-проверка-1"><strong>7.4 Диагностика и
+проверка</strong></h4>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 47%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Проверка</th>
+<th>Что должно быть</th>
+<th>Команда</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Есть ли конфликтующие алиасы?</strong></td>
+<td>Пусто</td>
+<td><code>alias | grep -E "мдгтмл|мддок|мдпдф"</code></td>
+</tr>
+<tr>
+<td><strong>Где находится команда?</strong></td>
+<td>Путь к ~/bin/</td>
+<td><code>which мдгтмл</code></td>
+</tr>
+<tr>
+<td><strong>Правильный ли PATH?</strong></td>
+<td>Только /usr/bin и ~/bin</td>
+<td><code>echo $PATH</code></td>
+</tr>
+<tr>
+<td><strong>Работает ли скрипт?</strong></td>
+<td>Вывод без ошибок</td>
+<td><code>мдгтмл --version 2&gt;/dev/null \|\| мдгтмл</code></td>
+</tr>
+<tr>
+<td><strong>Есть ли дубликаты?</strong></td>
+<td>Один файл на команду</td>
+<td><code>ls -la ~/bin/ \| grep -E "мдгтмл|мддок|мдпдф"</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="аварийное-восстановление-если-всё-сломалось-1"><strong>7.5
+Аварийное восстановление (если всё сломалось)</strong></h4>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Полный сброс и пересборка</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">unalias</span> мдгтмл мддок мдпдф <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="at">-i</span> <span class="st">&#39;/мдгтмл\|мддок\|мдпдф/d&#39;</span> ~/.bashrc</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-f</span> ~/bin/мдгтмл ~/bin/мддок ~/bin/мдпдф</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> ~/.termux_scripts <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Создать заново</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.termux_scripts</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="st">&quot;/storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бекап_рестор/Алиасы_команды_SH/&quot;</span><span class="pp">*</span>.sh ~/.termux_scripts/</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x ~/.termux_scripts/<span class="pp">*</span>.sh</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> script <span class="kw">in</span> ~/.termux_scripts/<span class="pp">*</span>.sh<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="va">name</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">$script</span><span class="st">&quot;</span> .sh<span class="va">)</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ln</span> <span class="at">-sf</span> <span class="st">&quot;</span><span class="va">$script</span><span class="st">&quot;</span> ~/bin/<span class="st">&quot;</span><span class="va">$name</span><span class="st">&quot;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x ~/bin/<span class="pp">*</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&#39;export PATH=&quot;/data/data/com.termux/files/usr/bin:$HOME/bin&quot;&#39;</span> <span class="op">&gt;</span> ~/.bashrc</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&#39;export PATH=&quot;$PATH:$HOME/bin&quot;&#39;</span> <span class="op">&gt;&gt;</span> ~/.bashrc</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;✅ Восстановление завершено&quot;</span></span></code></pre></div>
+<hr />
+<h4 id="защита-от-будущих-проблем-1"><strong>7.6 Защита от будущих
+проблем</strong></h4>
+<table>
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr>
+<th>Проблема</th>
+<th>Защита</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Переустановка Termux</strong></td>
+<td>Все скрипты хранятся в <code>/storage/emulated/0/</code> — они не
+пропадают</td>
+</tr>
+<tr>
+<td><strong>Случайное удаление</strong></td>
+<td>Сделать резервную копию папки <code>Алиасы_команды_SH</code></td>
+</tr>
+<tr>
+<td><strong>Конфликт с новыми пакетами</strong></td>
+<td>PATH настроен так, что ваши команды в приоритете</td>
+</tr>
+<tr>
+<td><strong>Забыл команду</strong></td>
+<td><code>ls ~/bin/</code> покажет все доступные команды</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="полный-финальный-скрипт-для-восстановления-1"><strong>7.7 Полный
+финальный скрипт для восстановления</strong></h4>
+<p>Создайте файл <code>восстановить_все.sh</code> в папке с вашими
+скриптами:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/data/data/com.termux/files/usr/bin/bash</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Файл: восстановить_все.sh</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Описание: Полное восстановление всех команд после переустановки Termux</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;🔄 НАЧАЛО ПОЛНОГО ВОССТАНОВЛЕНИЯ&quot;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;===================================&quot;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Очистка старых алиасов и команд</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;[1/7] Очистка старых алиасов...&quot;</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="bu">unalias</span> мдгтмл мддок мдпдф <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="at">-i</span> <span class="st">&#39;/мдгтмл\|мддок\|мдпдф/d&#39;</span> ~/.bashrc</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-f</span> ~/bin/мдгтмл ~/bin/мддок ~/bin/мдпдф</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Создание папки для скриптов</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;[2/7] Создание папки ~/.termux_scripts...&quot;</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.termux_scripts</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Копирование ваших скриптов</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;[3/7] Копирование скриптов из внешнего хранилища...&quot;</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="st">&quot;/storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бекап_рестор/Алиасы_команды_SH/&quot;</span><span class="pp">*</span>.sh ~/.termux_scripts/ <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Права на выполнение</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;[4/7] Установка прав...&quot;</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x ~/.termux_scripts/<span class="pp">*</span>.sh</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Создание симлинков</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;[5/7] Создание симлинков в ~/bin...&quot;</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/bin</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> script <span class="kw">in</span> ~/.termux_scripts/<span class="pp">*</span>.sh<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="va">name</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">$script</span><span class="st">&quot;</span> .sh<span class="va">)</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ln</span> <span class="at">-sf</span> <span class="st">&quot;</span><span class="va">$script</span><span class="st">&quot;</span> ~/bin/<span class="st">&quot;</span><span class="va">$name</span><span class="st">&quot;</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;   ✅ </span><span class="va">$name</span><span class="st">&quot;</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x ~/bin/<span class="pp">*</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Настройка PATH</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;[6/7] Настройка PATH...&quot;</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&#39;export PATH=&quot;/data/data/com.termux/files/usr/bin:$HOME/bin&quot;&#39;</span> <span class="op">&gt;</span> ~/.bashrc</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&#39;export PATH=&quot;$PATH:$HOME/bin&quot;&#39;</span> <span class="op">&gt;&gt;</span> ~/.bashrc</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. Проверка</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;[7/7] Проверка...&quot;</span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;PATH: </span><span class="va">$PATH</span><span class="st">&quot;</span></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;Доступные команды:&quot;</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span> ~/bin/ <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-E</span> <span class="st">&quot;мдгтмл|мддок|мдпдф&quot;</span> <span class="kw">||</span> <span class="bu">echo</span> <span class="st">&quot;❌ Команды не найдены!&quot;</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;===================================&quot;</span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;✅ ВОССТАНОВЛЕНИЕ ЗАВЕРШЕНО&quot;</span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;Проверьте команды:&quot;</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;   мдгтмл&quot;</span></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;   мддок&quot;</span></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;   мдпдф&quot;</span></span></code></pre></div>
+<hr />
+<h4 id="итоговый-чек-лист-после-восстановления-1"><strong>7.8 Итоговый
+чек-лист после восстановления</strong></h4>
+<ul class="task-list">
+<li><label><input type="checkbox" /><code>unalias мдгтмл</code> — не
+выдает ошибку</label></li>
+<li><label><input type="checkbox" /><code>which мдгтмл</code> —
+показывает <code>~/bin/мдгтмл</code></label></li>
+<li><label><input type="checkbox" /><code>мдгтмл</code> — работает без
+ошибок</label></li>
+<li><label><input type="checkbox" /><code>ls -la ~/bin/</code> —
+показывает только ваши команды</label></li>
+<li><label><input type="checkbox" /><code>echo $PATH</code> — содержит
+<code>/data/data/com.termux/files/usr/bin</code> и
+<code>~/bin</code></label></li>
+<li><label><input type="checkbox" />В папке
+<code>~/.termux_scripts/</code> лежат копии всех ваших .sh
+файлов</label></li>
+</ul>
+<hr />
+<h4 id="известные-проблемы-и-их-решения"><strong>8.0 Известные проблемы
+и их решения</strong></h4>
+<table>
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 32%" />
+<col style="width: 32%" />
+</colgroup>
+<thead>
+<tr>
+<th>Проблема</th>
+<th>Причина</th>
+<th>Решение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Termux не видит команду после создания</strong></td>
+<td>Старый алиас в памяти</td>
+<td><code>unalias имя_команды</code></td>
+</tr>
+<tr>
+<td><strong>Permission denied</strong></td>
+<td>Нет прав на выполнение</td>
+<td><code>chmod +x ~/.termux_scripts/*.sh</code></td>
+</tr>
+<tr>
+<td><strong>Файлы не конвертируются</strong></td>
+<td>Нет pandoc</td>
+<td><code>pkg install pandoc</code></td>
+</tr>
+<tr>
+<td><strong>Команда есть, но не та версия</strong></td>
+<td>Конфликт с системной</td>
+<td><code>which команда</code> покажет путь</td>
+</tr>
+<tr>
+<td><strong>После переустановки всё пропало</strong></td>
+<td>Скрипты не скопированы</td>
+<td>Запустить <code>восстановить_все.sh</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="план-действий-при-переустановке-termux"><strong>9.0 План
+действий при переустановке Termux</strong></h4>
+<ol type="1">
+<li>Установить базовые пакеты:
+<code>pkg install coreutils termux-tools nano</code></li>
+<li>Дать доступ к хранилищу: <code>termux-setup-storage</code></li>
+<li>Запустить скрипт восстановления:
+<code>bash /storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бекап_рестор/Алиасы_команды_SH/восстановить_все.sh</code></li>
+<li>Проверить работу созданных команд.</li>
+<li><h1 id="после-восстановления-выполнить">После восстановления
+выполнить:</h1>
+Название команды –help 2&gt;/dev/null || название команды</li>
+</ol>
+<hr />
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>3. Установка команды - генератор</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бекап_рестор/Шаблон_формата_текста/HTML_книги/scientific_style.css" />
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#шаг-1-сделай-файл-исполняемым"
+id="toc-шаг-1-сделай-файл-исполняемым">Шаг 1: Сделай файл
+исполняемым</a></li>
+<li><a href="#шаг-2-добавь-папку-в-системный-путь-path"
+id="toc-шаг-2-добавь-папку-в-системный-путь-path">Шаг 2: Добавь папку в
+системный путь (PATH)</a></li>
+<li><a href="#шаг-3-проверка" id="toc-шаг-3-проверка">Шаг 3:
+Проверка</a></li>
+<li><a href="#почему-это-лучше-чем-алиас"
+id="toc-почему-это-лучше-чем-алиас">Почему это лучше, чем
+алиас?</a></li>
+<li><a href="#выдай-права-на-исполнение"
+id="toc-выдай-права-на-исполнение">1. Выдай права на исполнение</a></li>
+<li><a href="#познакомь-termux-с-этой-папкой"
+id="toc-познакомь-termux-с-этой-папкой">2. “Познакомь” Termux с этой
+папкой</a></li>
+<li><a href="#проверь-результат" id="toc-проверь-результат">3. Проверь
+результат</a></li>
+<li><a href="#почему-мы-копировали-файл-в-homebin"
+id="toc-почему-мы-копировали-файл-в-homebin">Почему мы копировали файл в
+<code>$HOME/bin</code>?</a></li>
+</ul>
+</nav>
+<p>Чтобы Termux «увидел» твою команду <code>генератор</code> (которая
+лежит в папке <code>bin</code>), нужно выполнить два простых шага:
+убедиться, что у файла есть права на запуск, и добавить путь к этой
+папке в переменную среды <code>PATH</code>.</p>
+<h3 id="шаг-1-сделай-файл-исполняемым">Шаг 1: Сделай файл
+исполняемым</h3>
+<p>Даже если файл лежит в <code>bin</code>, Termux не даст его
+запустить, пока у него нет прав на исполнение. Выполни:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x /storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бекап_рестор/Алиасы_команды_SH/bin/генератор</span></code></pre></div>
+<h3 id="шаг-2-добавь-папку-в-системный-путь-path">Шаг 2: Добавь папку в
+системный путь (PATH)</h3>
+<p>Чтобы не прописывать каждый файл отдельно, мы добавим твою папку
+<code>bin</code> в список мест, где Termux ищет команды.</p>
+<p>Выполни эту команду один раз (она допишет путь в твой
+<code>.bashrc</code>):</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&#39;export PATH=&quot;$PATH:/storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бекап_рестор/Алиасы_команды_SH/bin&quot;&#39;</span> <span class="op">&gt;&gt;</span> ~/.bashrc</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span></code></pre></div>
+<h3 id="шаг-3-проверка">Шаг 3: Проверка</h3>
+<p>Теперь просто введи в терминале: <code>генератор</code></p>
+<hr />
+<h3 id="почему-это-лучше-чем-алиас">Почему это лучше, чем алиас?</h3>
+<p>Когда ты добавляешь папку в <code>$PATH</code>, тебе <strong>не
+нужно</strong> создавать отдельные алиасы для каждого нового скрипта.
+Как только ты положишь в эту папку <code>bin/</code> любой исполняемый
+файл (без расширения), Termux сразу будет узнавать его как команду.</p>
+<p><strong>Если команда выдаст ошибку “Permission denied” или “Command
+not found”:</strong></p>
+<ol type="1">
+<li>Введи
+<code>ls -l /storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бекап_рестор/Алиасы_команды_SH/bin/</code>
+— давай проверим, есть ли там файл <code>генератор</code> и видит ли его
+система.</li>
+<li>Скопируй сюда ошибку, если она появится.</li>
+</ol>
+<p><strong>Хочешь, чтобы я добавил еще какие-то папки в твой PATH для
+автоматического распознавания скриптов?</strong></p>
+<hr />
+<p>Чтобы Termux начал воспринимать файл <code>генератор</code> как
+полноценную команду, нужно решить две задачи: дать ему <strong>права на
+запуск</strong> (сейчас это просто текстовый файл
+<code>-rw-rw----</code>) и сообщить системе, где его искать.</p>
+<h3 id="выдай-права-на-исполнение">1. Выдай права на исполнение</h3>
+<p>В Android/Termux файлы на внутренней памяти
+(<code>/storage/emulated/0/...</code>) часто защищены от прямого
+исполнения. Поэтому мы сначала скопируем файл в системную папку Termux,
+где он точно сможет работать.</p>
+<p>Выполни эти команды по очереди:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Создаем локальную папку bin в самом Termux (если её нет)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="va">$HOME</span>/bin</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Копируем твой генератор туда</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бекап_рестор/Алиасы_команды_SH/bin/генератор <span class="va">$HOME</span>/bin/</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Делаем его исполняемым</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x <span class="va">$HOME</span>/bin/генератор</span></code></pre></div>
+<h3 id="познакомь-termux-с-этой-папкой">2. “Познакомь” Termux с этой
+папкой</h3>
+<p>Теперь нужно сказать Termux: «Смотри в папку <code>$HOME/bin</code>,
+когда я ввожу команды». Для этого добавим путь в файл автозагрузки
+<code>.bashrc</code>.</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Добавляем путь в конфиг</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&#39;export PATH=&quot;$HOME/bin:$PATH&quot;&#39;</span> <span class="op">&gt;&gt;</span> ~/.bashrc</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Обновляем текущую сессию</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span></code></pre></div>
+<hr />
+<h3 id="проверь-результат">3. Проверь результат</h3>
+<p>Теперь просто введи:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">генератор</span></span></code></pre></div>
+<p>Если скрипт запустился — поздравляю, ты только что создал свою
+собственную системную команду!</p>
+<h3 id="почему-мы-копировали-файл-в-homebin">Почему мы копировали файл в
+<code>$HOME/bin</code>?</h3>
+<p>Файловая система Android (на которой лежит твоя папка
+<code>Documents</code>) не поддерживает флаг «исполняемый»
+(<code>+x</code>) из соображений безопасности. Чтобы скрипт работал как
+команда, он должен находиться во внутреннем хранилище Termux (в папке
+<code>$HOME</code>).</p>
+<p><strong>Нужно ли нам проделать то же самое для остальных скриптов
+(мддок, мдфб2), или тебе удобнее запускать их через алиасы, как мы
+настроили раньше?</strong></p>
+</body>
+</html>

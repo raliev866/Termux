@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>PocketPal вылетает</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бекап_рестор/Шаблон_формата_текста/HTML_книги/scientific_style.css" />
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#почему-приложение-вылетает"
+id="toc-почему-приложение-вылетает">🔍 Почему приложение
+вылетает?</a></li>
+<li><a href="#пошаговое-решение-проблемы"
+id="toc-пошаговое-решение-проблемы">🛠️ Пошаговое решение проблемы</a>
+<ul>
+<li><a href="#шаг-1.-проверьте-версию-приложения"
+id="toc-шаг-1.-проверьте-версию-приложения">Шаг 1. Проверьте версию
+приложения</a></li>
+<li><a href="#шаг-2.-проверьте-свободную-память"
+id="toc-шаг-2.-проверьте-свободную-память">Шаг 2. Проверьте свободную
+память</a></li>
+<li><a href="#шаг-3.-попробуйте-другую-версию-этой-же-модели"
+id="toc-шаг-3.-попробуйте-другую-версию-этой-же-модели">Шаг 3.
+Попробуйте другую версию этой же модели</a></li>
+<li><a href="#шаг-4.-попробуйте-модель-поменьше-3b"
+id="toc-шаг-4.-попробуйте-модель-поменьше-3b">Шаг 4. Попробуйте модель
+поменьше (3B)</a></li>
+<li><a href="#шаг-5.-очистите-кэш-и-данные"
+id="toc-шаг-5.-очистите-кэш-и-данные">Шаг 5. Очистите кэш и
+данные</a></li>
+<li><a href="#шаг-6.-временное-решение-альтернативное-приложение"
+id="toc-шаг-6.-временное-решение-альтернативное-приложение">Шаг 6.
+Временное решение — альтернативное приложение</a></li>
+</ul></li>
+<li><a href="#что-делать-в-вашей-ситуации-по-шагам"
+id="toc-что-делать-в-вашей-ситуации-по-шагам">📊 Что делать в вашей
+ситуации (по шагам)</a></li>
+<li><a href="#важный-совет" id="toc-важный-совет">💡 Важный
+совет</a></li>
+</ul>
+</nav>
+<p>Я посмотрел ваши скриншоты и вижу проблему. PocketPal вылетает при
+загрузке модели Qwen2.5-7B-Instruct-Q4_K_M. Это <strong>массовая
+проблема</strong>, с которой сталкиваются многие пользователи . Давайте
+разберемся, почему это происходит и что делать.</p>
+<h2 id="почему-приложение-вылетает">🔍 Почему приложение вылетает?</h2>
+<p>На основе отзывов пользователей и отчетов об ошибках, есть <strong>4
+основные причины</strong>:</p>
+<table>
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 34%" />
+<col style="width: 34%" />
+</colgroup>
+<thead>
+<tr>
+<th>Причина</th>
+<th>Описание</th>
+<th>Источник</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Недостаточно ОЗУ</strong></td>
+<td>Для 7B модели нужно минимум 8 ГБ свободной RAM. Если у телефона
+меньше — приложение вылетает без предупреждения</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Проблемы с версией приложения</strong></td>
+<td>Начиная с версии 1.10.0+ появились критические баги с загрузкой
+моделей. Версия 1.9.4 работала стабильно</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Конфликт с определенными квантами</strong></td>
+<td>Некоторые форматы (q4_0_4_8) вызывают краш, в то время как q4_0_4_4
+работает</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Проблемы с новыми процессорами</strong></td>
+<td>На Snapdragon 8 Gen 5 и Android 16 модель может вылетать из-за
+несовместимости с размером страницы памяти 16KB</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="пошаговое-решение-проблемы">🛠️ Пошаговое решение проблемы</h2>
+<h3 id="шаг-1.-проверьте-версию-приложения">Шаг 1. Проверьте версию
+приложения</h3>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Откройте приложение → Настройки → О приложении</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Какая у вас версия? (v1.11.21 как на скриншоте?)</span></span></code></pre></div>
+<p>Если версия <strong>выше 1.9.4</strong>, попробуйте откатиться.
+Многие пользователи подтверждают, что версия 1.9.4 работает стабильно, а
+более новые — вылетают .</p>
+<p><strong>Где скачать старую версию:</strong> - APKMirror или APKPure
+(поиск “PocketPal AI 1.9.4”) - Официальный GitHub (раздел Releases)</p>
+<h3 id="шаг-2.-проверьте-свободную-память">Шаг 2. Проверьте свободную
+память</h3>
+<p>У вас на скриншоте: - <strong>Основная память</strong>: 123 ГБ
+свободно (этого достаточно) - <strong>SD-карта</strong>: 222 ГБ
+свободно</p>
+<p>Но важна не только память, а <strong>оперативная память
+(RAM)</strong>. Для 7B модели нужно: - <strong>Минимум 8 ГБ ОЗУ</strong>
+(иначе краш) - <strong>Идеально 12+ ГБ</strong> для комфортной
+работы</p>
+<p><strong>Как проверить RAM:</strong> Настройки телефона → О телефоне →
+Оперативная память</p>
+<h3 id="шаг-3.-попробуйте-другую-версию-этой-же-модели">Шаг 3.
+Попробуйте другую версию этой же модели</h3>
+<p>Не все версии Q4_K_M одинаковы. Выберите <strong>другого
+автора</strong> из вашего списка:</p>
+<table>
+<thead>
+<tr>
+<th>Автор</th>
+<th>Размер файла</th>
+<th>Вероятность работы</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PiterOfc</strong></td>
+<td>~4.5 ГБ</td>
+<td>⭐⭐⭐ (ваша текущая)</td>
+</tr>
+<tr>
+<td><strong>WSDW</strong> (318 скачиваний)</td>
+<td>~4.5 ГБ</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>paultimothymooney</strong> (2.59k)</td>
+<td>~4.5 ГБ</td>
+<td>⭐⭐⭐⭐ (проверенная)</td>
+</tr>
+<tr>
+<td><strong>stefancosma</strong> (47 скачиваний)</td>
+<td>~4.5 ГБ</td>
+<td>⭐⭐⭐</td>
+</tr>
+</tbody>
+</table>
+<h3 id="шаг-4.-попробуйте-модель-поменьше-3b">Шаг 4. Попробуйте модель
+поменьше (3B)</h3>
+<p>Если 7B модель вылетает, начните с
+<strong>Qwen2.5-3B-Instruct</strong>. Она: - Занимает ~2 ГБ вместо 4.5
+ГБ - Требует всего 4-6 ГБ ОЗУ - Тоже отлично пишет тексты</p>
+<p><strong>Как найти:</strong> В поиске введите “Qwen 2.5 3B Instruct
+Q4_K_M”</p>
+<h3 id="шаг-5.-очистите-кэш-и-данные">Шаг 5. Очистите кэш и данные</h3>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Настройки телефона → Приложения → PocketPal AI</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Нажмите &quot;Очистить кэш&quot; и &quot;Очистить данные&quot;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Перезапустите телефон</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Попробуйте загрузить модель заново</span></span></code></pre></div>
+<h3 id="шаг-6.-временное-решение-альтернативное-приложение">Шаг 6.
+Временное решение — альтернативное приложение</h3>
+<p>Если PocketPal продолжает вылетать, попробуйте:</p>
+<ol type="1">
+<li><strong>LM Studio Mobile</strong> — более стабильное, но сложнее в
+настройке</li>
+<li><strong>MLC LLM</strong> — отлично оптимизировано для телефонов</li>
+<li><strong>Chat with GPT (Local)</strong> — простой интерфейс, мало
+весит</li>
+</ol>
+<h2 id="что-делать-в-вашей-ситуации-по-шагам">📊 Что делать в вашей
+ситуации (по шагам)</h2>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 27%" />
+<col style="width: 58%" />
+</colgroup>
+<thead>
+<tr>
+<th>Шаг</th>
+<th>Действие</th>
+<th>Ожидаемый результат</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1️⃣</td>
+<td>Проверьте версию PocketPal</td>
+<td>Если 1.10.0+ — откатитесь до 1.9.4</td>
+</tr>
+<tr>
+<td>2️⃣</td>
+<td>Проверьте ОЗУ телефона</td>
+<td>Меньше 8 ГБ → берите 3B модель</td>
+</tr>
+<tr>
+<td>3️⃣</td>
+<td>Очистите кэш и перезапустите</td>
+<td>Удалит возможные конфликты</td>
+</tr>
+<tr>
+<td>4️⃣</td>
+<td>Попробуйте модель от WSDW или paultimothymooney</td>
+<td>Может работать там, где PiterOfc вылетает</td>
+</tr>
+<tr>
+<td>5️⃣</td>
+<td>Если не работает — ставьте Qwen 2.5 3B</td>
+<td>100% заработает, чуть слабее, но для книг хватит</td>
+</tr>
+</tbody>
+</table>
+<h2 id="важный-совет">💡 Важный совет</h2>
+<p>Прочитайте отзывы на скриншотах: у моделей есть рейтинг скачиваний.
+<strong>WSDW</strong> (318 скачиваний) и
+<strong>paultimothymooney</strong> (2.59k) — самые проверенные. Ваш
+PiterOfc (98 скачиваний) может быть менее стабильным, так как это свежая
+версия.</p>
+<p><strong>Попробуйте сначала WSDW</strong> — у него много скачиваний и
+высокая вероятность работы.</p>
+<p>Если после всех шагов проблема останется — напишите мне: - Какая у
+вас версия Android? - Сколько ОЗУ в телефоне? - Какая версия
+PocketPal?</p>
+<p>Я помогу подобрать идеальную модель под ваше железо!</p>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>00. Неубиваемые команды</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бекап_рестор/Шаблон_формата_текста/HTML_книги/scientific_style.css" />
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#что-делает-скрипты-уязвимыми"
+id="toc-что-делает-скрипты-уязвимыми">🛡️ <strong>Что делает скрипты
+уязвимыми</strong></a></li>
+<li><a href="#стратегия-максимальной-защиты"
+id="toc-стратегия-максимальной-защиты">🔧 <strong>Стратегия максимальной
+защиты</strong></a>
+<ul>
+<li><a href="#уровень-1-базовое-резервирование"
+id="toc-уровень-1-базовое-резервирование">Уровень 1: Базовое
+резервирование</a></li>
+<li><a href="#уровень-2-использование-termuxboot-автозапуск"
+id="toc-уровень-2-использование-termuxboot-автозапуск">Уровень 2:
+Использование Termux:Boot (автозапуск)</a></li>
+</ul></li>
+<li><a
+href="#restore-scripts.sh---команда-скрипт-восстановления-termuxboot"
+id="toc-restore-scripts.sh---команда-скрипт-восстановления-termuxboot">restore-scripts.sh
+- команда скрипт восстановления TERMUX:BOOT</a>
+<ul>
+<li><a href="#уровень-3-termuxtasker-интеграция-с-системой"
+id="toc-уровень-3-termuxtasker-интеграция-с-системой">Уровень 3:
+Termux:Tasker (интеграция с системой)</a></li>
+<li><a
+href="#уровень-4-версионирование-через-git-профессиональный-подход"
+id="toc-уровень-4-версионирование-через-git-профессиональный-подход">Уровень
+4: Версионирование через Git (профессиональный подход)</a></li>
+<li><a href="#уровень-5-неизменяемые-скрипты-read-only"
+id="toc-уровень-5-неизменяемые-скрипты-read-only">Уровень 5:
+Неизменяемые скрипты (read-only)</a></li>
+</ul></li>
+<li><a href="#финальная-рекомендация" id="toc-финальная-рекомендация">🎯
+<strong>ФИНАЛЬНАЯ РЕКОМЕНДАЦИЯ</strong></a></li>
+<li><a href="#итог-неубиваемость-достигнута"
+id="toc-итог-неубиваемость-достигнута">✅ <strong>ИТОГ: Неубиваемость
+достигнута</strong></a></li>
+</ul>
+</nav>
+<p>/storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бэкап_рестор/</p>
+<h2 id="что-делает-скрипты-уязвимыми">🛡️ <strong>Что делает скрипты
+уязвимыми</strong></h2>
+<p>Скрипты могут “портиться” по нескольким причинам: 1. Случайное
+удаление или перезапись 2. Потеря прав на выполнение
+(<code>chmod +x</code>) 3. Изменение переменных окружения 4. Сбои Termux
+или Android</p>
+<h2 id="стратегия-максимальной-защиты">🔧 <strong>Стратегия максимальной
+защиты</strong></h2>
+<h3 id="уровень-1-базовое-резервирование">Уровень 1: Базовое
+резервирование</h3>
+<h3 id="уровень-2-использование-termuxboot-автозапуск">Уровень 2:
+Использование Termux:Boot (автозапуск)</h3>
+<h2
+id="restore-scripts.sh---команда-скрипт-восстановления-termuxboot">restore-scripts.sh
+- команда скрипт восстановления TERMUX:BOOT</h2>
+<p>Установи Termux:Boot из F-Droid. Это приложение запускает скрипты при
+загрузке Android .</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.termux/boot/</span></code></pre></div>
+<p>Создай скрипт восстановления
+<code>~/.termux/boot/restore-scripts.sh</code>:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/data/data/com.termux/files/usr/bin/sh</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Восстанавливает права и ссылки при загрузке</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Восстановить права на все скрипты в ~/bin</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x ~/bin/<span class="pp">*</span> <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x /data/data/com.termux/files/usr/bin/<span class="pp">*</span> <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Проверить и восстановить ссылки</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="bu">[</span> <span class="ot">!</span> <span class="ot">-f</span> ~/оглавление <span class="bu">]</span> <span class="kw">&amp;&amp;</span> <span class="fu">ln</span> <span class="at">-s</span> ~/все ~/оглавление <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="bu">[</span> <span class="ot">!</span> <span class="ot">-f</span> /data/data/com.termux/files/usr/bin/оглавление <span class="bu">]</span> <span class="kw">&amp;&amp;</span> <span class="fu">cp</span> ~/все /data/data/com.termux/files/usr/bin/оглавление <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span></code></pre></div>
+<h3 id="уровень-3-termuxtasker-интеграция-с-системой">Уровень 3:
+Termux:Tasker (интеграция с системой)</h3>
+<p><strong>Termux:Tasker</strong> — это официальный плагин для
+интеграции с Tasker . Он решает главную проблему: скрипты выполняются
+через защищенный системный API, а не через оболочку Termux .</p>
+<p><strong>Настройка:</strong> 1. Установи Termux:Tasker из F-Droid 2. В
+Tasker создай действие “Plugin → Termux:Tasker” 3. Укажи путь к скрипту
+(например, <code>~/script.sh</code>)</p>
+<p><strong>Преимущества:</strong> - ✅ Работает даже если Termux закрыт
+- ✅ Переменные окружения всегда корректны - ✅ Результаты возвращаются
+в Tasker (%stdout, %stderr, %exit) - ✅ Скрипты защищены от случайных
+изменений</p>
+<h3
+id="уровень-4-версионирование-через-git-профессиональный-подход">Уровень
+4: Версионирование через Git (профессиональный подход)</h3>
+<p>Создай репозиторий для своих скриптов:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init script-repo</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> script-repo</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> ~/<span class="pp">*</span>.sh .</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Initial scripts backup&quot;</span></span></code></pre></div>
+<p>Автоматический бэкап через cron (с установкой <code>cronie</code>)
+:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Установка</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install cronie termux-services</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Запуск демона</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">sv</span> up crond</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Добавление в crontab (ежедневный коммит в 2AM)</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">crontab</span> <span class="at">-e</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="ex">0</span> 2 <span class="pp">*</span> <span class="pp">*</span> <span class="pp">*</span> cd ~/script-repo <span class="kw">&amp;&amp;</span> <span class="fu">git</span> add . <span class="kw">&amp;&amp;</span> <span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Daily backup </span><span class="va">$(</span><span class="fu">date</span><span class="va">)</span><span class="st">&quot;</span> <span class="kw">&amp;&amp;</span> <span class="fu">git</span> push</span></code></pre></div>
+<h3 id="уровень-5-неизменяемые-скрипты-read-only">Уровень 5:
+Неизменяемые скрипты (read-only)</h3>
+<p>Самый жёсткий уровень защиты:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Сделать скрипты только для чтения</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 555 ~/<span class="pp">*</span>.sh  <span class="co"># r-x r-x r-x (нельзя изменить, только читать и выполнять)</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Изменить владельца на root (требует root)</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown root:root ~/<span class="pp">*</span>.sh</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chmod 555 ~/<span class="pp">*</span>.sh</span></code></pre></div>
+<h2 id="финальная-рекомендация">🎯 <strong>ФИНАЛЬНАЯ
+РЕКОМЕНДАЦИЯ</strong></h2>
+<p>Для <strong>максимальной надёжности</strong> используй
+комбинацию:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Создай папку для скриптов</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/bin</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Перемести все скрипты туда</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> ~/<span class="pp">*</span>.sh ~/bin/ <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Создай симлинки в системную папку</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> script <span class="kw">in</span> ~/bin/<span class="pp">*</span>.sh<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="va">name</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">$script</span><span class="st">&quot;</span> .sh<span class="va">)</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ln</span> <span class="at">-sf</span> <span class="st">&quot;</span><span class="va">$script</span><span class="st">&quot;</span> <span class="st">&quot;/data/data/com.termux/files/usr/bin/</span><span class="va">$name</span><span class="st">&quot;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Установи права</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> <span class="at">-R</span> 755 ~/bin/</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 755 /data/data/com.termux/files/usr/bin/<span class="pp">*</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Настрой Termux:Boot (создай ~/.termux/boot/restore.sh)</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.termux/boot</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="op">&gt;</span> ~/.termux/boot/restore.sh <span class="op">&lt;&lt; &#39;EOF&#39;</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="st">#!/data/data/com.termux/files/usr/bin/sh</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="st"># Восстановление при загрузке</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="st">chmod -R 755 ~/bin/</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="st">for script in ~/bin/*.sh; do</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="st">    name=$(basename &quot;$script&quot; .sh)</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="st">    ln -sf &quot;$script&quot; &quot;/data/data/com.termux/files/usr/bin/$name&quot; 2&gt;/dev/null</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="st">done</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x ~/.termux/boot/restore.sh</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Установи Termux:Tasker для интеграции</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install termux-api</span></code></pre></div>
+<h2 id="итог-неубиваемость-достигнута">✅ <strong>ИТОГ: Неубиваемость
+достигнута</strong></h2>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Защита от удаления</th>
+<th>Защита от сбоев</th>
+<th>Автовосстановление</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Просто в ~/bin</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>+ Termux:Boot</td>
+<td>❌</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>+ Termux:Tasker</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>+ Git</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>+ Read-only (root)</td>
+<td>✅✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Лучшая практика:</strong> Скрипты в <code>~/bin</code> +
+Termux:Boot + Termux:Tasker + регулярный Git push. Тогда они
+действительно <strong>неубиваемы</strong>! 🚀</p>
+</body>
+</html>

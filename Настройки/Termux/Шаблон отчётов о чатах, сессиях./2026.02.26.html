@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>2026.02.26</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/storage/emulated/0/Documents/15_Настройки_скрипты_Termux_бекап_рестор/Шаблон_формата_текста/HTML_книги/scientific_style.css" />
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#мастер-шаблон-для-новой-сессии-termux"
+id="toc-мастер-шаблон-для-новой-сессии-termux">📋 <strong>МАСТЕР-ШАБЛОН
+ДЛЯ НОВОЙ СЕССИИ TERMUX</strong></a>
+<ul>
+<li><a href="#текущий-статус-проекта-на-25.02.2026"
+id="toc-текущий-статус-проекта-на-25.02.2026">🔥 <strong>ТЕКУЩИЙ СТАТУС
+ПРОЕКТА (на 25.02.2026)</strong></a>
+<ul>
+<li><a href="#основная-цель" id="toc-основная-цель">🎯 Основная
+цель</a></li>
+<li><a href="#установленные-компоненты"
+id="toc-установленные-компоненты">✅ Установленные компоненты</a></li>
+</ul></li>
+<li><a href="#созданные-скрипты-в-домашней-папке"
+id="toc-созданные-скрипты-в-домашней-папке">📝 <strong>СОЗДАННЫЕ СКРИПТЫ
+(в домашней папке)</strong></a>
+<ul>
+<li><a href="#check_github_tools.sh---проверка-инструментов-github"
+id="toc-check_github_tools.sh---проверка-инструментов-github">1.
+<strong><code>~/check_github_tools.sh</code></strong> - проверка
+инструментов GitHub</a></li>
+<li><a href="#transcribe_audio.py---распознавание-речи-через-vosk"
+id="toc-transcribe_audio.py---распознавание-речи-через-vosk">2.
+<strong><code>~/transcribe_audio.py</code></strong> - распознавание речи
+через Vosk</a></li>
+<li><a
+href="#transcribe_audio_fixed.py---улучшенная-версия-с-правильными-путями"
+id="toc-transcribe_audio_fixed.py---улучшенная-версия-с-правильными-путями">3.
+<strong><code>~/transcribe_audio_fixed.py</code></strong> - улучшенная
+версия с правильными путями</a></li>
+<li><a
+href="#transcribe_google.py---распознавание-через-google-speech-recognition"
+id="toc-transcribe_google.py---распознавание-через-google-speech-recognition">4.
+<strong><code>~/transcribe_google.py</code></strong> - распознавание
+через Google Speech Recognition</a></li>
+<li><a
+href="#ds.sh---умный-запуск-deepseek-автоматически-запускает-сервер"
+id="toc-ds.sh---умный-запуск-deepseek-автоматически-запускает-сервер">5.
+<strong><code>~/ds.sh</code></strong> - умный запуск DeepSeek
+(автоматически запускает сервер)</a></li>
+<li><a href="#start-ollama.sh---отдельный-запуск-сервера-ollama"
+id="toc-start-ollama.sh---отдельный-запуск-сервера-ollama">6.
+<strong><code>~/start-ollama.sh</code></strong> - отдельный запуск
+сервера Ollama</a></li>
+</ul></li>
+<li><a href="#алиасы-команды" id="toc-алиасы-команды">🔑 <strong>АЛИАСЫ
+(КОМАНДЫ)</strong></a></li>
+<li><a href="#как-запускать-локальный-deepseek"
+id="toc-как-запускать-локальный-deepseek">🚀 <strong>КАК ЗАПУСКАТЬ
+ЛОКАЛЬНЫЙ DeepSeek</strong></a>
+<ul>
+<li><a href="#простой-запуск" id="toc-простой-запуск">Простой
+запуск:</a></li>
+<li><a href="#строгий-режим-только-по-делу"
+id="toc-строгий-режим-только-по-делу">Строгий режим (только по
+делу):</a></li>
+<li><a href="#если-сервер-не-запускается"
+id="toc-если-сервер-не-запускается">Если сервер не запускается:</a></li>
+</ul></li>
+<li><a href="#структура-папок-для-конвертации-твои-проекты"
+id="toc-структура-папок-для-конвертации-твои-проекты">📁
+<strong>СТРУКТУРА ПАПОК ДЛЯ КОНВЕРТАЦИИ (твои проекты)</strong></a></li>
+<li><a href="#что-ещё-нужно-сделать" id="toc-что-ещё-нужно-сделать">🎯
+<strong>ЧТО ЕЩЁ НУЖНО СДЕЛАТЬ</strong></a>
+<ul>
+<li><a href="#установить-недостающие-пакеты"
+id="toc-установить-недостающие-пакеты">1. <strong>Установить недостающие
+пакеты</strong></a></li>
+<li><a href="#настроить-ssh-ключи-для-github"
+id="toc-настроить-ssh-ключи-для-github">2. <strong>Настроить SSH ключи
+для GitHub</strong></a></li>
+<li><a href="#настроить-git" id="toc-настроить-git">3. <strong>Настроить
+Git</strong></a></li>
+<li><a href="#проверить-распознавание-речи"
+id="toc-проверить-распознавание-речи">4. <strong>Проверить распознавание
+речи</strong></a></li>
+</ul></li>
+<li><a href="#важные-замечания" id="toc-важные-замечания">⚠️
+<strong>ВАЖНЫЕ ЗАМЕЧАНИЯ</strong></a></li>
+<li><a href="#если-возникнут-проблемы"
+id="toc-если-возникнут-проблемы">📞 <strong>ЕСЛИ ВОЗНИКНУТ
+ПРОБЛЕМЫ</strong></a></li>
+</ul></li>
+<li><a href="#мастер-шаблон-для-новой-сессии-termux-1"
+id="toc-мастер-шаблон-для-новой-сессии-termux-1">📋
+<strong>МАСТЕР-ШАБЛОН ДЛЯ НОВОЙ СЕССИИ TERMUX</strong></a>
+<ul>
+<li><a href="#текущий-статус-проекта-на-25.02.2026-1"
+id="toc-текущий-статус-проекта-на-25.02.2026-1">🔥 <strong>ТЕКУЩИЙ
+СТАТУС ПРОЕКТА (на 25.02.2026)</strong></a>
+<ul>
+<li><a href="#основная-цель-1" id="toc-основная-цель-1">🎯 Основная
+цель</a></li>
+<li><a href="#установленные-компоненты-1"
+id="toc-установленные-компоненты-1">✅ Установленные компоненты</a></li>
+</ul></li>
+<li><a href="#созданные-скрипты-в-домашней-папке-1"
+id="toc-созданные-скрипты-в-домашней-папке-1">📝 <strong>СОЗДАННЫЕ
+СКРИПТЫ (в домашней папке)</strong></a>
+<ul>
+<li><a href="#check_github_tools.sh---проверка-инструментов-github-1"
+id="toc-check_github_tools.sh---проверка-инструментов-github-1">1.
+<strong><code>~/check_github_tools.sh</code></strong> - проверка
+инструментов GitHub</a></li>
+<li><a href="#transcribe_audio.py---распознавание-речи-через-vosk-1"
+id="toc-transcribe_audio.py---распознавание-речи-через-vosk-1">2.
+<strong><code>~/transcribe_audio.py</code></strong> - распознавание речи
+через Vosk</a></li>
+<li><a
+href="#transcribe_audio_fixed.py---улучшенная-версия-с-правильными-путями-1"
+id="toc-transcribe_audio_fixed.py---улучшенная-версия-с-правильными-путями-1">3.
+<strong><code>~/transcribe_audio_fixed.py</code></strong> - улучшенная
+версия с правильными путями</a></li>
+<li><a
+href="#transcribe_google.py---распознавание-через-google-speech-recognition-1"
+id="toc-transcribe_google.py---распознавание-через-google-speech-recognition-1">4.
+<strong><code>~/transcribe_google.py</code></strong> - распознавание
+через Google Speech Recognition</a></li>
+<li><a
+href="#ds.sh---умный-запуск-deepseek-автоматически-запускает-сервер-1"
+id="toc-ds.sh---умный-запуск-deepseek-автоматически-запускает-сервер-1">5.
+<strong><code>~/ds.sh</code></strong> - умный запуск DeepSeek
+(автоматически запускает сервер)</a></li>
+<li><a href="#start-ollama.sh---отдельный-запуск-сервера-ollama-1"
+id="toc-start-ollama.sh---отдельный-запуск-сервера-ollama-1">6.
+<strong><code>~/start-ollama.sh</code></strong> - отдельный запуск
+сервера Ollama</a></li>
+</ul></li>
+<li><a href="#алиасы-команды-1" id="toc-алиасы-команды-1">🔑
+<strong>АЛИАСЫ (КОМАНДЫ)</strong></a></li>
+<li><a href="#как-запускать-локальный-deepseek-1"
+id="toc-как-запускать-локальный-deepseek-1">🚀 <strong>КАК ЗАПУСКАТЬ
+ЛОКАЛЬНЫЙ DeepSeek</strong></a>
+<ul>
+<li><a href="#простой-запуск-1" id="toc-простой-запуск-1">Простой
+запуск:</a></li>
+<li><a href="#строгий-режим-только-по-делу-1"
+id="toc-строгий-режим-только-по-делу-1">Строгий режим (только по
+делу):</a></li>
+<li><a href="#если-сервер-не-запускается-1"
+id="toc-если-сервер-не-запускается-1">Если сервер не
+запускается:</a></li>
+</ul></li>
+<li><a href="#структура-папок-для-конвертации-твои-проекты-1"
+id="toc-структура-папок-для-конвертации-твои-проекты-1">📁
+<strong>СТРУКТУРА ПАПОК ДЛЯ КОНВЕРТАЦИИ (твои проекты)</strong></a></li>
+<li><a href="#что-ещё-нужно-сделать-1"
+id="toc-что-ещё-нужно-сделать-1">🎯 <strong>ЧТО ЕЩЁ НУЖНО
+СДЕЛАТЬ</strong></a>
+<ul>
+<li><a href="#установить-недостающие-пакеты-1"
+id="toc-установить-недостающие-пакеты-1">1. <strong>Установить
+недостающие пакеты</strong></a></li>
+<li><a href="#настроить-ssh-ключи-для-github-1"
+id="toc-настроить-ssh-ключи-для-github-1">2. <strong>Настроить SSH ключи
+для GitHub</strong></a></li>
+<li><a href="#настроить-git-1" id="toc-настроить-git-1">3.
+<strong>Настроить Git</strong></a></li>
+<li><a href="#проверить-распознавание-речи-1"
+id="toc-проверить-распознавание-речи-1">4. <strong>Проверить
+распознавание речи</strong></a></li>
+</ul></li>
+<li><a href="#важные-замечания-1" id="toc-важные-замечания-1">⚠️
+<strong>ВАЖНЫЕ ЗАМЕЧАНИЯ</strong></a></li>
+<li><a href="#если-возникнут-проблемы-1"
+id="toc-если-возникнут-проблемы-1">📞 <strong>ЕСЛИ ВОЗНИКНУТ
+ПРОБЛЕМЫ</strong></a></li>
+</ul></li>
+<li><a href="#мастер-шаблон-для-новой-сессии-termux-2"
+id="toc-мастер-шаблон-для-новой-сессии-termux-2">📋
+<strong>МАСТЕР-ШАБЛОН ДЛЯ НОВОЙ СЕССИИ TERMUX</strong></a>
+<ul>
+<li><a href="#текущий-статус-проекта-на-25.02.2026-2"
+id="toc-текущий-статус-проекта-на-25.02.2026-2">🔥 <strong>ТЕКУЩИЙ
+СТАТУС ПРОЕКТА (на 25.02.2026)</strong></a>
+<ul>
+<li><a href="#основная-цель-2" id="toc-основная-цель-2">🎯 Основная
+цель</a></li>
+<li><a href="#установленные-компоненты-2"
+id="toc-установленные-компоненты-2">✅ Установленные компоненты</a></li>
+</ul></li>
+<li><a href="#созданные-скрипты-в-домашней-папке-2"
+id="toc-созданные-скрипты-в-домашней-папке-2">📝 <strong>СОЗДАННЫЕ
+СКРИПТЫ (в домашней папке)</strong></a>
+<ul>
+<li><a href="#check_github_tools.sh---проверка-инструментов-github-2"
+id="toc-check_github_tools.sh---проверка-инструментов-github-2">1.
+<strong><code>~/check_github_tools.sh</code></strong> - проверка
+инструментов GitHub</a></li>
+<li><a href="#transcribe_audio.py---распознавание-речи-через-vosk-2"
+id="toc-transcribe_audio.py---распознавание-речи-через-vosk-2">2.
+<strong><code>~/transcribe_audio.py</code></strong> - распознавание речи
+через Vosk</a></li>
+<li><a
+href="#transcribe_audio_fixed.py---улучшенная-версия-с-правильными-путями-2"
+id="toc-transcribe_audio_fixed.py---улучшенная-версия-с-правильными-путями-2">3.
+<strong><code>~/transcribe_audio_fixed.py</code></strong> - улучшенная
+версия с правильными путями</a></li>
+<li><a
+href="#transcribe_google.py---распознавание-через-google-speech-recognition-2"
+id="toc-transcribe_google.py---распознавание-через-google-speech-recognition-2">4.
+<strong><code>~/transcribe_google.py</code></strong> - распознавание
+через Google Speech Recognition</a></li>
+<li><a
+href="#ds.sh---умный-запуск-deepseek-автоматически-запускает-сервер-2"
+id="toc-ds.sh---умный-запуск-deepseek-автоматически-запускает-сервер-2">5.
+<strong><code>~/ds.sh</code></strong> - умный запуск DeepSeek
+(автоматически запускает сервер)</a></li>
+<li><a href="#start-ollama.sh---отдельный-запуск-сервера-ollama-2"
+id="toc-start-ollama.sh---отдельный-запуск-сервера-ollama-2">6.
+<strong><code>~/start-ollama.sh</code></strong> - отдельный запуск
+сервера Ollama</a></li>
+<li><a
+href="#book_assistant.sh---главный-помощник-для-книг-создан-в-этой-сессии"
+id="toc-book_assistant.sh---главный-помощник-для-книг-создан-в-этой-сессии">7.
+<strong><code>~/book_assistant.sh</code></strong> - главный помощник для
+книг (создан в этой сессии)</a></li>
+<li><a href="#git-helper.sh---помощь-с-git-командами"
+id="toc-git-helper.sh---помощь-с-git-командами">8.
+<strong><code>~/git-helper.sh</code></strong> - помощь с Git
+командами</a></li>
+</ul></li>
+<li><a href="#алиасы-команды-2" id="toc-алиасы-команды-2">🔑
+<strong>АЛИАСЫ (КОМАНДЫ)</strong></a></li>
+<li><a href="#как-запускать-локальный-deepseek-2"
+id="toc-как-запускать-локальный-deepseek-2">🚀 <strong>КАК ЗАПУСКАТЬ
+ЛОКАЛЬНЫЙ DeepSeek</strong></a>
+<ul>
+<li><a href="#простой-запуск-2" id="toc-простой-запуск-2">Простой
+запуск:</a></li>
+<li><a href="#строгий-режим-только-по-делу-2"
+id="toc-строгий-режим-только-по-делу-2">Строгий режим (только по
+делу):</a></li>
+<li><a href="#если-сервер-не-запускается-2"
+id="toc-если-сервер-не-запускается-2">Если сервер не
+запускается:</a></li>
+</ul></li>
+<li><a href="#структура-папок-для-конвертации-твои-проекты-2"
+id="toc-структура-папок-для-конвертации-твои-проекты-2">📁
+<strong>СТРУКТУРА ПАПОК ДЛЯ КОНВЕРТАЦИИ (твои проекты)</strong></a></li>
+<li><a href="#что-ещё-нужно-сделать-2"
+id="toc-что-ещё-нужно-сделать-2">🎯 <strong>ЧТО ЕЩЁ НУЖНО
+СДЕЛАТЬ</strong></a>
+<ul>
+<li><a href="#установить-недостающие-пакеты-2"
+id="toc-установить-недостающие-пакеты-2">1. <strong>Установить
+недостающие пакеты</strong></a></li>
+<li><a href="#настроить-ssh-ключи-для-github-2"
+id="toc-настроить-ssh-ключи-для-github-2">2. <strong>Настроить SSH ключи
+для GitHub</strong></a></li>
+<li><a href="#настроить-git-2" id="toc-настроить-git-2">3.
+<strong>Настроить Git</strong></a></li>
+<li><a href="#проверить-распознавание-речи-2"
+id="toc-проверить-распознавание-речи-2">4. <strong>Проверить
+распознавание речи</strong></a></li>
+</ul></li>
+<li><a href="#новые-скрипты-созданные-в-этой-сессии"
+id="toc-новые-скрипты-созданные-в-этой-сессии">🆕 <strong>НОВЫЕ СКРИПТЫ
+(СОЗДАННЫЕ В ЭТОЙ СЕССИИ)</strong></a>
+<ul>
+<li><a
+href="#book_assistant.sh---универсальный-помощник-для-работы-с-книгами"
+id="toc-book_assistant.sh---универсальный-помощник-для-работы-с-книгами">📚
+<strong><code>~/book_assistant.sh</code></strong> - универсальный
+помощник для работы с книгами</a></li>
+<li><a href="#git-helper.sh---помощь-с-git-командами-1"
+id="toc-git-helper.sh---помощь-с-git-командами-1">🔄
+<strong><code>~/git-helper.sh</code></strong> - помощь с Git
+командами</a></li>
+<li><a href="#примеры-использования-новых-скриптов"
+id="toc-примеры-использования-новых-скриптов">📝 <strong>Примеры
+использования новых скриптов:</strong></a></li>
+</ul></li>
+<li><a href="#идеи-для-дальнейшего-развития"
+id="toc-идеи-для-дальнейшего-развития">💡 <strong>ИДЕИ ДЛЯ ДАЛЬНЕЙШЕГО
+РАЗВИТИЯ</strong></a>
+<ul>
+<li><a href="#автоматизация-конвейера"
+id="toc-автоматизация-конвейера">1. <strong>Автоматизация
+конвейера</strong></a></li>
+<li><a href="#умный-анализатор-книг" id="toc-умный-анализатор-книг">2.
+<strong>Умный анализатор книг</strong></a></li>
+<li><a href="#интеграция-с-github" id="toc-интеграция-с-github">3.
+<strong>Интеграция с GitHub</strong></a></li>
+</ul></li>
+<li><a href="#важные-замечания-2" id="toc-важные-замечания-2">⚠️
+<strong>ВАЖНЫЕ ЗАМЕЧАНИЯ</strong></a></li>
+<li><a href="#если-возникнут-проблемы-2"
+id="toc-если-возникнут-проблемы-2">📞 <strong>ЕСЛИ ВОЗНИКНУТ
+ПРОБЛЕМЫ</strong></a></li>
+</ul></li>
+</ul>
+</nav>
+<p>Отлично! Я подготовлю подробнейший шаблон-напоминалку для следующей
+сессии. Этот документ будет содержать всю ключевую информацию о нашей
+работе, установленных компонентах, созданных скриптах и текущем
+прогрессе.</p>
+<h1 id="мастер-шаблон-для-новой-сессии-termux">📋 <strong>МАСТЕР-ШАБЛОН
+ДЛЯ НОВОЙ СЕССИИ TERMUX</strong></h1>
+<h2 id="текущий-статус-проекта-на-25.02.2026">🔥 <strong>ТЕКУЩИЙ СТАТУС
+ПРОЕКТА (на 25.02.2026)</strong></h2>
+<h3 id="основная-цель">🎯 Основная цель</h3>
+<p>Создание локального AI-ассистента (DeepSeek) на телефоне для помощи в
+написании книг, анализе файлов и работе с GitHub</p>
+<h3 id="установленные-компоненты">✅ Установленные компоненты</h3>
+<h4 id="базовые-пакеты-termux">📦 Базовые пакеты Termux</h4>
+<pre><code>pkg install -y git openssh curl wget python python-pip clang cmake make proot-distro pandoc ffmpeg termux-api imagemagick</code></pre>
+<h4 id="deepseek-локальный">🤖 DeepSeek (локальный)</h4>
+<ul>
+<li><strong>Установлен через:</strong> Ollama в Debian</li>
+<li><strong>Модель:</strong> deepseek-r1:1.5b</li>
+<li><strong>Команда запуска:</strong> <code>ds</code> (алиас
+создан)</li>
+</ul>
+<h4 id="инструменты-для-работы-с-файлами">🛠️ Инструменты для работы с
+файлами</h4>
+<table>
+<thead>
+<tr>
+<th>Инструмент</th>
+<th>Назначение</th>
+<th>Статус</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pandoc</td>
+<td>Конвертер документов</td>
+<td>✅ Установлен</td>
+</tr>
+<tr>
+<td>ffmpeg</td>
+<td>Работа с аудио/видео</td>
+<td>✅ Установлен</td>
+</tr>
+<tr>
+<td>imagemagick</td>
+<td>Обработка изображений</td>
+<td>✅ Установлен</td>
+</tr>
+<tr>
+<td>calibre</td>
+<td>Электронные книги</td>
+<td>❌ Не установлен</td>
+</tr>
+</tbody>
+</table>
+<h4 id="инструменты-для-github">🔧 Инструменты для GitHub</h4>
+<table>
+<thead>
+<tr>
+<th>Инструмент</th>
+<th>Назначение</th>
+<th>Статус</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>git</td>
+<td>Основной клиент Git</td>
+<td>✅ Установлен</td>
+</tr>
+<tr>
+<td>openssh</td>
+<td>SSH подключение</td>
+<td>✅ Установлен</td>
+</tr>
+<tr>
+<td>curl/wget</td>
+<td>Скачивание</td>
+<td>✅ Установлены</td>
+</tr>
+<tr>
+<td>GitHub CLI (gh)</td>
+<td>Утилита командной строки GitHub</td>
+<td>❌ Не установлен</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="созданные-скрипты-в-домашней-папке">📝 <strong>СОЗДАННЫЕ СКРИПТЫ
+(в домашней папке)</strong></h2>
+<h3 id="check_github_tools.sh---проверка-инструментов-github">1.
+<strong><code>~/check_github_tools.sh</code></strong> - проверка
+инструментов GitHub</h3>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> ~/check_github_tools.sh</span></code></pre></div>
+<h3 id="transcribe_audio.py---распознавание-речи-через-vosk">2.
+<strong><code>~/transcribe_audio.py</code></strong> - распознавание речи
+через Vosk</h3>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> ~/transcribe_audio.py audio.wav <span class="op">&gt;</span> transcript.txt</span></code></pre></div>
+<h3
+id="transcribe_audio_fixed.py---улучшенная-версия-с-правильными-путями">3.
+<strong><code>~/transcribe_audio_fixed.py</code></strong> - улучшенная
+версия с правильными путями</h3>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> ~/transcribe_audio_fixed.py audio.wav <span class="op">&gt;</span> transcript.txt</span></code></pre></div>
+<h3
+id="transcribe_google.py---распознавание-через-google-speech-recognition">4.
+<strong><code>~/transcribe_google.py</code></strong> - распознавание
+через Google Speech Recognition</h3>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> ~/transcribe_google.py audio.wav <span class="op">&gt;</span> transcript.txt</span></code></pre></div>
+<h3 id="ds.sh---умный-запуск-deepseek-автоматически-запускает-сервер">5.
+<strong><code>~/ds.sh</code></strong> - умный запуск DeepSeek
+(автоматически запускает сервер)</h3>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">~/ds.sh</span></span></code></pre></div>
+<h3 id="start-ollama.sh---отдельный-запуск-сервера-ollama">6.
+<strong><code>~/start-ollama.sh</code></strong> - отдельный запуск
+сервера Ollama</h3>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">~/start-ollama.sh</span></span></code></pre></div>
+<hr />
+<h2 id="алиасы-команды">🔑 <strong>АЛИАСЫ (КОМАНДЫ)</strong></h2>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Основные</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> ds=<span class="st">&#39;~/ds.sh&#39;</span>                    <span class="co"># Умный запуск DeepSeek</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> ds-strict=<span class="st">&#39;proot-distro login debian -- bash -c &quot;ollama run deepseek-r1:1.5b --system \&quot;Ты должен отвечать строго на заданный вопрос, кратко и по существу, только на русском языке. Не отклоняйся от темы.\&quot;&quot;&#39;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> ds-help=<span class="st">&#39;echo &quot;Доступные команды: ds, ds-strict, check-github, transcribe, convert-video&quot;&#39;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Проверка</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> check-github=<span class="st">&#39;~/check_github_tools.sh&#39;</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Конвертация</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> convert-video=<span class="st">&#39;ffmpeg -i&#39;</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> convert-audio=<span class="st">&#39;ffmpeg -i&#39;</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> convert-doc=<span class="st">&#39;pandoc&#39;</span></span></code></pre></div>
+<hr />
+<h2 id="как-запускать-локальный-deepseek">🚀 <strong>КАК ЗАПУСКАТЬ
+ЛОКАЛЬНЫЙ DeepSeek</strong></h2>
+<h3 id="простой-запуск">Простой запуск:</h3>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ds</span></span></code></pre></div>
+<h3 id="строгий-режим-только-по-делу">Строгий режим (только по
+делу):</h3>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ds-strict</span></span></code></pre></div>
+<h3 id="если-сервер-не-запускается">Если сервер не запускается:</h3>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Войти в Debian</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">proot-distro</span> login debian</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Запустить сервер</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">ollama</span> serve <span class="kw">&amp;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Проверить</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ps</span> aux <span class="kw">|</span> <span class="fu">grep</span> ollama</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Запустить модель</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="ex">ollama</span> run deepseek-r1:1.5b</span></code></pre></div>
+<hr />
+<h2 id="структура-папок-для-конвертации-твои-проекты">📁
+<strong>СТРУКТУРА ПАПОК ДЛЯ КОНВЕРТАЦИИ (твои проекты)</strong></h2>
+<pre><code>/storage/emulated/0/Documents/
+├── 04_md_pdf_мдпдф/           # MD → PDF
+├── 05_Элект_книги/            # Электронные книги
+│   ├── 01_md_EPUB_мдепуб/     # MD → EPUB
+│   ├── 02_md_fb2_мдфб2/       # MD → FB2
+│   └── ...
+├── 06_docx/                    # DOCX конвертация
+├── 07_html/                    # HTML конвертация
+├── 08_pdf/                     # PDF конвертация
+├── 09_md/                      # MD конвертация
+└── 10_mp3/                     # Аудио конвертация</code></pre>
+<hr />
+<h2 id="что-ещё-нужно-сделать">🎯 <strong>ЧТО ЕЩЁ НУЖНО
+СДЕЛАТЬ</strong></h2>
+<h3 id="установить-недостающие-пакеты">1. <strong>Установить недостающие
+пакеты</strong></h3>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calibre для электронных книг</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install calibre</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># GitHub CLI</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://cli.github.com/packages/githubcli-archive-keyring.gpg <span class="kw">|</span> <span class="fu">dd</span> of=/usr/share/keyrings/githubcli-archive-keyring.gpg</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> go+r /usr/share/keyrings/githubcli-archive-keyring.gpg</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;deb [arch=</span><span class="va">$(</span><span class="ex">dpkg</span> <span class="at">--print-architecture</span><span class="va">)</span><span class="st"> signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main&quot;</span> <span class="kw">|</span> <span class="fu">tee</span> /etc/apt/sources.list.d/github-cli.list <span class="op">&gt;</span> /dev/null</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> update <span class="kw">&amp;&amp;</span> <span class="ex">pkg</span> install gh</span></code></pre></div>
+<h3 id="настроить-ssh-ключи-для-github">2. <strong>Настроить SSH ключи
+для GitHub</strong></h3>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> rsa <span class="at">-b</span> 4096 <span class="at">-C</span> <span class="st">&quot;your-email@example.com&quot;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> ~/.ssh/id_rsa.pub</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Добавить ключ в GitHub Settings → SSH and GPG keys</span></span></code></pre></div>
+<h3 id="настроить-git">3. <strong>Настроить Git</strong></h3>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">&quot;Your Name&quot;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">&quot;your-email@example.com&quot;</span></span></code></pre></div>
+<h3 id="проверить-распознавание-речи">4. <strong>Проверить распознавание
+речи</strong></h3>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Извлечь аудио из видео</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ffmpeg</span> <span class="at">-i</span> video.mp4 <span class="at">-vn</span> <span class="at">-acodec</span> pcm_s16le <span class="at">-ar</span> 16000 audio.wav</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Распознать через Google (проще всего)</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install SpeechRecognition</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> ~/transcribe_google.py audio.wav <span class="op">&gt;</span> transcript.txt</span></code></pre></div>
+<hr />
+<h2 id="важные-замечания">⚠️ <strong>ВАЖНЫЕ ЗАМЕЧАНИЯ</strong></h2>
+<ol type="1">
+<li><strong>Пути к файлам</strong> в Termux:
+<code>/storage/emulated/0/Documents/...</code></li>
+<li><strong>После переустановки Termux</strong> нужно заново выполнить
+<code>termux-setup-storage</code></li>
+<li><strong>Модели DeepSeek</strong> хранятся в
+<code>~/.ollama/models/</code> (занимают много места)</li>
+<li><strong>Для работы с видео</strong> сначала извлеки аудио через
+ffmpeg</li>
+<li><strong>Google Speech Recognition</strong> требует интернета, но
+работает без сложной установки</li>
+</ol>
+<hr />
+<h2 id="если-возникнут-проблемы">📞 <strong>ЕСЛИ ВОЗНИКНУТ
+ПРОБЛЕМЫ</strong></h2>
+<p>Просто напиши в новой сессии, и мы продолжим с того места, где
+остановились. Я помню весь наш прогресс и готов помочь!</p>
+<p><strong>Ключевые моменты для быстрого старта:</strong> - Мы успешно
+установили локальный DeepSeek - Настроили алиас <code>ds</code> для
+удобного запуска - Пытались установить Vosk для распознавания речи, но
+возникли сложности - Перешли на Google Speech Recognition как временное
+решение - Создали несколько скриптов для работы с файлами</p>
+<p>Продолжим с того места, где остановились! Отлично! Я подготовлю
+подробнейший шаблон-напоминалку для следующей сессии. Этот документ
+будет содержать всю ключевую информацию о нашей работе, установленных
+компонентах, созданных скриптах и текущем прогрессе.</p>
+<h1 id="мастер-шаблон-для-новой-сессии-termux-1">📋
+<strong>МАСТЕР-ШАБЛОН ДЛЯ НОВОЙ СЕССИИ TERMUX</strong></h1>
+<h2 id="текущий-статус-проекта-на-25.02.2026-1">🔥 <strong>ТЕКУЩИЙ
+СТАТУС ПРОЕКТА (на 25.02.2026)</strong></h2>
+<h3 id="основная-цель-1">🎯 Основная цель</h3>
+<p>Создание локального AI-ассистента (DeepSeek) на телефоне для помощи в
+написании книг, анализе файлов и работе с GitHub</p>
+<h3 id="установленные-компоненты-1">✅ Установленные компоненты</h3>
+<h4 id="базовые-пакеты-termux-1">📦 Базовые пакеты Termux</h4>
+<pre><code>pkg install -y git openssh curl wget python python-pip clang cmake make proot-distro pandoc ffmpeg termux-api imagemagick</code></pre>
+<h4 id="deepseek-локальный-1">🤖 DeepSeek (локальный)</h4>
+<ul>
+<li><strong>Установлен через:</strong> Ollama в Debian</li>
+<li><strong>Модель:</strong> deepseek-r1:1.5b</li>
+<li><strong>Команда запуска:</strong> <code>ds</code> (алиас
+создан)</li>
+</ul>
+<h4 id="инструменты-для-работы-с-файлами-1">🛠️ Инструменты для работы с
+файлами</h4>
+<table>
+<thead>
+<tr>
+<th>Инструмент</th>
+<th>Назначение</th>
+<th>Статус</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pandoc</td>
+<td>Конвертер документов</td>
+<td>✅ Установлен</td>
+</tr>
+<tr>
+<td>ffmpeg</td>
+<td>Работа с аудио/видео</td>
+<td>✅ Установлен</td>
+</tr>
+<tr>
+<td>imagemagick</td>
+<td>Обработка изображений</td>
+<td>✅ Установлен</td>
+</tr>
+<tr>
+<td>calibre</td>
+<td>Электронные книги</td>
+<td>❌ Не установлен</td>
+</tr>
+</tbody>
+</table>
+<h4 id="инструменты-для-github-1">🔧 Инструменты для GitHub</h4>
+<table>
+<thead>
+<tr>
+<th>Инструмент</th>
+<th>Назначение</th>
+<th>Статус</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>git</td>
+<td>Основной клиент Git</td>
+<td>✅ Установлен</td>
+</tr>
+<tr>
+<td>openssh</td>
+<td>SSH подключение</td>
+<td>✅ Установлен</td>
+</tr>
+<tr>
+<td>curl/wget</td>
+<td>Скачивание</td>
+<td>✅ Установлены</td>
+</tr>
+<tr>
+<td>GitHub CLI (gh)</td>
+<td>Утилита командной строки GitHub</td>
+<td>❌ Не установлен</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="созданные-скрипты-в-домашней-папке-1">📝 <strong>СОЗДАННЫЕ
+СКРИПТЫ (в домашней папке)</strong></h2>
+<h3 id="check_github_tools.sh---проверка-инструментов-github-1">1.
+<strong><code>~/check_github_tools.sh</code></strong> - проверка
+инструментов GitHub</h3>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> ~/check_github_tools.sh</span></code></pre></div>
+<h3 id="transcribe_audio.py---распознавание-речи-через-vosk-1">2.
+<strong><code>~/transcribe_audio.py</code></strong> - распознавание речи
+через Vosk</h3>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> ~/transcribe_audio.py audio.wav <span class="op">&gt;</span> transcript.txt</span></code></pre></div>
+<h3
+id="transcribe_audio_fixed.py---улучшенная-версия-с-правильными-путями-1">3.
+<strong><code>~/transcribe_audio_fixed.py</code></strong> - улучшенная
+версия с правильными путями</h3>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> ~/transcribe_audio_fixed.py audio.wav <span class="op">&gt;</span> transcript.txt</span></code></pre></div>
+<h3
+id="transcribe_google.py---распознавание-через-google-speech-recognition-1">4.
+<strong><code>~/transcribe_google.py</code></strong> - распознавание
+через Google Speech Recognition</h3>
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> ~/transcribe_google.py audio.wav <span class="op">&gt;</span> transcript.txt</span></code></pre></div>
+<h3
+id="ds.sh---умный-запуск-deepseek-автоматически-запускает-сервер-1">5.
+<strong><code>~/ds.sh</code></strong> - умный запуск DeepSeek
+(автоматически запускает сервер)</h3>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">~/ds.sh</span></span></code></pre></div>
+<h3 id="start-ollama.sh---отдельный-запуск-сервера-ollama-1">6.
+<strong><code>~/start-ollama.sh</code></strong> - отдельный запуск
+сервера Ollama</h3>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">~/start-ollama.sh</span></span></code></pre></div>
+<hr />
+<h2 id="алиасы-команды-1">🔑 <strong>АЛИАСЫ (КОМАНДЫ)</strong></h2>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Основные</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> ds=<span class="st">&#39;~/ds.sh&#39;</span>                    <span class="co"># Умный запуск DeepSeek</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> ds-strict=<span class="st">&#39;proot-distro login debian -- bash -c &quot;ollama run deepseek-r1:1.5b --system \&quot;Ты должен отвечать строго на заданный вопрос, кратко и по существу, только на русском языке. Не отклоняйся от темы.\&quot;&quot;&#39;</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> ds-help=<span class="st">&#39;echo &quot;Доступные команды: ds, ds-strict, check-github, transcribe, convert-video&quot;&#39;</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Проверка</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> check-github=<span class="st">&#39;~/check_github_tools.sh&#39;</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Конвертация</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> convert-video=<span class="st">&#39;ffmpeg -i&#39;</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> convert-audio=<span class="st">&#39;ffmpeg -i&#39;</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> convert-doc=<span class="st">&#39;pandoc&#39;</span></span></code></pre></div>
+<hr />
+<h2 id="как-запускать-локальный-deepseek-1">🚀 <strong>КАК ЗАПУСКАТЬ
+ЛОКАЛЬНЫЙ DeepSeek</strong></h2>
+<h3 id="простой-запуск-1">Простой запуск:</h3>
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ds</span></span></code></pre></div>
+<h3 id="строгий-режим-только-по-делу-1">Строгий режим (только по
+делу):</h3>
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ds-strict</span></span></code></pre></div>
+<h3 id="если-сервер-не-запускается-1">Если сервер не запускается:</h3>
+<div class="sourceCode" id="cb27"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Войти в Debian</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="ex">proot-distro</span> login debian</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Запустить сервер</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="ex">ollama</span> serve <span class="kw">&amp;</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Проверить</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ps</span> aux <span class="kw">|</span> <span class="fu">grep</span> ollama</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Запустить модель</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="ex">ollama</span> run deepseek-r1:1.5b</span></code></pre></div>
+<hr />
+<h2 id="структура-папок-для-конвертации-твои-проекты-1">📁
+<strong>СТРУКТУРА ПАПОК ДЛЯ КОНВЕРТАЦИИ (твои проекты)</strong></h2>
+<pre><code>/storage/emulated/0/Documents/
+├── 04_md_pdf_мдпдф/           # MD → PDF
+├── 05_Элект_книги/            # Электронные книги
+│   ├── 01_md_EPUB_мдепуб/     # MD → EPUB
+│   ├── 02_md_fb2_мдфб2/       # MD → FB2
+│   └── ...
+├── 06_docx/                    # DOCX конвертация
+├── 07_html/                    # HTML конвертация
+├── 08_pdf/                     # PDF конвертация
+├── 09_md/                      # MD конвертация
+└── 10_mp3/                     # Аудио конвертация</code></pre>
+<hr />
+<h2 id="что-ещё-нужно-сделать-1">🎯 <strong>ЧТО ЕЩЁ НУЖНО
+СДЕЛАТЬ</strong></h2>
+<h3 id="установить-недостающие-пакеты-1">1. <strong>Установить
+недостающие пакеты</strong></h3>
+<div class="sourceCode" id="cb29"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calibre для электронных книг</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install calibre</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># GitHub CLI</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://cli.github.com/packages/githubcli-archive-keyring.gpg <span class="kw">|</span> <span class="fu">dd</span> of=/usr/share/keyrings/githubcli-archive-keyring.gpg</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> go+r /usr/share/keyrings/githubcli-archive-keyring.gpg</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;deb [arch=</span><span class="va">$(</span><span class="ex">dpkg</span> <span class="at">--print-architecture</span><span class="va">)</span><span class="st"> signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main&quot;</span> <span class="kw">|</span> <span class="fu">tee</span> /etc/apt/sources.list.d/github-cli.list <span class="op">&gt;</span> /dev/null</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> update <span class="kw">&amp;&amp;</span> <span class="ex">pkg</span> install gh</span></code></pre></div>
+<h3 id="настроить-ssh-ключи-для-github-1">2. <strong>Настроить SSH ключи
+для GitHub</strong></h3>
+<div class="sourceCode" id="cb30"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> rsa <span class="at">-b</span> 4096 <span class="at">-C</span> <span class="st">&quot;your-email@example.com&quot;</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> ~/.ssh/id_rsa.pub</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Добавить ключ в GitHub Settings → SSH and GPG keys</span></span></code></pre></div>
+<h3 id="настроить-git-1">3. <strong>Настроить Git</strong></h3>
+<div class="sourceCode" id="cb31"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">&quot;Your Name&quot;</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">&quot;your-email@example.com&quot;</span></span></code></pre></div>
+<h3 id="проверить-распознавание-речи-1">4. <strong>Проверить
+распознавание речи</strong></h3>
+<div class="sourceCode" id="cb32"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Извлечь аудио из видео</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ffmpeg</span> <span class="at">-i</span> video.mp4 <span class="at">-vn</span> <span class="at">-acodec</span> pcm_s16le <span class="at">-ar</span> 16000 audio.wav</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Распознать через Google (проще всего)</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install SpeechRecognition</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> ~/transcribe_google.py audio.wav <span class="op">&gt;</span> transcript.txt</span></code></pre></div>
+<hr />
+<h2 id="важные-замечания-1">⚠️ <strong>ВАЖНЫЕ ЗАМЕЧАНИЯ</strong></h2>
+<ol type="1">
+<li><strong>Пути к файлам</strong> в Termux:
+<code>/storage/emulated/0/Documents/...</code></li>
+<li><strong>После переустановки Termux</strong> нужно заново выполнить
+<code>termux-setup-storage</code></li>
+<li><strong>Модели DeepSeek</strong> хранятся в
+<code>~/.ollama/models/</code> (занимают много места)</li>
+<li><strong>Для работы с видео</strong> сначала извлеки аудио через
+ffmpeg</li>
+<li><strong>Google Speech Recognition</strong> требует интернета, но
+работает без сложной установки</li>
+</ol>
+<hr />
+<h2 id="если-возникнут-проблемы-1">📞 <strong>ЕСЛИ ВОЗНИКНУТ
+ПРОБЛЕМЫ</strong></h2>
+<p>Просто напиши в новой сессии, и мы продолжим с того места, где
+остановились. Я помню весь наш прогресс и готов помочь!</p>
+<p><strong>Ключевые моменты для быстрого старта:</strong> - Мы успешно
+установили локальный DeepSeek - Настроили алиас <code>ds</code> для
+удобного запуска - Пытались установить Vosk для распознавания речи, но
+возникли сложности - Перешли на Google Speech Recognition как временное
+решение - Создали несколько скриптов для работы с файлами</p>
+<p>Продолжим с того места, где остановились!</p>
+<hr />
+<p>Отлично! Я подготовил подробнейший шаблон-напоминалку для нашей
+следующей сессии. Сохрани этот документ в надежном месте (например, в
+заметках телефона или как текст в Google Docs), чтобы в следующий раз
+быстро восстановить контекст.</p>
+<h1 id="мастер-шаблон-для-новой-сессии-termux-2">📋
+<strong>МАСТЕР-ШАБЛОН ДЛЯ НОВОЙ СЕССИИ TERMUX</strong></h1>
+<h2 id="текущий-статус-проекта-на-25.02.2026-2">🔥 <strong>ТЕКУЩИЙ
+СТАТУС ПРОЕКТА (на 25.02.2026)</strong></h2>
+<h3 id="основная-цель-2">🎯 Основная цель</h3>
+<p>Создание локального AI-ассистента (DeepSeek) на телефоне для помощи в
+написании книг, анализе файлов и работе с GitHub.</p>
+<h3 id="установленные-компоненты-2">✅ Установленные компоненты</h3>
+<h4 id="базовые-пакеты-termux-2">📦 Базовые пакеты Termux</h4>
+<div class="sourceCode" id="cb33"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install <span class="at">-y</span> git openssh curl wget python python-pip clang cmake make proot-distro pandoc ffmpeg termux-api imagemagick</span></code></pre></div>
+<h4 id="deepseek-локальный-2">🤖 DeepSeek (локальный)</h4>
+<ul>
+<li><strong>Установлен через:</strong> Ollama в Debian</li>
+<li><strong>Модель:</strong> deepseek-r1:1.5b</li>
+<li><strong>Команда запуска:</strong> <code>ds</code> (алиас
+создан)</li>
+</ul>
+<h4 id="инструменты-для-работы-с-файлами-2">🛠️ Инструменты для работы с
+файлами</h4>
+<table>
+<thead>
+<tr>
+<th>Инструмент</th>
+<th>Назначение</th>
+<th>Статус</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pandoc</td>
+<td>Конвертер документов</td>
+<td>✅ Установлен</td>
+</tr>
+<tr>
+<td>ffmpeg</td>
+<td>Работа с аудио/видео</td>
+<td>✅ Установлен</td>
+</tr>
+<tr>
+<td>imagemagick</td>
+<td>Обработка изображений</td>
+<td>✅ Установлен</td>
+</tr>
+<tr>
+<td>calibre</td>
+<td>Электронные книги</td>
+<td>❌ Не установлен</td>
+</tr>
+</tbody>
+</table>
+<h4 id="инструменты-для-github-2">🔧 Инструменты для GitHub</h4>
+<table>
+<thead>
+<tr>
+<th>Инструмент</th>
+<th>Назначение</th>
+<th>Статус</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>git</td>
+<td>Основной клиент Git</td>
+<td>✅ Установлен</td>
+</tr>
+<tr>
+<td>openssh</td>
+<td>SSH подключение</td>
+<td>✅ Установлен</td>
+</tr>
+<tr>
+<td>curl/wget</td>
+<td>Скачивание</td>
+<td>✅ Установлены</td>
+</tr>
+<tr>
+<td>GitHub CLI (gh)</td>
+<td>Утилита командной строки GitHub</td>
+<td>❌ Не установлен</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="созданные-скрипты-в-домашней-папке-2">📝 <strong>СОЗДАННЫЕ
+СКРИПТЫ (в домашней папке)</strong></h2>
+<h3 id="check_github_tools.sh---проверка-инструментов-github-2">1.
+<strong><code>~/check_github_tools.sh</code></strong> - проверка
+инструментов GitHub</h3>
+<div class="sourceCode" id="cb34"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> ~/check_github_tools.sh</span></code></pre></div>
+<h3 id="transcribe_audio.py---распознавание-речи-через-vosk-2">2.
+<strong><code>~/transcribe_audio.py</code></strong> - распознавание речи
+через Vosk</h3>
+<div class="sourceCode" id="cb35"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> ~/transcribe_audio.py audio.wav <span class="op">&gt;</span> transcript.txt</span></code></pre></div>
+<h3
+id="transcribe_audio_fixed.py---улучшенная-версия-с-правильными-путями-2">3.
+<strong><code>~/transcribe_audio_fixed.py</code></strong> - улучшенная
+версия с правильными путями</h3>
+<div class="sourceCode" id="cb36"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> ~/transcribe_audio_fixed.py audio.wav <span class="op">&gt;</span> transcript.txt</span></code></pre></div>
+<h3
+id="transcribe_google.py---распознавание-через-google-speech-recognition-2">4.
+<strong><code>~/transcribe_google.py</code></strong> - распознавание
+через Google Speech Recognition</h3>
+<div class="sourceCode" id="cb37"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> ~/transcribe_google.py audio.wav <span class="op">&gt;</span> transcript.txt</span></code></pre></div>
+<h3
+id="ds.sh---умный-запуск-deepseek-автоматически-запускает-сервер-2">5.
+<strong><code>~/ds.sh</code></strong> - умный запуск DeepSeek
+(автоматически запускает сервер)</h3>
+<div class="sourceCode" id="cb38"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="ex">~/ds.sh</span></span></code></pre></div>
+<h3 id="start-ollama.sh---отдельный-запуск-сервера-ollama-2">6.
+<strong><code>~/start-ollama.sh</code></strong> - отдельный запуск
+сервера Ollama</h3>
+<div class="sourceCode" id="cb39"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="ex">~/start-ollama.sh</span></span></code></pre></div>
+<h3
+id="book_assistant.sh---главный-помощник-для-книг-создан-в-этой-сессии">7.
+<strong><code>~/book_assistant.sh</code></strong> - главный помощник для
+книг (создан в этой сессии)</h3>
+<div class="sourceCode" id="cb40"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> ~/book_assistant.sh</span></code></pre></div>
+<h3 id="git-helper.sh---помощь-с-git-командами">8.
+<strong><code>~/git-helper.sh</code></strong> - помощь с Git
+командами</h3>
+<div class="sourceCode" id="cb41"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> ~/git-helper.sh</span></code></pre></div>
+<hr />
+<h2 id="алиасы-команды-2">🔑 <strong>АЛИАСЫ (КОМАНДЫ)</strong></h2>
+<div class="sourceCode" id="cb42"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Основные</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> ds=<span class="st">&#39;~/ds.sh&#39;</span>                    <span class="co"># Умный запуск DeepSeek</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> ds-strict=<span class="st">&#39;proot-distro login debian -- bash -c &quot;ollama run deepseek-r1:1.5b --system \&quot;Ты должен отвечать строго на заданный вопрос, кратко и по существу, только на русском языке. Не отклоняйся от темы.\&quot;&quot;&#39;</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> ds-help=<span class="st">&#39;echo &quot;Доступные команды: ds, ds-strict, check-github, transcribe, convert-video&quot;&#39;</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Проверка</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> check-github=<span class="st">&#39;~/check_github_tools.sh&#39;</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Конвертация</span></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> convert-video=<span class="st">&#39;ffmpeg -i&#39;</span></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> convert-audio=<span class="st">&#39;ffmpeg -i&#39;</span></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> convert-doc=<span class="st">&#39;pandoc&#39;</span></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Книжный помощник</span></span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> book=<span class="st">&#39;~/book_assistant.sh&#39;</span></span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> git-help=<span class="st">&#39;~/git-helper.sh&#39;</span></span></code></pre></div>
+<hr />
+<h2 id="как-запускать-локальный-deepseek-2">🚀 <strong>КАК ЗАПУСКАТЬ
+ЛОКАЛЬНЫЙ DeepSeek</strong></h2>
+<h3 id="простой-запуск-2">Простой запуск:</h3>
+<div class="sourceCode" id="cb43"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ds</span></span></code></pre></div>
+<h3 id="строгий-режим-только-по-делу-2">Строгий режим (только по
+делу):</h3>
+<div class="sourceCode" id="cb44"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ds-strict</span></span></code></pre></div>
+<h3 id="если-сервер-не-запускается-2">Если сервер не запускается:</h3>
+<div class="sourceCode" id="cb45"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Войти в Debian</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="ex">proot-distro</span> login debian</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Запустить сервер</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="ex">ollama</span> serve <span class="kw">&amp;</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Проверить</span></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ps</span> aux <span class="kw">|</span> <span class="fu">grep</span> ollama</span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Запустить модель</span></span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="ex">ollama</span> run deepseek-r1:1.5b</span></code></pre></div>
+<hr />
+<h2 id="структура-папок-для-конвертации-твои-проекты-2">📁
+<strong>СТРУКТУРА ПАПОК ДЛЯ КОНВЕРТАЦИИ (твои проекты)</strong></h2>
+<pre><code>/storage/emulated/0/Documents/
+├── 04_md_pdf_мдпдф/           # MD → PDF
+├── 05_Элект_книги/            # Электронные книги
+│   ├── 01_md_EPUB_мдепуб/     # MD → EPUB
+│   ├── 02_md_fb2_мдфб2/       # MD → FB2
+│   └── ...
+├── 06_docx/                    # DOCX конвертация
+├── 07_html/                    # HTML конвертация
+├── 08_pdf/                     # PDF конвертация
+├── 09_md/                      # MD конвертация
+└── 10_mp3/                     # Аудио конвертация</code></pre>
+<hr />
+<h2 id="что-ещё-нужно-сделать-2">🎯 <strong>ЧТО ЕЩЁ НУЖНО
+СДЕЛАТЬ</strong></h2>
+<h3 id="установить-недостающие-пакеты-2">1. <strong>Установить
+недостающие пакеты</strong></h3>
+<div class="sourceCode" id="cb47"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calibre для электронных книг</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install calibre</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="co"># GitHub CLI</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://cli.github.com/packages/githubcli-archive-keyring.gpg <span class="kw">|</span> <span class="fu">dd</span> of=/usr/share/keyrings/githubcli-archive-keyring.gpg</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> go+r /usr/share/keyrings/githubcli-archive-keyring.gpg</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;deb [arch=</span><span class="va">$(</span><span class="ex">dpkg</span> <span class="at">--print-architecture</span><span class="va">)</span><span class="st"> signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main&quot;</span> <span class="kw">|</span> <span class="fu">tee</span> /etc/apt/sources.list.d/github-cli.list <span class="op">&gt;</span> /dev/null</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> update <span class="kw">&amp;&amp;</span> <span class="ex">pkg</span> install gh</span></code></pre></div>
+<h3 id="настроить-ssh-ключи-для-github-2">2. <strong>Настроить SSH ключи
+для GitHub</strong></h3>
+<div class="sourceCode" id="cb48"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> rsa <span class="at">-b</span> 4096 <span class="at">-C</span> <span class="st">&quot;your-email@example.com&quot;</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> ~/.ssh/id_rsa.pub</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Добавить ключ в GitHub Settings → SSH and GPG keys</span></span></code></pre></div>
+<h3 id="настроить-git-2">3. <strong>Настроить Git</strong></h3>
+<div class="sourceCode" id="cb49"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">&quot;Your Name&quot;</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">&quot;your-email@example.com&quot;</span></span></code></pre></div>
+<h3 id="проверить-распознавание-речи-2">4. <strong>Проверить
+распознавание речи</strong></h3>
+<div class="sourceCode" id="cb50"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Извлечь аудио из видео</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ffmpeg</span> <span class="at">-i</span> video.mp4 <span class="at">-vn</span> <span class="at">-acodec</span> pcm_s16le <span class="at">-ar</span> 16000 audio.wav</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Распознать через Google (проще всего)</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install SpeechRecognition</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> ~/transcribe_google.py audio.wav <span class="op">&gt;</span> transcript.txt</span></code></pre></div>
+<hr />
+<h2 id="новые-скрипты-созданные-в-этой-сессии">🆕 <strong>НОВЫЕ СКРИПТЫ
+(СОЗДАННЫЕ В ЭТОЙ СЕССИИ)</strong></h2>
+<h3
+id="book_assistant.sh---универсальный-помощник-для-работы-с-книгами">📚
+<strong><code>~/book_assistant.sh</code></strong> - универсальный
+помощник для работы с книгами</h3>
+<div class="sourceCode" id="cb51"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Запустить помощник</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> ~/book_assistant.sh</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Доступные функции:</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Конвертировать файлы (через меню)</span></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Задать вопрос DeepSeek о книге</span></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Извлечь текст из PDF/DOCX</span></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Анализ текста с DeepSeek</span></span></code></pre></div>
+<h3 id="git-helper.sh---помощь-с-git-командами-1">🔄
+<strong><code>~/git-helper.sh</code></strong> - помощь с Git
+командами</h3>
+<div class="sourceCode" id="cb52"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Запустить помощник</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> ~/git-helper.sh</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Доступные функции:</span></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Показать статус Git</span></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Добавить файлы в коммит</span></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Создать коммит</span></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Отправить изменения</span></span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Обновить локальный репозиторий</span></span></code></pre></div>
+<h3 id="примеры-использования-новых-скриптов">📝 <strong>Примеры
+использования новых скриптов:</strong></h3>
+<h4 id="конвертация-книги-в-другой-формат">Конвертация книги в другой
+формат:</h4>
+<div class="sourceCode" id="cb53"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Через книжный помощник</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> ~/book_assistant.sh</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Выбираем пункт 1 → выбираем формат → указываем файл</span></span></code></pre></div>
+<h4 id="анализ-текста-книги-с-deepseek">Анализ текста книги с
+DeepSeek:</h4>
+<div class="sourceCode" id="cb54"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Извлекаем текст из PDF в Termux</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> /storage/emulated/0/Documents/kniga.pdf <span class="at">-t</span> plain <span class="at">-o</span> /storage/emulated/0/Documents/kniga.txt</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Анализируем через DeepSeek (скопировав текст или небольшую часть)</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Или используем книжный помощник (пункт 4)</span></span></code></pre></div>
+<hr />
+<h2 id="идеи-для-дальнейшего-развития">💡 <strong>ИДЕИ ДЛЯ ДАЛЬНЕЙШЕГО
+РАЗВИТИЯ</strong></h2>
+<h3 id="автоматизация-конвейера">1. <strong>Автоматизация
+конвейера</strong></h3>
+<p>Создать скрипт, который: - Принимает ссылку на GitHub с книгой -
+Клонирует репозиторий - Конвертирует все <code>.md</code> в нужный
+формат (PDF, EPUB, FB2) - Сохраняет результат в папку на телефоне</p>
+<h3 id="умный-анализатор-книг">2. <strong>Умный анализатор
+книг</strong></h3>
+<p>Расширить <code>book_assistant.sh</code> для: - Автоматического
+извлечения текста из разных форматов - Отправки больших текстов DeepSeek
+по частям - Сохранения анализа в отдельный файл</p>
+<h3 id="интеграция-с-github">3. <strong>Интеграция с
+GitHub</strong></h3>
+<ul>
+<li>Автоматический бэкап книг в репозиторий</li>
+<li>Синхронизация заметок и анализов</li>
+<li>Версионирование текстов</li>
+</ul>
+<hr />
+<h2 id="важные-замечания-2">⚠️ <strong>ВАЖНЫЕ ЗАМЕЧАНИЯ</strong></h2>
+<ol type="1">
+<li><strong>Пути к файлам</strong> в Termux:
+<code>/storage/emulated/0/Documents/...</code></li>
+<li><strong>После переустановки Termux</strong> нужно заново выполнить
+<code>termux-setup-storage</code></li>
+<li><strong>Модели DeepSeek</strong> хранятся в
+<code>~/.ollama/models/</code> (занимают много места)</li>
+<li><strong>Для работы с видео</strong> сначала извлеки аудио через
+ffmpeg</li>
+<li><strong>Google Speech Recognition</strong> требует интернета, но
+работает без сложной установки</li>
+</ol>
+<hr />
+<h2 id="если-возникнут-проблемы-2">📞 <strong>ЕСЛИ ВОЗНИКНУТ
+ПРОБЛЕМЫ</strong></h2>
+<p>Просто напиши в новой сессии, и мы продолжим с того места, где
+остановились. Я помню весь наш прогресс и готов помочь!</p>
+<p><strong>Ключевые моменты для быстрого старта:</strong> - ✅
+Установлен локальный DeepSeek с алиасом <code>ds</code> - ✅ Созданы
+скрипты для работы с GitHub (<code>git-helper.sh</code>) - ✅ Создан
+книжный помощник (<code>book_assistant.sh</code>) - ✅ Настроены алиасы
+для быстрой работы - ✅ Готовы шаблоны для конвертации файлов</p>
+<p><strong>Что делали сегодня (25.02.2026):</strong> - ✅ Создали
+книжного помощника <code>book_assistant.sh</code> - ✅ Создали Git
+помощника <code>git-helper.sh</code> - ✅ Обновили мастер-шаблон со
+всеми новыми скриптами</p>
+<p>Продолжим в следующий раз с того места, где остановились! Удачной
+работы с книгами и DeepSeek! 📚🤖</p>
+</body>
+</html>
